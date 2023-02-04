@@ -1,11 +1,46 @@
-import React, { useRef } from "react";
+import React, { useEffect, useLayoutEffect, useRef } from "react";
 import example from "../../assets/3d/example.glb";
-import { useGLTF, useAnimations } from "@react-three/drei";
+import { useGLTF, useAnimations, useScroll } from "@react-three/drei";
+import { useFrame } from "@react-three/fiber";
+import { MathUtils } from "three";
 
 export default function Example(props) {
   const group = useRef();
+  const scroll = useScroll();
   const { nodes, materials, animations } = useGLTF(example);
   const { actions } = useAnimations(animations, group);
+
+  useLayoutEffect(() =>
+    Object.values(nodes).forEach(
+      (node) => (node.receiveShadow = node.castShadow = true)
+    )
+  );
+
+  useEffect(() => void (actions["Scene"].play().paused = true), [actions]);
+
+  useFrame((state, delta) => {
+    const action = actions["Scene"];
+    const offset = 1 - scroll.offset;
+
+    //damp => (current, target, speed of movement, delta)
+    action.time = MathUtils.damp(
+      action.time,
+      action.getClip().duration * offset,
+      5,
+      delta
+    );
+
+
+    //최초에 카메라 offset을 계산 후, 0으로 수렴하도록 함.
+    state.camera.position.set(
+      Math.sin(offset) * -10,
+      Math.atan(offset * Math.PI * 3) * 3,
+      Math.cos((offset * Math.PI) / 4) * -10 + 3
+    );
+
+    state.camera.lookAt(0, 0, 0);
+  });
+
   return (
     <group ref={group} {...props} dispose={null}>
       <group name="Sketchfab_Scene">
