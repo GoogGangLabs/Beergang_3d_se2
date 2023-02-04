@@ -25,11 +25,10 @@ export default function Example(props) {
     //damp => (current, target, speed of movement, delta)
     action.time = MathUtils.damp(
       action.time,
-      action.getClip().duration * offset,
-      5,
+      action.getClip().duration * scroll.offset,
+      3,
       delta
     );
-
 
     //최초에 카메라 offset을 계산 후, 0으로 수렴하도록 함.
     state.camera.position.set(
@@ -78,4 +77,4 @@ export default function Example(props) {
   );
 }
 
-useGLTF.preload("/example.glb");
+useGLTF.preload(example);
