@@ -1,4 +1,4 @@
-import { GlobalLayout, Home } from "pages";
+import { GlobalLayout, Home, Second } from "pages";
 import { Route, Routes } from "react-router-dom";
 
 function App() {
@@ -6,6 +6,7 @@ function App() {
     <Routes>
       <Route element={<GlobalLayout />}>
         <Route path="/" element={<Home />} />
+        <Route path="/second" element={<Second />} />
       </Route>
     </Routes>
   );

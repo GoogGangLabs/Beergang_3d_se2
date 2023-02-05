@@ -1,8 +1,8 @@
 import React, { useEffect, useLayoutEffect, useRef } from "react";
-import rex from "assets/3d/rex_roar.glb"
+import rex from "assets/3d/rex_roar.glb";
 import { useGLTF, useAnimations, useScroll } from "@react-three/drei";
 import gsap from "gsap";
-import { MathUtils } from "three";
+import { MathUtils, Vector3 } from "three";
 import { useFrame } from "@react-three/fiber";
 
 export default function Rex(props) {
@@ -11,21 +11,30 @@ export default function Rex(props) {
   const scroll = useScroll();
   const { nodes, materials, animations } = useGLTF(rex);
   const { actions } = useAnimations(animations, group);
-  
+
   useEffect(() => void (actions["Rex-Roar"].play().paused = true), [actions]);
 
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      if (actions["Rex-Roar"].play().paused) {
+        actions["Rex-Roar"].play().repetitions = 1;
+        actions["Rex-Roar"].play().paused = false;
+      }
+    }, 1000);
+
+    return () => clearTimeout(timer);
+  }, [actions]);
+
   useLayoutEffect(() => {
-    tl.current = gsap.timeline({defaults: {duration: 2, ease: "power1.inOut"}})
+    tl.current = gsap.timeline({
+      defaults: { duration: 100, ease: "power4.easeIn" },
+    });
 
     tl.current
-      // .to(group.current.position, { z: -10 }, 0)
-      .to(group.current.position, { x: 1 }, 2)
-      .to(group.current.position, { x: 0.5 }, 4)
-      .to(group.current.position, { x: -0.5 }, 6)
-      .to(group.current.position, { x: -1 }, 11)
-      .to(group.current.position, { x: -1 }, 13)
-      .to(group.current.position, { x: -1 }, 20)
-    });
+      .to(group.current.position, {}, 0)
+      .to(group.current.position, { x: 5, z: 20 }, 4)
+      .to(group.current.position, { z: 10 }, 20);
+  });
 
   useLayoutEffect(() =>
     Object.values(nodes).forEach(
@@ -33,18 +42,19 @@ export default function Rex(props) {
     )
   );
 
-
   useFrame((state, delta) => {
     const action = actions["Rex-Roar"];
-    const offset = 1 - scroll.offset;
-      //damp => (current, target, speed of movement, delta)
-      action.time = MathUtils.damp(
-        action.time,
-        action.getClip().duration * scroll.offset,
-        3,
-        delta
-      );
-    
+   
+    //damp => (current, target, speed of movement, delta)
+    // action.time = MathUtils.damp(
+    //   action.time,
+    //   action.getClip().duration * scroll.offset,
+    //   3,
+    //   delta
+    // );
+
+    state.camera.position.set(0, 0, -scroll.offset * 20 + 5);
+
     tl.current.seek(tl.current.duration() * scroll.offset);
   });
 
@@ -76,8 +86,7 @@ export default function Rex(props) {
                             geometry={nodes.Object_88.geometry}
                             material={materials.RexBodyMat_Colorized}
                             skeleton={nodes.Object_88.skeleton}
-                          >
-                          </skinnedMesh>
+                          ></skinnedMesh>
                           <skinnedMesh
                             name="Object_91"
                             geometry={nodes.Object_91.geometry}
