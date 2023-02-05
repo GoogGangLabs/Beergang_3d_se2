@@ -5,8 +5,8 @@ function App() {
   return (
     <Routes>
       <Route element={<GlobalLayout />}>
-        <Route path="/" element={<Home />} />
-        <Route path="/second" element={<Second />} />
+        {/* <Route path="/" element={<Home />} /> */}
+        <Route path="/" element={<Second />} />
       </Route>
     </Routes>
   );

@@ -86,12 +86,6 @@ const Home = () => {
         {/* 3D 모델 */}
         <Suspense fallback={null}>
           <ScrollControls pages={3} damping={0.15}>
-            {/* <Example
-              scale={7}
-              position={[0, -8.5, 1]}
-              rotation={[0, Math.PI, 0]}
-              castShadow
-            /> */}
             <Rex position={[1, -2.5, -0.3]} scale={0.4} />
             <Float
               speed={4}
@@ -101,7 +95,6 @@ const Home = () => {
             >
               <HulkBuster position={[-1, -1.7, -7]} scale={0.9} />
             </Float>
-            {/* 텍스트 */}
             <Scroll html>
               <div className="text-[100px] text-white w-screen">
                 <div className="relative top-[0] left-[0]">
