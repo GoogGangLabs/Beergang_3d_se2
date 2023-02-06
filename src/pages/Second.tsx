@@ -5,7 +5,7 @@ import {
   ScrollControls,
   Sparkles,
 } from "@react-three/drei";
-import { Canvas} from "@react-three/fiber";
+import { Canvas } from "@react-three/fiber";
 import { HulkBuster2 } from "components";
 import React, { Suspense } from "react";
 import { degToRad } from "three/src/math/MathUtils";
@@ -15,12 +15,24 @@ import Group from "assets/svg/Group.svg";
 import tryit from "assets/lottie/try.json";
 import Lottie from "lottie-react";
 
-const Second = () => {
+const DynamicBackground = () => {
+  return <color attach="background" args={["#0c0b0b"]} />;
+};
 
+const Second = () => {
   return (
     <>
-      <Canvas style={{ width: "100%", height: "100vh", position: 'fixed', top: 0, left: 0, zIndex: 1 }}>
-        <color attach="background" args={["#0c0b0b"]} />
+      <Canvas
+        style={{
+          width: "100%",
+          height: "100vh",
+          position: "fixed",
+          top: 0,
+          left: 0,
+          zIndex: 1,
+        }}
+      >
+        <DynamicBackground/>
         {/* <directionalLight
           position={[0, 3, 3]}
           target-position={[0, -10, -3]}
@@ -38,7 +50,7 @@ const Second = () => {
         <Sparkles scale={[50, 50, 50]} size={2} color={"#fff"} count={1000} />
         {/* 3D 모델 */}
         <Suspense fallback={null}>
-          <ScrollControls pages={2} damping={0.15}>
+          <ScrollControls pages={3} damping={0.15}>
             <Float
               speed={4}
               rotationIntensity={0.3}
@@ -75,7 +87,7 @@ const Second = () => {
             strength={new Vector2(0.2, 0.5)}
             ratio={1}
           />
-          <Scanline density={2.5}/>
+          {/* <Scanline density={2}/> */}
         </EffectComposer>
       </Canvas>
       {/* <Loader /> */}
