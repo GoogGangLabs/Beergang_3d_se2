@@ -9,7 +9,7 @@ import { Canvas } from "@react-three/fiber";
 import { HulkBuster2 } from "components";
 import React, { Suspense } from "react";
 import { degToRad } from "three/src/math/MathUtils";
-import { EffectComposer, Glitch, Scanline } from "@react-three/postprocessing";
+import { EffectComposer, Glitch, Outline, Scanline } from "@react-three/postprocessing";
 import { Vector2 } from "three";
 import Group from "assets/svg/Group.svg";
 import tryit from "assets/lottie/try.json";
