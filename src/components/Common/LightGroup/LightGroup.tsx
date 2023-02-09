@@ -5,10 +5,20 @@ const LightGroup = () => {
     <>
       {/* <pointLight position={[-10, -1, -3]} color={"#ed490e"} intensity={2}/> */}
       <CustomSpotLight
-        lightFrom={[-2, 2.5, 1]}
-        lightTo={[-1.4, 1, 2.5]}
-        lightColor={"#ff4400"}
-        angle={0.2}
+        lightFrom={[-1.5, 2.2, 2]}
+        lightTo={[-0.75, 0.5, 3.6]}
+        lightColor={"#dc3e05"}
+        angle={0.19}
+        intensity={2.5}
+        penumbra={0.8}
+      />
+      <CustomSpotLight
+        lightFrom={[1.5, 2.2, 2]}
+        lightTo={[0.75, 0.5, 3.6]}
+        lightColor={"#5d6dff"}
+        angle={0.22}
+        intensity={2.5}
+        penumbra={1}
       />
     </>
   );

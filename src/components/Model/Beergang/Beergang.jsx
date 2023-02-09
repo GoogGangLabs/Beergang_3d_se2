@@ -1,0 +1,84 @@
+import React, { useEffect, useRef } from "react";
+import beergang from "assets/3d/beergang.glb";
+import { useGLTF, useAnimations } from "@react-three/drei";
+import { useFrame } from '@react-three/fiber';
+
+export default function Beergang(props) {
+  const group = useRef();
+  const { nodes, materials, animations } = useGLTF(beergang);
+  const { actions } = useAnimations(animations, group);
+  useEffect(() => {
+    actions["dance"].play();
+  }, [actions])
+  return (
+    <group ref={group} {...props} dispose={null}>
+      <group name="Scene">
+        <group name="Armature">
+          <primitive object={nodes.mixamorigHips} />
+          <primitive object={nodes.Ctrl_Master} />
+          <primitive object={nodes.Ctrl_ArmPole_IK_Left} />
+          <primitive object={nodes.Ctrl_Hand_IK_Left} />
+          <primitive object={nodes.Ctrl_ArmPole_IK_Right} />
+          <primitive object={nodes.Ctrl_Hand_IK_Right} />
+          <primitive object={nodes.Ctrl_Foot_IK_Left} />
+          <primitive object={nodes.Ctrl_LegPole_IK_Left} />
+          <primitive object={nodes.Ctrl_Foot_IK_Right} />
+          <primitive object={nodes.Ctrl_LegPole_IK_Right} />
+          <skinnedMesh
+            name="ARpants"
+            geometry={nodes.ARpants.geometry}
+            material={materials.pants_MAT}
+            skeleton={nodes.ARpants.skeleton}
+          />
+          <skinnedMesh
+            name="ARpantsPocket"
+            geometry={nodes.ARpantsPocket.geometry}
+            material={materials.pants_MAT}
+            skeleton={nodes.ARpantsPocket.skeleton}
+          />
+          <skinnedMesh
+            name="base_head001"
+            geometry={nodes.base_head001.geometry}
+            material={materials.base_head_MAT}
+            skeleton={nodes.base_head001.skeleton}
+          />
+          <skinnedMesh
+            name="ARbody"
+            geometry={nodes.ARbody.geometry}
+            material={materials.Lyquid_body_MAT}
+            skeleton={nodes.ARbody.skeleton}
+          />
+          <skinnedMesh
+            name="BomberJacket"
+            geometry={nodes.BomberJacket.geometry}
+            material={materials.bomberJacket_MAT}
+            skeleton={nodes.BomberJacket.skeleton}
+          />
+          <skinnedMesh
+            name="ARsneakers_lf"
+            geometry={nodes.ARsneakers_lf.geometry}
+            material={materials.sneakers_white_MAT}
+            skeleton={nodes.ARsneakers_lf.skeleton}
+          />
+          <skinnedMesh
+            name="ARsneakers_rt"
+            geometry={nodes.ARsneakers_rt.geometry}
+            material={materials.sneakers_white_MAT}
+            skeleton={nodes.ARsneakers_rt.skeleton}
+          />
+        </group>
+        <mesh
+          name="hair_Wu_Lyquid"
+          castShadow
+          receiveShadow
+          geometry={nodes.hair_Wu_Lyquid.geometry}
+          material={materials.Foam_Hair_C}
+          rotation={[Math.PI / 2, 0, 0]}
+          scale={0.01}
+        />
+      </group>
+    </group>
+  );
+}
+
+useGLTF.preload(beergang);
