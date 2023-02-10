@@ -1,3 +1,9 @@
-export { default as Example } from "./Example/Example";
 export { default as Rex } from "./Rex/Rex";
-
+export { default as ImagePlane } from "./ImagePlane/ImagePlane";
+export { default as LightGroup } from "./LightGroup/LightGroup";
+export { default as CustomRectAreaLight } from "./CustomRectAreaLight/CustomRectAreaLight";
+export { default as CustomSpotLight } from "./CustomSpotLight/CustomSpotLight";
+export { default as ReflectiveSvg } from "./ReflectiveSvg/ReflectiveSvg";
+export { default as Background } from "./Background/Background";
+export { default as FadeOutSvg } from "./FadeOutSvg/FadeOutSvg";
+export { default as CustomDirectionalLight } from "./CustomDirectionalLight/CustomDirectionalLight";
