@@ -27,7 +27,6 @@ export default function Beergang(props) {
   );
 
   useFrame((state, delta) => {
-    console.log(scroll.offset)
     if (scroll.offset <= 1 / pageNum) {
       state.camera.position.set(
         Math.min(scroll.offset * pageNum * cameraTargetX_1, cameraTargetX_1),
@@ -35,13 +34,6 @@ export default function Beergang(props) {
         5 - Math.min(scroll.offset * pageNum * cameraTargetZ_1, cameraTargetZ_1)
       );
     } else if (scroll.offset <= 2 / pageNum) {
-      // state.camera.position.set(
-      //   cameraTargetX_1 +
-      //   cameraTargetX_2,
-      //   cameraTargetY_1 +
-      //   cameraTargetY_2,
-      //   5-cameraTargetZ_1 + cameraTargetZ_2
-      //   );
       state.camera.position.set(
         cameraTargetX_1 +
         (scroll.offset - 1 / pageNum) * pageNum * cameraTargetX_2,
@@ -49,14 +41,13 @@ export default function Beergang(props) {
         (scroll.offset - 1 / pageNum) * pageNum * cameraTargetY_2,
         5-cameraTargetZ_1 + (scroll.offset - 1 / pageNum) * pageNum * cameraTargetZ_2
         );
-        console.log(state.camera.position);
       }
 
     //페이지 전환이 완전히 되기 전에 동작2로 넘어가야함. (1/5 페이지)
-    if (scroll.offset < 0.2 && actions["dance"].play().paused) {
+    if (scroll.offset < 1/pageNum && actions["dance"].play().paused) {
       actions["dance"].play().paused = false;
     } else if (
-      scroll.offset >= 0.2 &&
+      scroll.offset >= 1 / pageNum &&
       !actions["dance"].play().paused
       // Math.ceil(actions["dance"].getClip().duration) ===
       //   Math.ceil(actions["dance"].time)

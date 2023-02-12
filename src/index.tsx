@@ -1,3 +1,4 @@
+import { ImageProvider } from "context/ImageContext";
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
@@ -13,9 +14,11 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <RecoilRoot>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
+      <ImageProvider>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </ImageProvider>
     </RecoilRoot>
   </React.StrictMode>
 );

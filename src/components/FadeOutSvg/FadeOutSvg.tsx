@@ -7,8 +7,9 @@ import { useScroll } from '@react-three/drei';
 const FadeOutSvg = () => {
   const [locationZ, setlocationZ] = useState<number>(0);
   const scroll = useScroll()
+  const pageNum = 5;
   useFrame(() => {
-    if (scroll.offset < 0.2) {
+    if (scroll.offset < 1/pageNum) {
       setlocationZ((prev) => -scroll.offset * 60)
     }
   })
