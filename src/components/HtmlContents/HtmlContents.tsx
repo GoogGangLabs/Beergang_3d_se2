@@ -7,13 +7,8 @@ const HtmlContents = ({getImageIndex}: {getImageIndex: (index:number) => void}) 
   const setImageVisible = useSetRecoilState(imageVisibleState);
   // const { imageVisibleHandler, imageInvisibleHandler } = useContext(ImageContext);
 
-  const onMouseHover = () => {
-    console.log("올라갔음.")
-    // imageVisibleHandler();
-    setImageVisible((prev) => true);
-  }
-
-  const onMouseLeave = () => {
+  const onMouseLeave = (e:any) => {
+    e.stopPropagation();
     console.log("내려갔음.")
     // imageInvisibleHandler();
     getImageIndex(0)
@@ -33,7 +28,23 @@ const HtmlContents = ({getImageIndex}: {getImageIndex: (index:number) => void}) 
       {/* 페이지 3 200vh ~ 300vh */}
       <div className="absolute top-[200vh] left-[10vw]">
         <h3 className="text-[42px]">Web3 Avatar Communication</h3>
-        <h4 className="text-[18px] mt-[30px] leading-[150%]" onMouseOver={() => getImageIndex(1)} onMouseLeave={onMouseLeave}>Lorem, ipsum</h4>
+        <h4
+          className="text-[18px] mt-[30px] leading-[150%] text-[30px]"
+          onMouseOver={() => getImageIndex(1)}
+          onMouseLeave={onMouseLeave}
+          // onMouseOut={onMouseLeave}
+        >
+          lorem Ipsumlorem Ipsum lorem Ipsum lorem Ipsum lorem Ipsum lorem Ipsum
+          lorem Ipsum lorem Ipsum
+        </h4>
+        <h4
+          className="text-[18px] mt-[30px] leading-[150%] text-[30px]"
+          onMouseOver={() => getImageIndex(2)}
+          onMouseLeave={onMouseLeave}
+        >
+          lorem Ipsumlorem Ipsum lorem Ipsum lorem Ipsum lorem Ipsum lorem Ipsum
+          lorem Ipsum lorem Ipsum
+        </h4>
       </div>
       {/* 페이지 4 300vh ~ 400vh */}
       <div className="absolute top-[300vh] left-[10vw]">

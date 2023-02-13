@@ -5,7 +5,7 @@ import { DirectionalLight, DirectionalLightHelper } from 'three';
 const CustomDirectionalLight = ({
   lightFrom = [0, 0, 0],
   lightTo = [0, 0, 0],
-  lightColor = "0xffffff",
+  lightColor = "white",
   intensity = 1,
 }:any) => {
   const light = new DirectionalLight(

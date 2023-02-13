@@ -28,38 +28,39 @@ import {
 const Home = () => {
   const [imageVisible, setImageVisible] = useState<number>(0);
 
-  const getImageIndex = (index:number) => {
+  const getImageIndex = (index: number) => {
     setImageVisible(index);
-  }
+    console.log(index);
+  };
 
   return (
-      <>
-        <Canvas style={{ width: "100vw", height: "100vh" }}>
-          <axesHelper scale={10} />
-          <fog attach="fog" color="black" near={11} far={16} />
-          {/* <OrbitControls /> */}
-          {/* <ambientLight intensity={0.2} /> */}
-          <Suspense fallback={null}>
-            <ScrollControls pages={6} damping={0.1}>
-              <FadeOutSvg />
-              <LightGroup />
-              <Background />
-              {/* <WaveEffect /> */}
-              {/* <WaveCursor /> */}
-              <ImageCursor imageVisible={imageVisible}/>
-              <Beergang position={[0, -1.6, 3.8]} />
-              <Scroll html>
-                <HtmlContents getImageIndex={getImageIndex}/>
-              </Scroll>
-            </ScrollControls>
-          </Suspense>
-          <EffectComposer>
-            <SMAA />
-            <Vignette offset={0.65} darkness={1} opacity={0.4} eskil={false} />
-          </EffectComposer>
-        </Canvas>
-        <Loader />
-      </>
+    <>
+      <Canvas style={{ width: "100vw", height: "100vh" }}>
+        <axesHelper scale={10} />
+        <fog attach="fog" color="black" near={11} far={16} />
+        {/* <OrbitControls /> */}
+        {/* <ambientLight intensity={0.2} /> */}
+        <Suspense fallback={null}>
+          <ScrollControls pages={6} damping={0.1}>
+            <FadeOutSvg />
+            <LightGroup />
+            <Background />
+            <ImageCursor imageVisible={imageVisible} />
+            {/* <WaveEffect /> */}
+            {/* <WaveCursor /> */}
+            <Beergang position={[0, -1.6, 3.8]} />
+            <Scroll html>
+              <HtmlContents getImageIndex={getImageIndex} />
+            </Scroll>
+          </ScrollControls>
+        </Suspense>
+        <EffectComposer>
+          <SMAA />
+          <Vignette offset={0.65} darkness={1} opacity={0.4} eskil={false} />
+        </EffectComposer>
+      </Canvas>
+      <Loader />
+    </>
   );
 };
 
