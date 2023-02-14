@@ -21,16 +21,19 @@ import { Beergang } from "components/Model";
 import {
   Bloom,
   EffectComposer,
+  Glitch,
   SMAA,
   Vignette,
 } from "@react-three/postprocessing";
+import { BeergangTest } from "components/Model/BeergangTest/BeergangTest";
+import { Vector2 } from "three";
+import { GlitchMode } from "postprocessing";
 
 const Home = () => {
   const [imageVisible, setImageVisible] = useState<number>(0);
 
   const getImageIndex = (index: number) => {
     setImageVisible(index);
-    console.log(index);
   };
 
   return (
@@ -48,14 +51,22 @@ const Home = () => {
             <ImageCursor imageVisible={imageVisible} />
             {/* <WaveEffect /> */}
             {/* <WaveCursor /> */}
-            <Beergang position={[0, -1.6, 3.8]} />
+            {/* <BeergangTest position={[0, -0.6, 4.2]} /> */}
+            <Beergang
+              position={[0, -1.8, 3.8]}
+              // rotation={[Math.PI / 64, Math.PI / 8, 0]}
+            />
             <Scroll html>
               <HtmlContents getImageIndex={getImageIndex} />
             </Scroll>
           </ScrollControls>
         </Suspense>
         <EffectComposer>
-          <SMAA />
+          <Glitch
+            delay={new Vector2(0, 0)}
+            active={false}
+            // mode={GlitchMode.CONSTANT_WILD}
+          />
           <Vignette offset={0.65} darkness={1} opacity={0.4} eskil={false} />
         </EffectComposer>
       </Canvas>

@@ -5,28 +5,19 @@ export class RippleRenderer {
 	private _target: THREE.WebGLRenderTarget
 	private _camera: THREE.OrthographicCamera
 	private _meshs: THREE.Mesh[] = []
-	/** 波紋の最大描画数 */
 	private _max = 100
-	/** 1フレームでマウスがどれだけ移動したら描画するか */
 	private _frequency = 5
-	/** マウス座標 */
 	private _mouse = new THREE.Vector2(0, 0)
-	/** 前のフレームでのマウス座標 */
 	private _prevMouse = new THREE.Vector2(0, 0)
-	/** 現在のフレームで描画された波紋のインデックス */
 	private _currentWave = 0
 
-	/**
-	 * コンストラクタ
-	 * @param _texture 波紋のテクスチャー
-	 */
 	constructor(private _texture: THREE.Texture) {
 		this._scene = new THREE.Scene()
 		this._target = new THREE.WebGLRenderTarget(window.innerWidth, window.innerHeight)
 		// camera
 		const { width, height, near, far } = this._cameraProps()
 		this._camera = new THREE.OrthographicCamera(-width, width, height, -height, near, far)
-		this._camera.position.set(0, 0, 2)
+		this._camera.position.set(0, 3, 4)
 		// mesh
 		this._createMesh()
 		// events
@@ -84,7 +75,7 @@ export class RippleRenderer {
 	}
 
 	private _trackMousePos = () => {
-		// 今のマウス座標と前回のフレームのマウス座標の距離
+
 		const distance = this._mouse.distanceTo(this._prevMouse)
 		if (this._frequency < distance) {
 			this._setNewWave()
@@ -94,11 +85,6 @@ export class RippleRenderer {
 		this._prevMouse.y = this._mouse.y
 	}
 
-	/**
-	 * 描画を更新する
-	 * @param gl メインレンダラー
-	 * @param uTexture 波紋の描画結果を格納するuniform
-	 */
 	update = (gl: THREE.WebGLRenderer, uTexture: THREE.IUniform<any>) => {
 		this._trackMousePos()
 
@@ -120,9 +106,6 @@ export class RippleRenderer {
 		})
 	}
 
-	/**
-	 * インスタンスを破棄する
-	 */
 	dispose = () => {
 		window.removeEventListener('mousemove', this._handleMouseMove)
 		window.removeEventListener('resize', this._handleResize)
