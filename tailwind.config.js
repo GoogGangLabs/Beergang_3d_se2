@@ -4,7 +4,12 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        poppins: "'Poppins', sans-serif",
+        // poppins: "'', sans-serif",
+        "merchant": "merchant",
+        "bai-jamjuree": 'Bai Jamjuree'
+      },
+      colors: {
+        "orange": "#FF5C00",
       },
     },
   },

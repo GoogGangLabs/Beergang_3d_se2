@@ -13,12 +13,12 @@ const CustomDirectionalLight = ({
     intensity,
   );
 
-  const ref = useRef<any>();
-  useHelper(ref, DirectionalLightHelper);
+  // const ref = useRef<any>();
+  // useHelper(ref, DirectionalLightHelper);
   return (
     <>
       <primitive
-        ref={ref}
+        // ref={ref}
         object={light}
         position={lightFrom}
       />

@@ -5,6 +5,7 @@ import {
   OrbitControls,
   Scroll,
   ScrollControls,
+  Sparkles,
   Svg,
 } from "@react-three/drei";
 import {
@@ -25,7 +26,6 @@ import {
   SMAA,
   Vignette,
 } from "@react-three/postprocessing";
-import { BeergangTest } from "components/Model/BeergangTest/BeergangTest";
 import { Vector2 } from "three";
 import { GlitchMode } from "postprocessing";
 
@@ -40,7 +40,7 @@ const Home = () => {
     <>
       <Canvas style={{ width: "100vw", height: "100vh" }}>
         <axesHelper scale={10} />
-        <fog attach="fog" color="black" near={11} far={16} />
+        <fog attach="fog" color="black" near={10} far={13} />
         {/* <OrbitControls /> */}
         {/* <ambientLight intensity={0.2} /> */}
         <Suspense fallback={null}>
@@ -48,13 +48,21 @@ const Home = () => {
             <FadeOutSvg />
             <LightGroup />
             <Background />
+            <Sparkles
+              color={"#FF5D00"}
+              count={130}
+              size={6}
+              speed={0.4}
+              scale={22}
+              opacity={1}
+            />
             <ImageCursor imageVisible={imageVisible} />
             {/* <WaveEffect /> */}
             {/* <WaveCursor /> */}
             {/* <BeergangTest position={[0, -0.6, 4.2]} /> */}
             <Beergang
-              position={[0, -1.8, 3.8]}
-              // rotation={[Math.PI / 64, Math.PI / 8, 0]}
+              position={[0, -1.65, 4.2]}
+              // rotation={[Math.PI / 64, Math.PI / 10, 0]}
             />
             <Scroll html>
               <HtmlContents getImageIndex={getImageIndex} />
