@@ -1,20 +1,23 @@
 {
   "files": {
-    "main.css": "/Beergang_3d_se2/static/css/main.0a33cb31.css",
-    "main.js": "/Beergang_3d_se2/static/js/main.9da1c8a9.js",
+    "main.css": "/Beergang_3d_se2/static/css/main.086ff6d8.css",
+    "main.js": "/Beergang_3d_se2/static/js/main.082395cc.js",
     "static/js/787.1a880851.chunk.js": "/Beergang_3d_se2/static/js/787.1a880851.chunk.js",
     "static/media/beergang.glb": "/Beergang_3d_se2/static/media/beergang.1c7729473493b1862534.glb",
     "static/media/Group.svg": "/Beergang_3d_se2/static/media/Group.9e38c94ecc90918f52c62a3940161ad9.svg",
     "static/media/beer.png": "/Beergang_3d_se2/static/media/beer.394349175458cfd1a964.png",
+    "static/media/merchant-doublesize.woff2": "/Beergang_3d_se2/static/media/merchant-doublesize.0750d3c9b65b6f249510.woff2",
+    "static/media/merchant-wide.woff2": "/Beergang_3d_se2/static/media/merchant-wide.7a1194fc64ca3fcf69cd.woff2",
     "static/media/brush.png": "/Beergang_3d_se2/static/media/brush.e95d114cc74528830ca5.png",
-    "static/media/beergang-text.svg": "/Beergang_3d_se2/static/media/beergang-text.3bc7a3f0d7d6cf3266a5d7da299af3e1.svg",
+    "static/media/merchant.woff2": "/Beergang_3d_se2/static/media/merchant.aef839e256a8046b5441.woff2",
+    "static/media/beergang-text.svg": "/Beergang_3d_se2/static/media/beergang-text.05d7f30dc56df97997d772e704674728.svg",
     "index.html": "/Beergang_3d_se2/index.html",
-    "main.0a33cb31.css.map": "/Beergang_3d_se2/static/css/main.0a33cb31.css.map",
-    "main.9da1c8a9.js.map": "/Beergang_3d_se2/static/js/main.9da1c8a9.js.map",
+    "main.086ff6d8.css.map": "/Beergang_3d_se2/static/css/main.086ff6d8.css.map",
+    "main.082395cc.js.map": "/Beergang_3d_se2/static/js/main.082395cc.js.map",
     "787.1a880851.chunk.js.map": "/Beergang_3d_se2/static/js/787.1a880851.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.0a33cb31.css",
-    "static/js/main.9da1c8a9.js"
+    "static/css/main.086ff6d8.css",
+    "static/js/main.082395cc.js"
   ]
 }
