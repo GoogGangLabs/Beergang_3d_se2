@@ -19,14 +19,14 @@ const LightGroup = () => {
   return (
     <>
       {/* 비어갱을 비추는 스포트라이트 */}
-      <CustomSpotLight
-        lightFrom={[0, 2, -5]}
-        lightTo={[0, 0, 10.3]}
-        lightColor={"#FF5D00"}
+      {/* <CustomSpotLight
+        lightFrom={[0, 2, 4.2]}
+        lightTo={[0, 0, 4.2]}
+        lightColor={"#f14400"}
         angle={0.3}
-        intensity={0.8}
-        penumbra={1}
-      />
+        intensity={1}
+        penumbra={0}
+      /> */}
       {/* <CustomSpotLight
         lightFrom={[1.5, 2.2, 2]}
         lightTo={[0.75, 0.5, 3.6]}
@@ -41,6 +41,7 @@ const LightGroup = () => {
         lightTo={[0, 2, 1]}
         intensity={intensity}
       />
+      {/* <ambientLight intensity={0.2} /> */}
       {/* <ambientLight intensity={intensity}/> */}
     </>
   );

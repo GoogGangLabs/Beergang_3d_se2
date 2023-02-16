@@ -44,9 +44,9 @@ const Home = () => {
         // linear
       >
         <axesHelper scale={10} />
-        <fog attach="fog" color="black" near={10} far={13} />
-        <OrbitControls />
-        {/* <ambientLight intensity={0.2} /> */}
+
+        {/* <OrbitControls /> */}
+        
         <Suspense fallback={null}>
           <ScrollControls pages={6} damping={0.1}>
             <FadeOutSvg />
@@ -54,11 +54,12 @@ const Home = () => {
             <Background />
             <Sparkles
               color={"#FF5D00"}
-              count={130}
+              count={150}
               size={6}
               speed={0.4}
-              scale={22}
+              scale={30}
               opacity={1}
+              castShadow={false}
             />
             <ImageCursor imageVisible={imageVisible} />
             {/* <WaveEffect /> */}

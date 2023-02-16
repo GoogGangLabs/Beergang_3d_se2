@@ -35,7 +35,7 @@ const HtmlContents = ({
       <div className="absolute top-[200vh] left-[8.073vw] text-[100px]">
         Page 3 Start
       </div>
-      <div className="absolute top-[226.204vh] left-[11.771vw] z-[0]">
+      <div className="absolute top-[226.204vh] left-[11.771vw]">
         <h3 className="text-[80px]">THE FOUR TRIBES</h3>
         <h4 className="text-[22px] leading-[125%] font-light font-bai-jamjuree">
           BeerGang is a tribe with the longest history that carried on the
@@ -101,9 +101,16 @@ const HtmlContents = ({
         </div>
       </div>
       {/* 페이지 4 300vh ~ 400vh */}
-      <div className="absolute top-[300vh] left-[10vw]">
-        <h3 className="text-[42px]">Page 4</h3>
-        <h4 className="text-[18px] mt-[30px] leading-[150%]">Lorem, ipsum</h4>
+      <div className="absolute top-[333.148vh] right-[12.708vw]">
+        <h3 className="text-[80px]">GANG BREWERY</h3>
+        <h4 className="text-[22px] leading-[125%] font-light font-bai-jamjuree mt-[33px]">
+          Each Beergang is unique generated from over 170 possible<br />traits,
+          including expression, headwear, clothing, and more. All<br />apes are dope,
+          but some are rarer than others. The apes are<br />stored as ERC-721 tokens
+          on the Dosi blockchain and hosted<br />on IPFS. To access members-only
+          areas such as Apeholders<br />will need to be signed into their Metamask
+          Wallet.
+        </h4>
       </div>
       {/* 페이지 5 400vh ~ 500vh */}
       <div className="absolute top-[400vh] left-[10vw]">
