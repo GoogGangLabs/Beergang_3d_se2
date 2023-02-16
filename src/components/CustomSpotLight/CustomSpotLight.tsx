@@ -22,12 +22,12 @@ const CustomSpotLight = ({
     decay
   );
 
-  // const ref = useRef<any>();
-  // useHelper(ref, SpotLightHelper);
+  const ref = useRef<any>();
+  useHelper(ref, SpotLightHelper);
   return (
     <>
       <primitive
-        // ref={ref}
+        ref={ref}
         object={light}
         position={lightFrom}
       />

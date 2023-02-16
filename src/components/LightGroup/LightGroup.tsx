@@ -12,22 +12,22 @@ const LightGroup = () => {
     //   setIntensity((prev) => 0);
     // }
     if (scroll.offset < 1/pageNum) {
-      setIntensity((prev) => Math.max(Math.min(scroll.offset * pageNum, 0.8), 0.05));
+      setIntensity((prev) => Math.max(Math.min(scroll.offset * pageNum, 1), 0.05));
     }
   });
 
   return (
     <>
       {/* 비어갱을 비추는 스포트라이트 */}
-      {/* <CustomSpotLight
-        lightFrom={[-1.5, 2.2, 2]}
-        lightTo={[-0.75, 0.5, 3.6]}
-        lightColor={"#dc3e05"}
-        angle={0.19}
-        intensity={4}
-        penumbra={0.8}
-      />
       <CustomSpotLight
+        lightFrom={[0, 2, -5]}
+        lightTo={[0, 0, 10.3]}
+        lightColor={"#FF5D00"}
+        angle={0.3}
+        intensity={0.8}
+        penumbra={1}
+      />
+      {/* <CustomSpotLight
         lightFrom={[1.5, 2.2, 2]}
         lightTo={[0.75, 0.5, 3.6]}
         lightColor={"#5d6dff"}

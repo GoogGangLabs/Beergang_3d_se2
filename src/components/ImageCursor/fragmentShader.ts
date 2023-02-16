@@ -10,6 +10,6 @@ export const fragmentShader = `
   
   void main() {
     vec3 color = texture2D(uTexture,scaleUV(vUv,0.8)).rgb;
-    gl_FragColor = vec4(color,uAlpha);
+    gl_FragColor = vec4(color - vec3(0.24),uAlpha);
   }
 `;

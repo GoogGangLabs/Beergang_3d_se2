@@ -26,7 +26,7 @@ import {
   SMAA,
   Vignette,
 } from "@react-three/postprocessing";
-import { Vector2 } from "three";
+import { NoToneMapping, Vector2 } from "three";
 import { GlitchMode } from "postprocessing";
 
 const Home = () => {
@@ -38,10 +38,14 @@ const Home = () => {
 
   return (
     <>
-      <Canvas style={{ width: "100vw", height: "100vh" }}>
+      <Canvas
+        style={{ width: "100vw", height: "100vh", zIndex: 1 }}
+        gl={{ antialias: true }}
+        // linear
+      >
         <axesHelper scale={10} />
         <fog attach="fog" color="black" near={10} far={13} />
-        {/* <OrbitControls /> */}
+        <OrbitControls />
         {/* <ambientLight intensity={0.2} /> */}
         <Suspense fallback={null}>
           <ScrollControls pages={6} damping={0.1}>
@@ -62,7 +66,7 @@ const Home = () => {
             {/* <BeergangTest position={[0, -0.6, 4.2]} /> */}
             <Beergang
               position={[0, -1.65, 4.2]}
-              // rotation={[Math.PI / 64, Math.PI / 10, 0]}
+              // rotation={[Math.PI / 64, -Math.PI / 10, 0]}
             />
             <Scroll html>
               <HtmlContents getImageIndex={getImageIndex} />

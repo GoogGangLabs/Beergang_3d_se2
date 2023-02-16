@@ -11,15 +11,15 @@ const initialCameraZ = 5;
 
 const cameraTargetX_1 = 0.1;
 const cameraTargetY_1 = 0.08;
-const cameraTargetZ_1 = -0.22;
+const cameraTargetZ_1 = -0.21;
 
-const cameraTargetX_2 = -0.2;
-const cameraTargetY_2 = -0.09;
-const cameraTargetZ_2 = 0.26;
+const cameraTargetX_2 = -0.5;
+const cameraTargetY_2 = -0.1;
+const cameraTargetZ_2 = 0.1;
 
-const cameraTargetX_3 = -0.3;
+const cameraTargetX_3 = 0.7;
 const cameraTargetY_3 = -0.3;
-const cameraTargetZ_3 = 0.9;
+const cameraTargetZ_3 = 1.3;
 
 const cameraTargetX_4 = 0;
 const cameraTargetY_4 = 0;
@@ -39,85 +39,99 @@ export default function Beergang(props) {
     )
   );
 
-  useFrame((state, delta) => {
-    //ex)5페이지 기준 = 0.2 스크롤비율 * 5 = 1.0
+  // useFrame((state, delta) => {
+  //   //ex)5페이지 기준 = 0.2 스크롤비율 * 5 = 1.0
 
-    const offsetPerPage = (scroll.offset % (1 / pageNum)) * pageNum;
-    // state.camera.lookAt(
-    //   0, 0, 3.8
-    // );
-    if (scroll.offset <= 1 / pageNum) {
-      state.camera.position.set(
-        offsetPerPage * cameraTargetX_1,
-        offsetPerPage * cameraTargetY_1,
-        initialCameraZ + offsetPerPage * cameraTargetZ_1
-      );
-      state.camera.lookAt(
-        offsetPerPage * cameraTargetX_1 * 25,
-        offsetPerPage * cameraTargetY_1 * 25,
-        initialCameraZ + offsetPerPage * cameraTargetZ_1 - 10
-      );
-    } else if (scroll.offset <= 2 / pageNum) {
-      state.camera.position.set(
-        cameraTargetX_1 + offsetPerPage * cameraTargetX_2,
-        cameraTargetY_1 + offsetPerPage * cameraTargetY_2,
-        initialCameraZ + cameraTargetZ_1 + offsetPerPage * cameraTargetZ_2
-      );
-      state.camera.lookAt(
-        cameraTargetX_1 * 25 + offsetPerPage * cameraTargetX_2 * 40,
-        cameraTargetY_1 * 25 + offsetPerPage * cameraTargetY_2 * 25,
-        initialCameraZ + cameraTargetZ_1 + offsetPerPage * cameraTargetZ_2 - 10
-      );
+  //   const offsetPerPage = (scroll.offset % (1 / pageNum)) * pageNum;
+  //   // state.camera.lookAt(
+  //   //   0, 0, 3.8
+  //   // );
+  //   if (scroll.offset <= 1 / pageNum) {
+  //     state.camera.position.set(
+  //       offsetPerPage * cameraTargetX_1,
+  //       offsetPerPage * cameraTargetY_1,
+  //       initialCameraZ + offsetPerPage * cameraTargetZ_1
+  //     );
+  //     state.camera.lookAt(
+  //       offsetPerPage * cameraTargetX_1 * 25,
+  //       offsetPerPage * cameraTargetY_1 * 25,
+  //       initialCameraZ + offsetPerPage * cameraTargetZ_1 - 10
+  //     );
+  //   } else if (scroll.offset <= 2 / pageNum) {
+  //     state.camera.position.set(
+  //       cameraTargetX_1 + offsetPerPage * cameraTargetX_2,
+  //       cameraTargetY_1 + offsetPerPage * cameraTargetY_2,
+  //       initialCameraZ + cameraTargetZ_1 + offsetPerPage * cameraTargetZ_2
+  //     );
+  //     // state.camera.lookAt(
+  //     //   cameraTargetX_1 * 25 + offsetPerPage * cameraTargetX_2 * 40,
+  //     //   cameraTargetY_1 * 25 + offsetPerPage * cameraTargetY_2 * 25,
+  //     //   initialCameraZ + cameraTargetZ_1 + offsetPerPage * cameraTargetZ_2 - 10
+  //     // );
+  //     state.camera.lookAt(
+  //       cameraTargetX_1 * 25 * (1 - offsetPerPage),
+  //       cameraTargetY_1 * 25 * (1 - offsetPerPage),
+  //       initialCameraZ + cameraTargetZ_1 + offsetPerPage * cameraTargetZ_2 - 10
+  //     );
+  //   } else if (scroll.offset <= 3 / pageNum) {
+  //     state.camera.position.set(
+  //       cameraTargetX_1 + cameraTargetX_2 + offsetPerPage * cameraTargetX_3,
+  //       cameraTargetY_1 + cameraTargetY_2 + offsetPerPage * cameraTargetY_3,
+  //       initialCameraZ +
+  //         cameraTargetZ_1 +
+  //         cameraTargetZ_2 +
+  //         offsetPerPage * cameraTargetZ_3
+  //     );
 
-    } else if (scroll.offset <= 3 / pageNum) {
-      state.camera.position.set(
-        cameraTargetX_1 + cameraTargetX_2 + offsetPerPage * cameraTargetX_3,
-        cameraTargetY_1 + cameraTargetY_2 + offsetPerPage * cameraTargetY_3,
-        initialCameraZ +
-          cameraTargetZ_1 +
-          cameraTargetZ_2 +
-          offsetPerPage * cameraTargetZ_3
-      );
-    } else if (scroll.offset <= 4 / pageNum) {
-      state.camera.position.set(
-        cameraTargetX_1 +
-          cameraTargetX_2 +
-          cameraTargetX_3 -
-          offsetPerPage * cameraTargetX_3,
-        cameraTargetY_1 +
-          cameraTargetY_2 +
-          cameraTargetY_3 -
-          offsetPerPage * cameraTargetY_3,
-        initialCameraZ +
-          cameraTargetZ_1 +
-          cameraTargetZ_2 +
-          offsetPerPage * cameraTargetZ_3
-      );
-    }
+  //     state.camera.lookAt(
+  //       cameraTargetX_1 + offsetPerPage * cameraTargetX_3 * 3,
+  //       cameraTargetY_1 + offsetPerPage * cameraTargetY_3 * 6,
+  //       initialCameraZ +
+  //         cameraTargetZ_1 +
+  //         cameraTargetZ_2 +
+  //         offsetPerPage * cameraTargetZ_3 -
+  //         10
+  //     );
+  //   } else if (scroll.offset <= 4 / pageNum) {
+  //     state.camera.position.set(
+  //       cameraTargetX_1 +
+  //         cameraTargetX_2 +
+  //         cameraTargetX_3 -
+  //         offsetPerPage * cameraTargetX_3,
+  //       cameraTargetY_1 +
+  //         cameraTargetY_2 +
+  //         cameraTargetY_3 -
+  //         offsetPerPage * cameraTargetY_3,
+  //       initialCameraZ +
+  //         cameraTargetZ_1 +
+  //         cameraTargetZ_2 +
+  //         offsetPerPage * cameraTargetZ_3
+  //     );
+  //   }
 
-    //페이지 전환이 완전히 되기 전에 동작2로 넘어가야함. (1/5 페이지)
-    // if (scroll.offset < 1 / pageNum) {
-    //   // actions["dance"].play().paused = false;
-    // } else if (
-    //   scroll.offset >=
-    //   1 / pageNum
-    //   // &&
-    //   // !actions["dance"].play().paused
-    //   // Math.ceil(actions["dance"].getClip().duration) ===
-    //   //   Math.ceil(actions["dance"].time)
-    // ) {
-    //   // actions["dance"].play().paused = true;
-    //   // actions["dance"].fadeOut(0.2);
-    //   // actions["dance"].stop();
-    //   // actions["dance"].reset();
-    // }
-    if (scroll.offset < 1 / pageNum) {
-      //
-    } else if (scroll.offset >= 1 / pageNum && action === "dance") {
-      setAction("");
-      actions["dance"].fadeOut(0.5);
-    }
-  });
+  //   //페이지 전환이 완전히 되기 전에 동작2로 넘어가야함. (1/5 페이지)
+  //   // if (scroll.offset < 1 / pageNum) {
+  //   //   // actions["dance"].play().paused = false;
+  //   // } else if (
+  //   //   scroll.offset >=
+  //   //   1 / pageNum
+  //   //   // &&
+  //   //   // !actions["dance"].play().paused
+  //   //   // Math.ceil(actions["dance"].getClip().duration) ===
+  //   //   //   Math.ceil(actions["dance"].time)
+  //   // ) {
+  //   //   // actions["dance"].play().paused = true;
+  //   //   // actions["dance"].fadeOut(0.2);
+  //   //   // actions["dance"].stop();
+  //   //   // actions["dance"].reset();
+  //   // }
+  //   if (scroll.offset < 1 / pageNum) {
+  //     //
+  //   } else if (scroll.offset >= 1 / pageNum && action === "dance") {
+  //     setAction("");
+  //     actions["dance"].fadeOut(0.5);
+  //   }
+  // });
 
   // useEffect(() => {
   //   actions["dance"].play();
