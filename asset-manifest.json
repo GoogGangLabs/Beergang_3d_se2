@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/Beergang_3d_se2/static/css/main.05e9269b.css",
-    "main.js": "/Beergang_3d_se2/static/js/main.f251b7f0.js",
+    "main.js": "/Beergang_3d_se2/static/js/main.df4da2bd.js",
     "static/js/787.1a880851.chunk.js": "/Beergang_3d_se2/static/js/787.1a880851.chunk.js",
     "static/media/beergang.glb": "/Beergang_3d_se2/static/media/beergang.1c7729473493b1862534.glb",
     "static/media/Group.svg": "/Beergang_3d_se2/static/media/Group.9e38c94ecc90918f52c62a3940161ad9.svg",
@@ -17,11 +17,11 @@
     "static/media/bar-2.svg": "/Beergang_3d_se2/static/media/bar-2.e6b451b1a66abfc7ccba5e4b17e7375b.svg",
     "static/media/bar-4.svg": "/Beergang_3d_se2/static/media/bar-4.a4934fc719a15e4e684331fe73b99d3e.svg",
     "main.05e9269b.css.map": "/Beergang_3d_se2/static/css/main.05e9269b.css.map",
-    "main.f251b7f0.js.map": "/Beergang_3d_se2/static/js/main.f251b7f0.js.map",
+    "main.df4da2bd.js.map": "/Beergang_3d_se2/static/js/main.df4da2bd.js.map",
     "787.1a880851.chunk.js.map": "/Beergang_3d_se2/static/js/787.1a880851.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.05e9269b.css",
-    "static/js/main.f251b7f0.js"
+    "static/js/main.df4da2bd.js"
   ]
 }
