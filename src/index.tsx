@@ -1,4 +1,3 @@
-import { ImageProvider } from "context/ImageContext";
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { HashRouter } from "react-router-dom";
@@ -15,13 +14,11 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <RecoilRoot>
-      <ImageProvider>
         {/* <BrowserRouter> */}
         <HashRouter basename="/">
           <App />
         </HashRouter>
         {/* </BrowserRouter> */}
-      </ImageProvider>
     </RecoilRoot>
   </React.StrictMode>
 );

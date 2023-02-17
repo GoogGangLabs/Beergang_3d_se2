@@ -10,16 +10,16 @@ const pageNum = 5;
 const initialCameraZ = 5;
 
 const cameraTargetX_1 = 0.1;
-const cameraTargetY_1 = 0.08;
+const cameraTargetY_1 = 0.03;
 const cameraTargetZ_1 = -0.21;
 
 const cameraTargetX_2 = -0.5;
 const cameraTargetY_2 = -0.1;
 const cameraTargetZ_2 = 0.1;
 
-const cameraTargetX_3 = 0.95;
-const cameraTargetY_3 = -0.3;
-const cameraTargetZ_3 = 1.5;
+const cameraTargetX_3 = 0.5;
+const cameraTargetY_3 = -0.35;
+const cameraTargetZ_3 = 1.3;
 
 const cameraTargetX_4 = 0;
 const cameraTargetY_4 = 0;
@@ -55,7 +55,7 @@ export default function Beergang(props) {
       state.camera.lookAt(
         offsetPerPage * cameraTargetX_1 * 25,
         offsetPerPage * cameraTargetY_1 * 25,
-        initialCameraZ + offsetPerPage * cameraTargetZ_1 - 10
+        initialCameraZ + offsetPerPage * cameraTargetZ_1 - 100
       );
     } else if (scroll.offset <= 2 / pageNum) {
       state.camera.position.set(
@@ -71,7 +71,7 @@ export default function Beergang(props) {
       state.camera.lookAt(
         cameraTargetX_1 * 25 * (1 - offsetPerPage),
         cameraTargetY_1 * 25 * (1 - offsetPerPage),
-        initialCameraZ + cameraTargetZ_1 + offsetPerPage * cameraTargetZ_2 - 10
+        initialCameraZ + cameraTargetZ_1 + offsetPerPage * cameraTargetZ_2 - 100
       );
     } else if (scroll.offset <= 3 / pageNum) {
       state.camera.position.set(
@@ -84,13 +84,12 @@ export default function Beergang(props) {
       );
 
       state.camera.lookAt(
-        cameraTargetX_1 + offsetPerPage * cameraTargetX_3 * 3,
-        cameraTargetY_1 + offsetPerPage * cameraTargetY_3 * 6,
+        cameraTargetX_1 + offsetPerPage * cameraTargetX_3 * 80,
+        cameraTargetY_1 + offsetPerPage * cameraTargetY_3 * 20,
         initialCameraZ +
           cameraTargetZ_1 +
           cameraTargetZ_2 +
-          offsetPerPage * cameraTargetZ_3 -
-          10
+          offsetPerPage * cameraTargetZ_3 - 100
       );
     } else if (scroll.offset <= 4 / pageNum) {
       state.camera.position.set(

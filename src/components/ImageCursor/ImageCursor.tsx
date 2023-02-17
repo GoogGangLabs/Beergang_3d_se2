@@ -6,8 +6,6 @@ import { Color, DoubleSide, Vector2, Vector3 } from "three";
 import gsap from "gsap";
 import { vertexShader } from "./vertexShader";
 import { fragmentShader } from "./fragmentShader";
-import { useRecoilValue } from "recoil";
-import { hoverImageState, imageVisibleState } from "store/fourTribes";
 import { degToRad, radToDeg } from "three/src/math/MathUtils";
 
 let curPosition = new Vector3(0, 0, 0);

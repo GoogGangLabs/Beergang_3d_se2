@@ -1,6 +1,7 @@
 import { useHelper } from '@react-three/drei';
-import React, { useRef } from 'react'
+import React, { useMemo, useRef } from 'react'
 import { DirectionalLight, DirectionalLightHelper } from 'three';
+import { useEffect } from 'react';
 
 const CustomDirectionalLight = ({
   lightFrom = [0, 0, 0],
@@ -8,10 +9,14 @@ const CustomDirectionalLight = ({
   lightColor = "white",
   intensity = 1,
 }:any) => {
-  const light = new DirectionalLight(
+  const light = useMemo(() => new DirectionalLight(
     lightColor,
     intensity,
-  );
+  ), [lightColor, intensity]);
+
+  // useEffect(() => {
+  //   light.castShadow = true
+  // }, [light])
 
   // const ref = useRef<any>();
   // useHelper(ref, DirectionalLightHelper);

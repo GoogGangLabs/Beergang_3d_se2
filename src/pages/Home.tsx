@@ -6,27 +6,21 @@ import {
   Scroll,
   ScrollControls,
   Sparkles,
-  Svg,
 } from "@react-three/drei";
 import {
   Background,
   LightGroup,
-  ReflectiveSvg,
   FadeOutSvg,
-  WaveCursor,
-  WaveEffect,
   HtmlContents,
   ImageCursor,
 } from "components";
 import { Beergang } from "components/Model";
 import {
-  Bloom,
   EffectComposer,
   Glitch,
-  SMAA,
   Vignette,
 } from "@react-three/postprocessing";
-import { NoToneMapping, Vector2 } from "three";
+import { Vector2 } from "three";
 import { GlitchMode } from "postprocessing";
 
 const Home = () => {
@@ -41,26 +35,18 @@ const Home = () => {
       <Canvas
         style={{ width: "100vw", height: "100vh", zIndex: 1 }}
         gl={{ antialias: true }}
+        shadows
         // linear
       >
         <axesHelper scale={10} />
 
         {/* <OrbitControls /> */}
-        
+
         <Suspense fallback={null}>
           <ScrollControls pages={6} damping={0.1}>
             <FadeOutSvg />
             <LightGroup />
             <Background />
-            <Sparkles
-              color={"#FF5D00"}
-              count={150}
-              size={6}
-              speed={0.4}
-              scale={30}
-              opacity={1}
-              castShadow={false}
-            />
             <ImageCursor imageVisible={imageVisible} />
             {/* <WaveEffect /> */}
             {/* <WaveCursor /> */}
