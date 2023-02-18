@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import exvideo from "assets/video/video1.mp4";
+import exvideo from "assets/video/video.mp4";
 import videoMute from "assets/svg/video-mute.svg";
 import videoUnmute from "assets/svg/video-unmute.svg";
 import playButton from "assets/svg/play-button.svg";
