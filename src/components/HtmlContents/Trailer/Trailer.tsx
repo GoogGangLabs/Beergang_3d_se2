@@ -7,14 +7,18 @@ import pauseButton from "assets/svg/pause-button.svg";
 import videoFullscreen from "assets/svg/video-fullscreen.svg";
 
 const Trailer = () => {
-  const videoRef = useRef<HTMLVideoElement | null>(null);
+  const videoRef = useRef<any>();
   const [isMuted, setIsMuted] = useState<boolean>(false);
   const [isPlaying, setIsPlaying] = useState<boolean>(false);
   const [hover, setHover] = useState<string>("opacity-0");
 
   useEffect(() => {
-    console.log(videoRef.current);
-  }, [videoRef]);
+    if(isPlaying) {
+      videoRef.current.play();
+    } else {
+      videoRef.current.pause();
+    }
+  }, [isPlaying]);
 
   const onFullScreenHandler = () => {
     videoRef.current?.requestFullscreen();
@@ -83,12 +87,12 @@ const Trailer = () => {
         <video
           onMouseEnter={hoverVideo}
           onMouseLeave={unHoverVideo}
-          className="rounded-[20px]"
+          className="rounded-[20px] w-full"
           style={{ clipPath: "inset(1px 1px)" }}
           ref={videoRef}
           muted={isMuted}
           autoPlay={false}
-          loop={false}
+          loop={true}
           controls={false}
         >
           <source src={exvideo} type="video/mp4" />
