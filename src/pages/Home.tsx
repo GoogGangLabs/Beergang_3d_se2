@@ -1,6 +1,7 @@
 import React, { Suspense, useState } from "react";
 import { Canvas } from "@react-three/fiber";
 import {
+  Html,
   Loader,
   OrbitControls,
   Scroll,
@@ -15,11 +16,7 @@ import {
   ImageCursor,
 } from "components";
 import { Beergang } from "components/Model";
-import {
-  EffectComposer,
-  Glitch,
-  Vignette,
-} from "@react-three/postprocessing";
+import { EffectComposer, Glitch, Vignette } from "@react-three/postprocessing";
 import { Vector2 } from "three";
 import { GlitchMode } from "postprocessing";
 
@@ -32,44 +29,46 @@ const Home = () => {
 
   return (
     <>
-      <Canvas
-        style={{ width: "100vw", height: "100vh", zIndex: 1 }}
-        gl={{ antialias: true }}
-        shadows
-        // linear
-      >
-        <axesHelper scale={10} />
+      <div className="w-screen h-screen">
+        <Canvas
+          className="fixed top-0 left-0 w-full h-full z-[1]"
+          gl={{ antialias: true, alpha: true }}
+          shadows
+          // linear
+        >
+          <axesHelper scale={10} />
 
-        {/* <OrbitControls /> */}
+          {/* <OrbitControls /> */}
 
-        <Suspense fallback={null}>
-          <ScrollControls pages={6} damping={0.1}>
-            <FadeOutSvg />
-            <LightGroup />
-            <Background />
-            <ImageCursor imageVisible={imageVisible} />
-            {/* <WaveEffect /> */}
-            {/* <WaveCursor /> */}
-            {/* <BeergangTest position={[0, -0.6, 4.2]} /> */}
-            <Beergang
-              position={[0, -1.65, 4.2]}
-              // rotation={[Math.PI / 64, -Math.PI / 10, 0]}
+          <Suspense fallback={null}>
+            <ScrollControls pages={13} damping={0.1}>
+              <FadeOutSvg />
+              <LightGroup />
+              <Background />
+              <ImageCursor imageVisible={imageVisible} />
+              {/* <WaveEffect /> */}
+              {/* <WaveCursor /> */}
+              {/* <BeergangTest position={[0, -0.6, 4.2]} /> */}
+              <Beergang
+                position={[0, -1.65, 4.2]}
+                // rotation={[Math.PI / 64, -Math.PI / 10, 0]}
+              />
+              <Scroll html>
+                <HtmlContents getImageIndex={getImageIndex} />
+              </Scroll>
+            </ScrollControls>
+          </Suspense>
+          <EffectComposer>
+            <Glitch
+              delay={new Vector2(0, 0)}
+              active={false}
+              // mode={GlitchMode.CONSTANT_WILD}
             />
-            <Scroll html>
-              <HtmlContents getImageIndex={getImageIndex} />
-            </Scroll>
-          </ScrollControls>
-        </Suspense>
-        <EffectComposer>
-          <Glitch
-            delay={new Vector2(0, 0)}
-            active={false}
-            // mode={GlitchMode.CONSTANT_WILD}
-          />
-          <Vignette offset={0.65} darkness={1} opacity={0.4} eskil={false} />
-        </EffectComposer>
-      </Canvas>
-      <Loader />
+            <Vignette offset={0.65} darkness={1} opacity={0.4} eskil={false} />
+          </EffectComposer>
+        </Canvas>
+        <Loader />
+      </div>
     </>
   );
 };

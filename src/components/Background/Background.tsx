@@ -6,8 +6,8 @@ import {
 } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
 import React, { useCallback, useMemo, useRef, useState } from "react";
-import { useRecoilState } from "recoil";
-import { isFirstSceneState } from "store/atoms";
+import { useRecoilState, useRecoilValue } from "recoil";
+import { isFirstSceneState, pageNumState } from "store/atoms";
 import {
   BackSide,
   Color,
@@ -75,11 +75,11 @@ const Background = () => {
   const scroll = useScroll();
   const [rgb, setRgb] = useState<string>("rgb(0, 0, 0)");
   const [isFirstScene, setIsFirstScene] = useRecoilState(isFirstSceneState);
+  const pageNum = useRecoilValue(pageNumState)
   //최초 RGB 값, 페이지 = 5 일 때, 검은색으로 수렴
   const R: number = 220;
   const G: number = 79;
   const B: number = 0;
-  const pageNum: number = 5;
 
   useFrame((state, delta) => {
     setRgb(
@@ -92,7 +92,7 @@ const Background = () => {
           0
         )},${Math.max(Math.ceil((1 - scroll.offset * pageNum) * B), 0)})`
     );
-    if (scroll.offset >= 0.53) {
+    if (scroll.offset >= 2.6/pageNum) {
       setIsFirstScene(true);
     } else {
       setIsFirstScene(false);
@@ -103,14 +103,14 @@ const Background = () => {
       <color attach="background" args={[rgb]} />
       {isFirstScene ? (
         <>
-          <Environment preset="city" />
+          
           <fog attach="fog" color="black" near={2.4} far={3.5} />
           <mesh
             rotation={[-degToRad(90), degToRad(0), 0]}
             position={[0, -1.7, 5.45]}
             receiveShadow
           >
-            <planeGeometry args={[30, 20]} />
+            <planeGeometry args={[15, 15]} />
             <MeshReflectorMaterial
               resolution={1024}
               mixBlur={1}
@@ -127,7 +127,7 @@ const Background = () => {
         </>
       ) : (
         <>
-        <fog attach="fog" color="black" near={13} far={16} />
+        <fog attach="fog" color="black" near={12} far={16} />
         </>
       )}
       {rgb === "rgb(0,0,0)" && (

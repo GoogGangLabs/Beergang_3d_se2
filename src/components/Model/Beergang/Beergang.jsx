@@ -3,8 +3,8 @@ import beergang from "assets/3d/beergang.glb";
 import { useGLTF, useAnimations, useScroll } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
 import { Vector3 } from "three";
-
-const pageNum = 5;
+import { pageNumState } from "store/atoms";
+import { useRecoilValue } from 'recoil';
 
 //이전 카메라 위치에서의 이동거리 차
 const initialCameraZ = 5;
@@ -31,6 +31,7 @@ export default function Beergang(props) {
   const { nodes, materials, animations } = useGLTF(beergang);
   const { actions } = useAnimations(animations, group);
   const [action, setAction] = useState("dance");
+  const pageNum = useRecoilValue(pageNumState);
   const previousAction = usePrevious(action);
 
   useLayoutEffect(() =>

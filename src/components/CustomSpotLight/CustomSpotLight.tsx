@@ -7,7 +7,7 @@ import { useEffect } from "react";
 const CustomSpotLight = ({
   lightFrom = [0, 0, 0],
   lightTo = [0, 0, 0],
-  lightColor = "0xffffff",
+  lightColor = "white",
   intensity = 1,
   distance = 100,
   angle = 0.5,

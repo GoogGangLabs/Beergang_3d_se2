@@ -10,5 +10,8 @@ export { default as FadeOutSvg } from "./FadeOutSvg/FadeOutSvg";
 export { default as CustomDirectionalLight } from "./CustomDirectionalLight/CustomDirectionalLight";
 export { default as HtmlContents } from "./HtmlContents/HtmlContents";
 export { default as ImageCursor } from "./ImageCursor/ImageCursor";
+export { default as NavBar } from "./HtmlContents/NavBar/NavBar";
+export { default as SNSIcon } from "./HtmlContents/SNSIcon/SNSIcon";
+
 
 

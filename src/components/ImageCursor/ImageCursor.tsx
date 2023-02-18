@@ -1,7 +1,10 @@
 import React, { useContext, useEffect, useMemo, useRef, useState } from "react";
 import { useFrame, useThree } from "@react-three/fiber";
 import { useTexture } from "@react-three/drei";
-import Lyquid from "assets/png/Lyquid.png";
+import lyquid from "assets/png/lyquid.png";
+import cloudX from "assets/png/cloudX.png";
+import staut from "assets/png/staut.png";
+import redpool from "assets/png/redpool.png";
 import { Color, DoubleSide, Vector2, Vector3 } from "three";
 import gsap from "gsap";
 import { vertexShader } from "./vertexShader";
@@ -16,11 +19,11 @@ const ImageCursor = ({ imageVisible }: { imageVisible: number }) => {
   // const hoverImage = useRecoilValue(hoverImageState);
   // const imageVisible = useRecoilValue(imageVisibleState);
   const imageList = [
-    Lyquid,
-    Lyquid,
-    "https://media.istockphoto.com/id/830229516/ko/%EC%82%AC%EC%A7%84/%EC%B6%94%EC%A0%88-of-%EA%B2%BD%EB%B3%B5%EA%B6%81-%EC%84%9C%EC%9A%B8-%ED%95%9C%EA%B5%AD.jpg?b=1&s=612x612&w=0&k=20&c=wO6JiIJyFz-L2gQZsUtB8bVVRXfdXkgj0m3IcRLHWf0=",
-    Lyquid,
-    "https://media.istockphoto.com/id/830229516/ko/%EC%82%AC%EC%A7%84/%EC%B6%94%EC%A0%88-of-%EA%B2%BD%EB%B3%B5%EA%B6%81-%EC%84%9C%EC%9A%B8-%ED%95%9C%EA%B5%AD.jpg?b=1&s=612x612&w=0&k=20&c=wO6JiIJyFz-L2gQZsUtB8bVVRXfdXkgj0m3IcRLHWf0=",
+    lyquid,
+    lyquid,
+    cloudX,
+    staut,
+    redpool,
   ];
   const texture1 = useTexture(imageList[1]);
   const texture2 = useTexture(imageList[2]);

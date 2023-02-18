@@ -2,14 +2,14 @@ import React, { useState } from "react";
 import { CustomDirectionalLight, CustomSpotLight } from "components";
 import { useFrame } from "@react-three/fiber";
 import { useScroll } from "@react-three/drei";
-import { isFirstSceneState } from "store/atoms";
+import { isFirstSceneState, pageNumState } from "store/atoms";
 import { useRecoilState, useRecoilValue } from "recoil";
 const LightGroup = () => {
   const scroll = useScroll();
   const [intensity, setIntensity] = useState<number>(0);
   const isFirstScene = useRecoilValue(isFirstSceneState);
+  const pageNum = useRecoilValue(pageNumState);
 
-  const pageNum = 5;
   useFrame(() => {
     // if (scroll.offset <= 0.1) {
     //   setIntensity((prev) => 0);
@@ -27,25 +27,24 @@ const LightGroup = () => {
       {isFirstScene ? (
         <>
           <CustomSpotLight
-            lightFrom={[0.5, 2, 4.7]}
-            lightTo={[0.5, 0, 4.7]}
+            lightFrom={[0.5, 0, 4.4]}
+            lightTo={[0.5, -3, 4.7]}
             lightColor={"#ef510d"}
-            angle={0.6}
+            angle={1}
             intensity={20}
             penumbra={1}
           />
         </>
       ) : (
-        <>
-          <CustomSpotLight
-            lightFrom={[0, 2, 5.7]}
-            lightTo={[0.3, 0, 4.7]}
-            angle={1}
-            penumbra={0.5}
-            intensity={intensity}
-          />
-        </>
+        <></>
       )}
+      <CustomSpotLight
+        lightFrom={[0, 2, 5.7]}
+        lightTo={[0.3, 0, 4.7]}
+        angle={1}
+        penumbra={0.5}
+        intensity={intensity}
+      />
       <CustomSpotLight
         lightFrom={[0, 4, 4]}
         lightTo={[3, 1, -1]}

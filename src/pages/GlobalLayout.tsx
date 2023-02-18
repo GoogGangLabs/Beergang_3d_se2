@@ -1,3 +1,4 @@
+import { NavBar } from "components";
 import React, { useEffect } from "react";
 import { Outlet, useLocation } from "react-router-dom";
 
@@ -13,6 +14,7 @@ const GlobalLayout = () => {
    
   return (
     <>
+      <NavBar/>
       <Outlet />
     </>
   );
