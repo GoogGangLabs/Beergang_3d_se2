@@ -87,6 +87,7 @@ const Trailer = () => {
         <video
           onMouseEnter={hoverVideo}
           onMouseLeave={unHoverVideo}
+          onClick={togglePlay}
           className="rounded-[20px] w-full"
           style={{ clipPath: "inset(1px 1px)" }}
           ref={videoRef}

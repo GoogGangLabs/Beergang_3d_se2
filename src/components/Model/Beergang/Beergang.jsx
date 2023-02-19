@@ -1,7 +1,7 @@
 import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
 import beergang from "assets/3d/beergang.glb";
 import { useGLTF, useAnimations, useScroll } from "@react-three/drei";
-import { useFrame } from "@react-three/fiber";
+import { useFrame, useThree } from "@react-three/fiber";
 import { Vector3 } from "three";
 import { pageNumState } from "store/atoms";
 import { useRecoilValue } from 'recoil';
@@ -17,7 +17,7 @@ const cameraTargetX_2 = -0.5;
 const cameraTargetY_2 = -0.1;
 const cameraTargetZ_2 = 0.1;
 
-const cameraTargetX_3 = 0.5;
+const cameraTargetX_3 = 1.5;
 const cameraTargetY_3 = -0.35;
 const cameraTargetZ_3 = 1.3;
 
@@ -32,6 +32,7 @@ export default function Beergang(props) {
   const { actions } = useAnimations(animations, group);
   const [action, setAction] = useState("dance");
   const pageNum = useRecoilValue(pageNumState);
+  const three = useThree();
   const previousAction = usePrevious(action);
 
   useLayoutEffect(() =>
@@ -42,8 +43,10 @@ export default function Beergang(props) {
 
   useFrame((state, delta) => {
     //ex)5페이지 기준 = 0.2 스크롤비율 * 5 = 1.0
-
+    //range함수를 쓸 수 있지만 아래 수식을 이용하면 범위 입력 필요 X
     const offsetPerPage = (scroll.offset % (1 / pageNum)) * pageNum;
+    
+    console.log(three.mouse)
     // state.camera.lookAt(
     //   0, 0, 3.8
     // );
@@ -53,10 +56,15 @@ export default function Beergang(props) {
         offsetPerPage * cameraTargetY_1,
         initialCameraZ + offsetPerPage * cameraTargetZ_1
       );
+      // state.camera.lookAt(
+      //   offsetPerPage * cameraTargetX_1 * 25,
+      //   offsetPerPage * cameraTargetY_1 * 25,
+      //   initialCameraZ + offsetPerPage * cameraTargetZ_1 - 100
+      // );
       state.camera.lookAt(
-        offsetPerPage * cameraTargetX_1 * 25,
-        offsetPerPage * cameraTargetY_1 * 25,
-        initialCameraZ + offsetPerPage * cameraTargetZ_1 - 100
+        offsetPerPage * 1.2,
+        offsetPerPage * -0.5,
+        0
       );
     } else if (scroll.offset <= 2 / pageNum) {
       state.camera.position.set(
@@ -64,16 +72,7 @@ export default function Beergang(props) {
         cameraTargetY_1 + offsetPerPage * cameraTargetY_2,
         initialCameraZ + cameraTargetZ_1 + offsetPerPage * cameraTargetZ_2
       );
-      // state.camera.lookAt(
-      //   cameraTargetX_1 * 25 + offsetPerPage * cameraTargetX_2 * 40,
-      //   cameraTargetY_1 * 25 + offsetPerPage * cameraTargetY_2 * 25,
-      //   initialCameraZ + cameraTargetZ_1 + offsetPerPage * cameraTargetZ_2 - 10
-      // );
-      state.camera.lookAt(
-        cameraTargetX_1 * 25 * (1 - offsetPerPage),
-        cameraTargetY_1 * 25 * (1 - offsetPerPage),
-        initialCameraZ + cameraTargetZ_1 + offsetPerPage * cameraTargetZ_2 - 100
-      );
+      state.camera.lookAt(1.2, -0.5, 0);
     } else if (scroll.offset <= 3 / pageNum) {
       state.camera.position.set(
         cameraTargetX_1 + cameraTargetX_2 + offsetPerPage * cameraTargetX_3,
@@ -85,28 +84,11 @@ export default function Beergang(props) {
       );
 
       state.camera.lookAt(
-        cameraTargetX_1 + offsetPerPage * cameraTargetX_3 * 80,
-        cameraTargetY_1 + offsetPerPage * cameraTargetY_3 * 20,
-        initialCameraZ +
-          cameraTargetZ_1 +
-          cameraTargetZ_2 +
-          offsetPerPage * cameraTargetZ_3 - 100
+        1.2, -0.5, 0
       );
+      
     } else if (scroll.offset <= 4 / pageNum) {
-      state.camera.position.set(
-        cameraTargetX_1 +
-          cameraTargetX_2 +
-          cameraTargetX_3 -
-          offsetPerPage * cameraTargetX_3,
-        cameraTargetY_1 +
-          cameraTargetY_2 +
-          cameraTargetY_3 -
-          offsetPerPage * cameraTargetY_3,
-        initialCameraZ +
-          cameraTargetZ_1 +
-          cameraTargetZ_2 +
-          offsetPerPage * cameraTargetZ_3
-      );
+      
     }
 
     //페이지 전환이 완전히 되기 전에 동작2로 넘어가야함. (1/5 페이지)
@@ -131,6 +113,7 @@ export default function Beergang(props) {
       setAction("");
       actions["dance"].fadeOut(0.5);
     }
+
   });
 
   // useEffect(() => {

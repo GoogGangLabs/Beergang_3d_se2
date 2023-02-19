@@ -15,7 +15,7 @@ let curPosition = new Vector3(0, 0, 0);
 
 const ImageCursor = ({ imageVisible }: { imageVisible: number }) => {
   let cursorRef = useRef<any>();
-  const { viewport } = useThree();
+  const { viewport, mouse } = useThree();
   // const hoverImage = useRecoilValue(hoverImageState);
   // const imageVisible = useRecoilValue(imageVisibleState);
   const imageList = [
@@ -51,6 +51,8 @@ const ImageCursor = ({ imageVisible }: { imageVisible: number }) => {
     //Mesh단위의 viewport 계산
     let x = (state.mouse.x * viewport.width) / 58.5;
     let y = (state.mouse.y * viewport.height) / 58.5;
+    // console.log(x, y)
+    // console.log(mouse.x/2, mouse.y)
 
     gsap.to(cursorRef.current.position, {
       duration: 1,
@@ -59,6 +61,12 @@ const ImageCursor = ({ imageVisible }: { imageVisible: number }) => {
       z: state.camera.position.z - 0.2,
       onUpdate: updatePosition,
     });
+
+    // cursorRef.current.lookAt(
+    //   state.camera.position.x,
+    //   state.camera.position.y,
+    //   state.camera.position.z
+    // );
 
     curPosition = new Vector3(
       state.camera.position.x + x,

@@ -19,6 +19,7 @@ import { Beergang } from "components/Model";
 import { EffectComposer, Glitch, Vignette } from "@react-three/postprocessing";
 import { Vector2 } from "three";
 import { GlitchMode } from "postprocessing";
+import TestShader from "components/TestShader/TestShader";
 
 const Home = () => {
   const [imageVisible, setImageVisible] = useState<number>(0);
@@ -36,23 +37,19 @@ const Home = () => {
           shadows
           // linear
         >
-          <axesHelper scale={10} />
-
+          {/* <axesHelper scale={10} /> */}
+          <TestShader />
           {/* <OrbitControls /> */}
 
           <Suspense fallback={null}>
-            <ScrollControls pages={13} damping={0.1}>
+            <ScrollControls pages={13} damping={0.15}>
               <FadeOutSvg />
               <LightGroup />
               <Background />
               <ImageCursor imageVisible={imageVisible} />
               {/* <WaveEffect /> */}
               {/* <WaveCursor /> */}
-              {/* <BeergangTest position={[0, -0.6, 4.2]} /> */}
-              <Beergang
-                position={[0, -1.65, 4.2]}
-                // rotation={[Math.PI / 64, -Math.PI / 10, 0]}
-              />
+              <Beergang position={[0, -1.65, 4.2]} />
               <Scroll html>
                 <HtmlContents getImageIndex={getImageIndex} />
               </Scroll>

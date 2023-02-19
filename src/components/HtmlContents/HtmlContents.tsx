@@ -1,5 +1,6 @@
 import React from "react";
 import BeergangUniverse from "./BeergangUniverse/BeergangUniverse";
+import OurRoadmap from "./OurRoadmap/OurRoadmap";
 import TheFourTribes from "./TheFourTribes/TheFourTribes";
 import Trailer from "./Trailer/Trailer";
 
@@ -35,9 +36,7 @@ const HtmlContents = ({
         {/* 페이지 5 400vh ~ 500vh */}
         <Trailer/>
         {/* 페이지 6 500vh ~ 600vh */}
-        <div className="absolute top-[500vh] left-[10vw]">
-          <h3 className="text-[42px]">Page 6</h3>
-        </div>
+        <OurRoadmap/>
         {/* 페이지 7 600vh ~ 700vh */}
         <div className="absolute top-[600vh] left-[10vw]">
           <h3 className="text-[42px]">Page 7</h3>
