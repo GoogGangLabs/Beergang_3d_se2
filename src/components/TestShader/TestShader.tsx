@@ -56,7 +56,7 @@ const TestShader = () => {
       uTexture: { value: texture1 },
       uTexture2: { value: texture2 },
       uTime: { value: 0 },
-      uMouse: { value: new Vector3()}
+      uMouse: { value: new Vector3(0, 0, -1)}
     }),
     [texture1, texture2]
   );

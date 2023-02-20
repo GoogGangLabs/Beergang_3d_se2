@@ -1,18 +1,19 @@
 import React from "react";
 import BeergangUniverse from "./BeergangUniverse/BeergangUniverse";
+import Footer from "./Footer/Footer";
 import OurRoadmap from "./OurRoadmap/OurRoadmap";
+import ScrollLottie from "./ScrollLottie/ScrollLottie";
 import TheFourTribes from "./TheFourTribes/TheFourTribes";
 import Trailer from "./Trailer/Trailer";
-
 const HtmlContents = ({
   getImageIndex,
 }: {
   getImageIndex: (index: number) => void;
 }) => {
-
   return (
     <>
-      <div className="w-screen h-screen text-orange font-merchant min-w-[360px] z-[2]">
+      <div className="w-screen h-[1300vh] text-orange font-merchant min-w-[360px] z-[2]">
+        <ScrollLottie/>
         {/* 페이지 2 100vh ~ 200vh */}
         <div className="absolute top-[100vh] right-[8.073vw] text-[100px]">
           Page 2 Start
@@ -34,13 +35,23 @@ const HtmlContents = ({
         {/* 페이지 4 300vh ~ 400vh */}
         <TheFourTribes getImageIndex={getImageIndex} />
         {/* 페이지 5 400vh ~ 500vh */}
-        <Trailer/>
+        <Trailer />
         {/* 페이지 6 500vh ~ 600vh */}
-        <OurRoadmap/>
+        <OurRoadmap />
         {/* 페이지 7 600vh ~ 700vh */}
-        <div className="absolute top-[600vh] left-[10vw]">
+        <div className="absolute top-[600vh] left-[17.135vw]">
           <h3 className="text-[42px]">Page 7</h3>
         </div>
+        <div className="absolute top-[650vh] left-[17.135vw]">
+          <h3 className="pad:text-[clamp(58px,5.370vw,72px)] desktop:text-[72px] leading-[68%]">
+            Many more
+            <br />
+            to come...
+          </h3>
+        </div>
+        {/* Footer */}
+        <Footer />
+
         {/* 페이지 8 700vh ~ 800vh */}
         <div className="absolute top-[700vh] left-[10vw]">
           <h3 className="text-[42px]">Page 8</h3>

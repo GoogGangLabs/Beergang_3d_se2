@@ -46,7 +46,6 @@ export default function Beergang(props) {
     //range함수를 쓸 수 있지만 아래 수식을 이용하면 범위 입력 필요 X
     const offsetPerPage = (scroll.offset % (1 / pageNum)) * pageNum;
     
-    console.log(three.mouse)
     // state.camera.lookAt(
     //   0, 0, 3.8
     // );
@@ -86,7 +85,7 @@ export default function Beergang(props) {
       state.camera.lookAt(
         1.2, -0.5, 0
       );
-      
+
     } else if (scroll.offset <= 4 / pageNum) {
       
     }

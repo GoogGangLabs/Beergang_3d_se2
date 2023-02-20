@@ -49,8 +49,8 @@ const ImageCursor = ({ imageVisible }: { imageVisible: number }) => {
 
   useFrame((state, delta) => {
     //Mesh단위의 viewport 계산
-    let x = (state.mouse.x * viewport.width) / 58.5;
-    let y = (state.mouse.y * viewport.height) / 58.5;
+    let x = (state.mouse.x * viewport.width) / 60;
+    let y = (state.mouse.y * viewport.height) / 60;
     // console.log(x, y)
     // console.log(mouse.x/2, mouse.y)
 

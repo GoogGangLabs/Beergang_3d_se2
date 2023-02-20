@@ -14,12 +14,15 @@ import {
   FadeOutSvg,
   HtmlContents,
   ImageCursor,
+  NavBar,
+  CustomLoader,
 } from "components";
 import { Beergang } from "components/Model";
 import { EffectComposer, Glitch, Vignette } from "@react-three/postprocessing";
 import { Vector2 } from "three";
 import { GlitchMode } from "postprocessing";
 import TestShader from "components/TestShader/TestShader";
+import Intro from "./Intro";
 
 const Home = () => {
   const [imageVisible, setImageVisible] = useState<number>(0);
@@ -32,39 +35,41 @@ const Home = () => {
     <>
       <div className="w-screen h-screen">
         <Canvas
-          className="fixed top-0 left-0 w-full h-full z-[1]"
+          className="fixed top-0 left-0 w-full h-full"
           gl={{ antialias: true, alpha: true }}
+          // camera={{ fov: 100}}
           shadows
-          // linear
         >
-          {/* <axesHelper scale={10} /> */}
-          <TestShader />
-          {/* <OrbitControls /> */}
-
-          <Suspense fallback={null}>
+          <Suspense>
+            <TestShader />
+            {/* <axesHelper scale={10} /> */}
+            {/* <OrbitControls /> */}
             <ScrollControls pages={13} damping={0.15}>
               <FadeOutSvg />
               <LightGroup />
               <Background />
               <ImageCursor imageVisible={imageVisible} />
-              {/* <WaveEffect /> */}
-              {/* <WaveCursor /> */}
               <Beergang position={[0, -1.65, 4.2]} />
               <Scroll html>
                 <HtmlContents getImageIndex={getImageIndex} />
               </Scroll>
             </ScrollControls>
+            <EffectComposer>
+              <Glitch
+                delay={new Vector2(0, 0)}
+                active={false}
+                // mode={GlitchMode.CONSTANT_WILD}
+              />
+              <Vignette
+                offset={0.65}
+                darkness={1}
+                opacity={0.4}
+                eskil={false}
+              />
+            </EffectComposer>
           </Suspense>
-          <EffectComposer>
-            <Glitch
-              delay={new Vector2(0, 0)}
-              active={false}
-              // mode={GlitchMode.CONSTANT_WILD}
-            />
-            <Vignette offset={0.65} darkness={1} opacity={0.4} eskil={false} />
-          </EffectComposer>
         </Canvas>
-        <Loader />
+        <CustomLoader />
       </div>
     </>
   );

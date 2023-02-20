@@ -1,22 +1,26 @@
-import { NavBar } from "components";
+import { BackgroundMusic, NavBar } from "components";
 import React, { useEffect } from "react";
 import { Outlet, useLocation } from "react-router-dom";
+import Intro from "./Intro";
 
 const GlobalLayout = () => {
-   const { pathname } = useLocation();
+  const { pathname } = useLocation();
 
-   useEffect(() => {
-     document.documentElement.scrollTo({
-       top: 0,
-       left: 0,
-     });
-   }, [pathname]);
-   
+  useEffect(() => {
+    document.documentElement.scrollTo({
+      top: 0,
+      left: 0,
+    });
+  }, [pathname]);
+
   return (
-    <>
-      <NavBar/>
-      <Outlet />
-    </>
+ 
+      <>
+        <Intro/>
+        <NavBar />
+        <Outlet />
+        <BackgroundMusic />
+      </>
   );
 };
 

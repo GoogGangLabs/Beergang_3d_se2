@@ -7,7 +7,7 @@ import {
 import { useFrame } from "@react-three/fiber";
 import React, { useCallback, useMemo, useRef, useState } from "react";
 import { useRecoilState, useRecoilValue } from "recoil";
-import { isFirstSceneState, pageNumState } from "store/atoms";
+import { iconColorState, isFirstSceneState, pageNumState, showLogoState } from "store/atoms";
 import {
   BackSide,
   Color,
@@ -18,63 +18,13 @@ import {
 } from "three";
 import { degToRad } from "three/src/math/MathUtils";
 
-// function RippleShaderMaterial() {
-//   const ref = useRef<any>();
-
-//   const material = useMemo(() => {
-//     const vertexShader = `
-//       varying vec2 vUv;
-
-//       void main() {
-//         vUv = uv;
-//         gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
-//       }
-//     `;
-
-//     const fragmentShader = `
-//       uniform float time;
-//       uniform vec2 mouse;
-//       uniform vec3 color;
-//       uniform float amplitude;
-
-//       varying vec2 vUv;
-
-//       void main() {
-//         float distance = length((vUv - mouse) * vec2(1.0, aspect) * 2.0);
-//         float ripple = sin(distance * 10.0 - time * 4.0) * amplitude;
-//         vec3 finalColor = color + vec3(ripple);
-//         gl_FragColor = vec4(finalColor, 1.0);
-//       }
-//     `;
-
-//     return new ShaderMaterial({
-//       uniforms: {
-//         time: { value: 0 },
-//         mouse: { value: new Vector2(0.5, 0.5) },
-//         color: { value: new Color("#FFFFFF") },
-//         amplitude: { value: 0.1 },
-//       },
-//       vertexShader,
-//       fragmentShader,
-//     });
-//   }, []);
-
-//   useFrame(({ clock }) => {
-//     material.uniforms.time.value = clock.elapsedTime;
-//   });
-
-//   return (
-//     <mesh ref={ref} scale={[2, 2, 2]}>
-//       <planeBufferGeometry args={[1, 1, 32, 32]} />
-//       {material}
-//     </mesh>
-//   );
-// }
-
 const Background = () => {
   const scroll = useScroll();
   const [rgb, setRgb] = useState<string>("rgb(0, 0, 0)");
   const [isFirstScene, setIsFirstScene] = useRecoilState(isFirstSceneState);
+  const [showLogo, setShowLogo] = useRecoilState(showLogoState);
+  const [iconStyle, setIconStyle] = useRecoilState(iconColorState);
+
   const pageNum = useRecoilValue(pageNumState)
   //최초 RGB 값, 페이지 = 5 일 때, 검은색으로 수렴
   const R: number = 220;
@@ -92,10 +42,21 @@ const Background = () => {
           0
         )},${Math.max(Math.ceil((1 - scroll.offset * pageNum) * B), 0)})`
     );
+    
     if (scroll.offset >= 2.6/pageNum) {
       setIsFirstScene(true);
     } else {
       setIsFirstScene(false);
+    }
+
+    //SNS 아이콘 색 전환 로직
+    if (scroll.range(0, 1/pageNum) < 1) {
+      setIconStyle({filter: `brightness(${scroll.range(0, 1/pageNum) * 100}%)`});
+      setShowLogo("opacity-0")
+    } else if (scroll.range(1 / pageNum, 1 / pageNum) < 1) {
+      setShowLogo("opacity-100");
+    } else if (scroll.range(2 / pageNum, 1 / pageNum) < 1) {
+      setIconStyle({ filter: "brightness(0) invert(1)" });
     }
   });
   return (

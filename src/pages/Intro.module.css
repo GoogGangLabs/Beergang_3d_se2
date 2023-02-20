@@ -1,0 +1,24 @@
+.fullscreen {
+  position: absolute;
+  z-index: 3;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  transition: all 1s ease-in-out;
+}
+
+.bg {
+  background: radial-gradient(50% 50% at 50% 50%, #D15520 0%, #E3651E 100%);
+}
+
+.clicked {
+  pointer-events: none;
+  /* opacity: 0; */
+  /* z-index: -2; */
+  transform: translateY(-100vh);
+}
