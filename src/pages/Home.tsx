@@ -1,12 +1,8 @@
 import React, { Suspense, useState } from "react";
 import { Canvas } from "@react-three/fiber";
 import {
-  Html,
-  Loader,
-  OrbitControls,
   Scroll,
   ScrollControls,
-  Sparkles,
 } from "@react-three/drei";
 import {
   Background,
@@ -14,15 +10,12 @@ import {
   FadeOutSvg,
   HtmlContents,
   ImageCursor,
-  NavBar,
   CustomLoader,
 } from "components";
 import { Beergang } from "components/Model";
 import { EffectComposer, Glitch, Vignette } from "@react-three/postprocessing";
 import { Vector2 } from "three";
 import { GlitchMode } from "postprocessing";
-import TestShader from "components/TestShader/TestShader";
-import Intro from "./Intro";
 
 const Home = () => {
   const [imageVisible, setImageVisible] = useState<number>(0);
@@ -41,7 +34,7 @@ const Home = () => {
           shadows
         >
           <Suspense>
-            <TestShader />
+            {/* <TestShader /> */}
             {/* <axesHelper scale={10} /> */}
             {/* <OrbitControls /> */}
             <ScrollControls pages={13} damping={0.15}>

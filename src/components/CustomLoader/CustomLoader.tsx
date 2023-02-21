@@ -12,7 +12,7 @@ interface LoaderOptions {
   initialState: (active: boolean) => boolean;
 }
 
-const defaultDataInterpolation = (p: number) => `${p.toFixed(2)}%`;
+const defaultDataInterpolation = (p: number) => `${p.toFixed(0)}%`;
 
 export default function Loader({
   containerStyles,
@@ -51,18 +51,22 @@ export default function Loader({
 
   return shown ? (
     <div
-      className="z-[3000]"
+      className="z-[3000] font-merchant min-w-[360px]"
       style={{
         ...styles.container,
         opacity: shown ? 1 : 0,
         ...containerStyles,
       }}
     >
-
-      <p className="z-[3]">ABV</p>
-      <span className="z-[3]" ref={progressSpanRef} />
+      <p className="z-[3] text-[clamp(18px,5vw,26px)] pad:text-[clamp(26px,2.407vw,30px)] desktop:text-[clamp(30px,1.563vw,100vw)] leading-[68%]">
+        ABV
+      </p>
+      <span
+        className="z-[3] text-[clamp(38px,10.556vw,60px)] pad:text-[clamp(60px,5.556vw,70px)] desktop:text-[clamp(70px,3.646vw,100vw)] leading-[88%]"
+        ref={progressSpanRef}
+      />
       <Lottie
-        className="absolute mb-[100px] w-[224px] z-[2]"
+        className="absolute mb-[clamp(30px,8.333vw,50px)] pad:mb-[clamp(50px,4.630vw,70px)] desktop:mb-[clamp(70px,3.646vw,100vw)] w-[188px] pad:w-[clamp(188px,17.407vw,224px)] desktop:w-[clamp(224px,11.667vw,100vw)] z-[2]"
         animationData={beerBubblesLottie}
         loop
         autoPlay={true}

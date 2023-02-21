@@ -25,7 +25,12 @@ export const iconColorState = atom<{ filter: string }>({
   default: { filter : "brightness(0%)" }
 });
 
-export const introReadyState = atom<boolean>({
-  key: "introReadyState",
+export const introDeniedState = atom<boolean>({
+  key: "introDeniedState",
   default: false,
+});
+
+export const toggleMusicState = atom<boolean>({
+  key: "toggleMusicState",
+  default: true,
 });

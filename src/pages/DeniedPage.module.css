@@ -1,7 +1,6 @@
 .fullscreen {
   position: absolute;
-  overflow: hidden;
-  z-index: 3;
+  z-index: 4;
   top: 0;
   left: 0;
   width: 100%;
@@ -16,8 +15,4 @@
 .bg {
   background: radial-gradient(50% 50% at 50% 50%, #D15520 0%, #E3651E 100%);
 }
-/* 
-.clicked {
-  pointer-events: none;
-  transform: translateY(-100vh);
-} */
+

@@ -1,6 +1,7 @@
 import { BackgroundMusic, NavBar } from "components";
 import React, { useEffect } from "react";
 import { Outlet, useLocation } from "react-router-dom";
+import DeniedPage from "./DeniedPage";
 import Intro from "./Intro";
 
 const GlobalLayout = () => {
