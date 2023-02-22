@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/Beergang_3d_se2/static/css/main.bcd0aca0.css",
-    "main.js": "/Beergang_3d_se2/static/js/main.5797b579.js",
+    "main.css": "/Beergang_3d_se2/static/css/main.68b248d3.css",
+    "main.js": "/Beergang_3d_se2/static/js/main.02d64107.js",
     "static/js/787.1a880851.chunk.js": "/Beergang_3d_se2/static/js/787.1a880851.chunk.js",
     "static/media/beergang-1.fbx": "/Beergang_3d_se2/static/media/beergang-1.5ebc665cf6bbe43582da.fbx",
     "static/media/video.mp4": "/Beergang_3d_se2/static/media/video.36d26ab50d51413bc7ff.mp4",
@@ -13,7 +13,7 @@
     "static/media/redpool.png": "/Beergang_3d_se2/static/media/redpool.469e07eff6659aeb55fc.png",
     "static/media/merchant-doublesize.woff2": "/Beergang_3d_se2/static/media/merchant-doublesize.0750d3c9b65b6f249510.woff2",
     "static/media/cloudX.png": "/Beergang_3d_se2/static/media/cloudX.a50650945299f330d1e9.png",
-    "static/media/lyquid.png": "/Beergang_3d_se2/static/media/lyquid.e2e095215882c6528afb.png",
+    "static/media/Lyquid.png": "/Beergang_3d_se2/static/media/Lyquid.e2e095215882c6528afb.png",
     "static/media/merchant-wide.woff2": "/Beergang_3d_se2/static/media/merchant-wide.7a1194fc64ca3fcf69cd.woff2",
     "static/media/staut.png": "/Beergang_3d_se2/static/media/staut.3d1c1fb567037d6e9f12.png",
     "static/media/merchant.woff2": "/Beergang_3d_se2/static/media/merchant.aef839e256a8046b5441.woff2",
@@ -22,26 +22,23 @@
     "static/media/beergang-text.svg": "/Beergang_3d_se2/static/media/beergang-text.05d7f30dc56df97997d772e704674728.svg",
     "static/media/logo.svg": "/Beergang_3d_se2/static/media/logo.3b9c0426c1cb52840a8f3912798e24f6.svg",
     "static/media/discord.svg": "/Beergang_3d_se2/static/media/discord.c3dbf7b289b20b94286c2e211e7327df.svg",
-    "static/media/video-mute.svg": "/Beergang_3d_se2/static/media/video-mute.8d9806234a9c3e6d65a668f87b87741a.svg",
-    "index.html": "/Beergang_3d_se2/index.html",
+    "static/media/video-mute.svg": "/Beergang_3d_se2/static/media/video-mute.ffa015ea687c3a6433b524d68750a1e3.svg",
     "static/media/dosi.svg": "/Beergang_3d_se2/static/media/dosi.0a3b141df7d6195ee3dcef4c9ecdfee4.svg",
     "static/media/twitter.svg": "/Beergang_3d_se2/static/media/twitter.ceb4a8feddf3a27a8e86b93ff2dd29d0.svg",
-    "static/media/video-unmute.svg": "/Beergang_3d_se2/static/media/video-unmute.23d8314c6993d9acc3269c3161589e13.svg",
+    "index.html": "/Beergang_3d_se2/index.html",
     "static/media/pause-button.svg": "/Beergang_3d_se2/static/media/pause-button.27908f78d45cc6196848d4a2cec0ee11.svg",
     "static/media/pause-musicPlayer.svg": "/Beergang_3d_se2/static/media/pause-musicPlayer.5a463bbac1c38781d17a15a33935519a.svg",
+    "static/media/video-unmute.svg": "/Beergang_3d_se2/static/media/video-unmute.f8e8879e76901744014e3e059b8f6d4a.svg",
     "static/media/musicPlayer.svg": "/Beergang_3d_se2/static/media/musicPlayer.b4e7c021a51f5f83434f9dafb6f2f02b.svg",
-    "static/media/video-fullscreen.svg": "/Beergang_3d_se2/static/media/video-fullscreen.2013b895c9947c68eb5f17370a3c5700.svg",
-    "static/media/bar-3.svg": "/Beergang_3d_se2/static/media/bar-3.be936be089584c5578841927fd3d9a4e.svg",
-    "static/media/bar-1.svg": "/Beergang_3d_se2/static/media/bar-1.24ebd54888d43bfc0209b0d77dd052b2.svg",
-    "static/media/bar-2.svg": "/Beergang_3d_se2/static/media/bar-2.e6b451b1a66abfc7ccba5e4b17e7375b.svg",
-    "static/media/bar-4.svg": "/Beergang_3d_se2/static/media/bar-4.a4934fc719a15e4e684331fe73b99d3e.svg",
     "static/media/play-button.svg": "/Beergang_3d_se2/static/media/play-button.7bb3f74d14b6a5cad261a5d4961ba97b.svg",
-    "main.bcd0aca0.css.map": "/Beergang_3d_se2/static/css/main.bcd0aca0.css.map",
-    "main.5797b579.js.map": "/Beergang_3d_se2/static/js/main.5797b579.js.map",
+    "static/media/video-fullscreen.svg": "/Beergang_3d_se2/static/media/video-fullscreen.5a199186c5a34775af6cde29525d42a7.svg",
+    "static/media/toggle-open.svg": "/Beergang_3d_se2/static/media/toggle-open.498769996651ff1098d52d2c28394f2d.svg",
+    "main.68b248d3.css.map": "/Beergang_3d_se2/static/css/main.68b248d3.css.map",
+    "main.02d64107.js.map": "/Beergang_3d_se2/static/js/main.02d64107.js.map",
     "787.1a880851.chunk.js.map": "/Beergang_3d_se2/static/js/787.1a880851.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.bcd0aca0.css",
-    "static/js/main.5797b579.js"
+    "static/css/main.68b248d3.css",
+    "static/js/main.02d64107.js"
   ]
 }
