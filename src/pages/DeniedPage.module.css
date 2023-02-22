@@ -1,6 +1,6 @@
 .fullscreen {
   position: absolute;
-  z-index: 4;
+  z-index: 101;
   top: 0;
   left: 0;
   width: 100%;
@@ -9,6 +9,7 @@
   flex-direction: column;
   justify-content: start;
   align-items: center;
+  opacity: 1;
   transition: all 1s ease-in-out;
 }
 

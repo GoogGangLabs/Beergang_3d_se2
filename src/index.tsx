@@ -12,6 +12,18 @@ const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
 
+// const consoleWarn = console.warn;
+// const SUPPRESSED_WARNINGS = ["THREE"];
+
+// console.warn = function filterWarnings(msg, ...args) {
+//   if (!SUPPRESSED_WARNINGS.some((entry) => msg.includes(entry))) {
+//     consoleWarn(msg, ...args);
+//   }
+// };
+
+// console.warn("I'll appear as a warning");
+// console.warn("warning text - I will not");
+
 root.render(
   <React.StrictMode>
     <RecoilRoot>

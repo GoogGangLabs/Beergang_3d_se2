@@ -12,19 +12,16 @@ const HtmlContents = ({
 }) => {
   return (
     <>
-      <div className="w-screen h-[1300vh] text-orange font-merchant min-w-[360px] z-[2]">
-        <ScrollLottie/>
+      <div className="w-screen h-[1300vh] text-[#FF5C00] font-bai-jamjuree min-w-[360px] z-[2]">
+        <ScrollLottie />
         {/* 페이지 2 100vh ~ 200vh */}
         <div className="absolute top-[100vh] right-[8.073vw] text-[100px]">
           Page 2 Start
         </div>
-        <div className="absolute top-[146.667vh] right-[4.167vw] pad:right-[5.370vw] desktop:right-[8.281vw]  w-[clamp(188px,52.222vw,396px)] pad:w-[clamp(396px,36.667vw,615px)] desktop:w-[615px]">
-          <h3 className="text-[clamp(16px,4.444vw,26px)] pad:text-[clamp(26px,2.407vw,40px)] desktop:text-[40px] leading-[85%]">
-            <span className="text-[clamp(36px,10vw,56px)] pad:text-[clamp(56px,5.185vw,80px)] desktop:text-[80px] leading-[43%]">
-              BEERGANG
-            </span>
-            is a 6,666 emotionally interactive 3D full-body NFT collection
-            inspired by beer, crafted by GoodGang Labs.
+        <div className="absolute top-[146.667vh] right-[3.333vw] pad:right-[9.907vw] desktop:right-[10.521vw] w-[clamp(166px,46.111vw,336px)] pad:w-[clamp(336px,31.111vw,549px)] desktop:w-[clamp(549px,28.594vw,100vw)]">
+          <h3 className="text-[clamp(11px,3.056vw,16px)] pad:text-[clamp(16px,1.481vw,26px)] desktop:text-[clamp(26px,1.354vw,100vw)] leading-[125%]">
+            BeerGang is a 6,666 emotionally interactive 3D full-body NFT
+            collection inspired by beer, crafted by GoodGang Labs.
           </h3>
         </div>
         {/* 페이지 3 200vh ~ 300vh */}
@@ -43,7 +40,7 @@ const HtmlContents = ({
           <h3 className="text-[42px]">Page 7</h3>
         </div>
         <div className="absolute top-[650vh] left-[17.135vw]">
-          <h3 className="pad:text-[clamp(58px,5.370vw,72px)] desktop:text-[72px] leading-[68%]">
+          <h3 className="pad:text-[clamp(58px,5.370vw,72px)] desktop:text-[clamp(72px,3.750vw,100vw)] leading-[68%]">
             Many more
             <br />
             to come...

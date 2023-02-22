@@ -7,15 +7,13 @@ import {
 import { useFrame } from "@react-three/fiber";
 import React, { useCallback, useMemo, useRef, useState } from "react";
 import { useRecoilState, useRecoilValue } from "recoil";
-import { iconColorState, isFirstSceneState, pageNumState, showLogoState } from "store/atoms";
 import {
-  BackSide,
-  Color,
-  DoubleSide,
-  MathUtils,
-  ShaderMaterial,
-  Vector2,
-} from "three";
+  iconColorState,
+  isFirstSceneState,
+  pageNumState,
+  showLogoState,
+} from "store/atoms";
+import { BackSide } from "three";
 import { degToRad } from "three/src/math/MathUtils";
 
 const Background = () => {
@@ -25,38 +23,44 @@ const Background = () => {
   const [showLogo, setShowLogo] = useRecoilState(showLogoState);
   const [iconStyle, setIconStyle] = useRecoilState(iconColorState);
 
-  const pageNum = useRecoilValue(pageNumState)
+  const pageNum = useRecoilValue(pageNumState);
   //최초 RGB 값, 페이지 = 5 일 때, 검은색으로 수렴
   const R: number = 220;
   const G: number = 79;
   const B: number = 0;
 
   useFrame((state, delta) => {
-    setRgb(
-      (prev) =>
-        `rgb(${Math.max(
-          Math.ceil((1 - scroll.offset * pageNum * 2) * R),
-          0
-        )},${Math.max(
-          Math.ceil((1 - scroll.offset * pageNum * 2) * G),
-          0
-        )},${Math.max(Math.ceil((1 - scroll.offset * pageNum) * B), 0)})`
-    );
-    
-    if (scroll.offset >= 2.6/pageNum) {
+
+    if (scroll.range(0, 1/pageNum) < 1.1) {
+      setRgb(
+        `rgb(${Math.floor((1 - scroll.range(0, 1 / pageNum)) * R)},${Math.floor(
+          (1 - scroll.range(0, 1 / pageNum)) * G
+        )},0)`
+      );
+    }
+
+    if (scroll.offset >= 2.6 / pageNum) {
       setIsFirstScene(true);
     } else {
       setIsFirstScene(false);
     }
 
     //SNS 아이콘 색 전환 로직
-    if (scroll.range(0, 1/pageNum) < 1) {
-      setIconStyle({filter: `brightness(${scroll.range(0, 1/pageNum) * 100}%)`});
-      setShowLogo("opacity-0")
-    } else if (scroll.range(1 / pageNum, 1 / pageNum) < 1) {
-      setShowLogo("opacity-100");
-    } else if (scroll.range(2 / pageNum, 1 / pageNum) < 1) {
-      setIconStyle({ filter: "brightness(0) invert(1)" });
+    if (window.innerWidth >= 1080) {
+      if (scroll.range(0, 1 / pageNum) < 1) {
+        setIconStyle({
+          filter: `brightness(${scroll.range(0, 1 / pageNum) * 100}%)`,
+        });
+        setShowLogo("opacity-0");
+      } else if (scroll.range(1 / pageNum, 1 / pageNum) < 1) {
+        setShowLogo("opacity-100");
+      } else if (scroll.range(2 / pageNum, 1 / pageNum) < 1) {
+        setIconStyle({ filter: "brightness(0) invert(1)" });
+      }
+    } else {
+      setIconStyle({
+        filter: "brightness(0) invert(0)",
+      });
     }
   });
   return (
@@ -64,16 +68,15 @@ const Background = () => {
       <color attach="background" args={[rgb]} />
       {isFirstScene ? (
         <>
-          
           <fog attach="fog" color="black" near={2.4} far={3.5} />
           <mesh
             rotation={[-degToRad(90), degToRad(0), 0]}
             position={[0, -1.7, 5.45]}
             receiveShadow
           >
-            <planeGeometry args={[15, 15]} />
+            <planeGeometry args={[5, 5]} />
             <MeshReflectorMaterial
-              resolution={1024}
+              resolution={512}
               mixBlur={1}
               mixStrength={100}
               depthScale={1.6}
@@ -88,12 +91,12 @@ const Background = () => {
         </>
       ) : (
         <>
-        <fog attach="fog" color="black" near={12} far={16} />
+          <fog attach="fog" color="black" near={12} far={16} />
         </>
       )}
       {rgb === "rgb(0,0,0)" && (
         <mesh position={[0, 0, 4]}>
-          <sphereGeometry args={[15, 100, 100]} />
+          <sphereGeometry args={[10, 10, 10]} />
           <meshPhongMaterial color={"#100f0f"} side={BackSide} />
         </mesh>
       )}

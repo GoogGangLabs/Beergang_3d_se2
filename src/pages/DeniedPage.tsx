@@ -25,11 +25,16 @@ const DeniedPage = () => {
   return (
     <div
       ref={ref}
-      className={`${styles.fullscreen} ${styles.bg} font-merchant min-w-[360px] min-h-[119.722vw] pad:min-h-[47.222vw] desktop:min-h-[34.063vw]`}
+      className={`${styles.fullscreen} ${styles.bg} font-merchant min-w-[360px]`}
+      // min-h-[119.722vw] pad:min-h-[47.222vw] desktop:min-h-[34.063vw]
       // min-h 수정 필요
     >
       <img
-        className="w-[clamp(102px,28.333vw,148px)] pad:w-[clamp(148px,13.704vw,180px)] desktop:w-[clamp(180px,9.375vw,100vw)] mt-[clamp(91px,25.278vw,91px)] pad:mt-[clamp(73px,6.759vw,128px)] desktop:mt-[clamp(128px,6.667vw,100vw)]"
+        className="w-[clamp(102px,28.333vw,148px)] pad:w-[clamp(148px,13.704vw,180px)] desktop:w-[clamp(180px,9.375vw,100vw)] mt-[clamp(91px,25.278vw,91px)] pad:mt-[clamp(73px,6.759vw,128px)] desktop:mt-[clamp(128px,6.667vw,100vw)] bg-blend-multiply"
+        style={{
+          filter:
+            "invert(0%) sepia(25%) saturate(830%) hue-rotate(335deg) brightness(80%) contrast(100%) drop-shadow(3px 3px 8px rgba(0, 0, 0, 0.2))",
+        }}
         src={accessDeniedImage}
         alt="인트로 이미지"
       />

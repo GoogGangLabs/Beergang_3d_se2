@@ -2,6 +2,9 @@ import { useProgress } from "@react-three/drei";
 import * as React from "react";
 import beerBubblesLottie from "assets/json/BeerBubbles.json";
 import Lottie from "lottie-react";
+import styles from "./CustomLoader.module.css";
+import { useRecoilState } from "recoil";
+import { introAcceptedState } from "store/atoms";
 
 interface LoaderOptions {
   containerStyles: any;
@@ -14,7 +17,7 @@ interface LoaderOptions {
 
 const defaultDataInterpolation = (p: number) => `${p.toFixed(0)}%`;
 
-export default function Loader({
+export default function CustomLoader({
   containerStyles,
   innerStyles,
   barStyles,
@@ -26,13 +29,25 @@ export default function Loader({
   const progressRef = React.useRef(0);
   const rafRef = React.useRef(0);
   const progressSpanRef = React.useRef<HTMLSpanElement>(null);
-  const [shown, setShown] = React.useState(initialState(active));
+  const [shown, setShown] = React.useState(true);
+  const [trans, setTrans] = React.useState(true);
+  const [clicked, setClicked] = useRecoilState(introAcceptedState);
 
   React.useEffect(() => {
     let t: any;
-    if (active !== shown) t = setTimeout(() => setShown(active), 1000);
-    return () => clearTimeout(t);
-  }, [shown, active]);
+    let l: any;
+    if (active !== shown && clicked)
+      t = setTimeout(() => {
+        setShown(active);
+      }, 2000);
+      l = setTimeout(() => {
+        setTrans(active);
+      }, 1700);
+    return () => {
+       clearTimeout(t);
+       clearTimeout(l);
+    };
+  }, [shown, active, clicked]);
 
   const updateProgress = React.useCallback(() => {
     if (!progressSpanRef.current) return;
@@ -51,22 +66,21 @@ export default function Loader({
 
   return shown ? (
     <div
-      className="z-[3000] font-merchant min-w-[360px]"
+      className={`font-merchant min-w-[360px] ${styles.container}`}
       style={{
-        ...styles.container,
-        opacity: shown ? 1 : 0,
-        ...containerStyles,
+        opacity: trans ? 1 : 0,
+        // ...containerStyles,
       }}
     >
-      <p className="z-[3] text-[clamp(18px,5vw,26px)] pad:text-[clamp(26px,2.407vw,30px)] desktop:text-[clamp(30px,1.563vw,100vw)] leading-[68%]">
+      <p className="z-[99] text-[clamp(18px,5vw,26px)] pad:text-[clamp(26px,2.407vw,30px)] desktop:text-[clamp(30px,1.563vw,100vw)] leading-[68%]">
         ABV
       </p>
       <span
-        className="z-[3] text-[clamp(38px,10.556vw,60px)] pad:text-[clamp(60px,5.556vw,70px)] desktop:text-[clamp(70px,3.646vw,100vw)] leading-[88%]"
+        className="z-[99] text-[clamp(38px,10.556vw,60px)] pad:text-[clamp(60px,5.556vw,70px)] desktop:text-[clamp(70px,3.646vw,100vw)] leading-[88%]"
         ref={progressSpanRef}
       />
       <Lottie
-        className="absolute mb-[clamp(30px,8.333vw,50px)] pad:mb-[clamp(50px,4.630vw,70px)] desktop:mb-[clamp(70px,3.646vw,100vw)] w-[188px] pad:w-[clamp(188px,17.407vw,224px)] desktop:w-[clamp(224px,11.667vw,100vw)] z-[2]"
+        className="absolute mb-[clamp(30px,8.333vw,50px)] pad:mb-[clamp(50px,4.630vw,70px)] desktop:mb-[clamp(70px,3.646vw,100vw)] w-[188px] pad:w-[clamp(188px,17.407vw,224px)] desktop:w-[clamp(224px,11.667vw,100vw)] z-[98]"
         animationData={beerBubblesLottie}
         loop
         autoPlay={true}
@@ -74,20 +88,3 @@ export default function Loader({
     </div>
   ) : null;
 }
-
-const styles = {
-  container: {
-    position: "absolute",
-    top: 0,
-    left: 0,
-    width: "100%",
-    height: "100%",
-    background: "radial-gradient(50% 50% at 50% 50%, #C63B00 0%, #C84800 100%)",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    flexDirection: "column",
-    transition: "opacity 300ms ease",
-    zIndex: 1000,
-  },
-};

@@ -6,14 +6,14 @@ import React, {
   useState,
 } from "react";
 import styles from "./Intro.module.css";
-import introImage from "assets/svg/intro-image.svg";
+import introImage from "../assets/svg/intro-image.svg";
 import { useRecoilState, useSetRecoilState } from "recoil";
-import { introDeniedState } from "store/atoms";
+import { introAcceptedState, introDeniedState } from "store/atoms";
 import gsap from "gsap";
 import DeniedPage from "./DeniedPage";
 
 const Intro = () => {
-  const [clicked, setClicked] = useState<boolean>(false);
+  const [clicked, setClicked] = useRecoilState(introAcceptedState);
   const ref = useRef<any>();
   const setDenied = useSetRecoilState(introDeniedState);
 
@@ -39,13 +39,17 @@ const Intro = () => {
         ref={ref}
         className={`${clicked && styles.clicked} ${styles.fullscreen} ${
           styles.bg
-        } font-merchant min-w-[360px] min-h-[119.722vw] pad:min-h-[47.222vw] desktop:min-h-[34.063vw]`}
+        } font-merchant min-w-[360px]`}
+        // min-h-[119.722vw] pad:min-h-[47.222vw] desktop:min-h-[34.063vw]
       >
-        <DeniedPage />
         <img
-          className="w-[clamp(73.5px,20.417vw,125.84px)] pad:w-[clamp(125.84px,11.652vw,156.16px)] desktop:w-[clamp(156.16px,8.133vw,100vw)] mt-[clamp(77.34px,21.483vw,83.13px)] pad:mt-[clamp(83.13px,7.697vw,140px)] desktop:mt-[clamp(140px,7.292vw,100vw)]"
+          className="w-[clamp(73.5px,20.417vw,125.84px)] pad:w-[clamp(125.84px,11.652vw,156.16px)] desktop:w-[clamp(156.16px,8.133vw,100vw)] mt-[clamp(77.34px,21.483vw,83.13px)] pad:mt-[clamp(83.13px,7.697vw,140px)] desktop:mt-[clamp(140px,7.292vw,100vw)] aspect-[136.46/210.28] bg-blend-hard-light"
           src={introImage}
           alt="인트로 이미지"
+          style={{
+            filter:
+              "invert(0%) sepia(40%) saturate(450%) hue-rotate(345deg) brightness(100%) contrast(100%)",
+          }}
         />
         <h3 className="text-[clamp(38px,10.556vw,52px)] pad:text-[clamp(52px,4.815vw,70px)] desktop:text-[clamp(70px,3.646vw,100vw)] mt-[clamp(60.3px,16.750vw,60.3px)] pad:mt-[clamp(42px,3.889vw,73px)] desktop:mt-[clamp(73px,3.802vw,100vw)] leading-[68%]">
           Are you over 18?
@@ -64,6 +68,7 @@ const Intro = () => {
             No
           </div>
         </div>
+        <DeniedPage />
       </div>
     </div>
   );
