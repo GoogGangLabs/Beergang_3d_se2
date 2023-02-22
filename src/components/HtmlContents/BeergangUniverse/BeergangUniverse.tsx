@@ -28,7 +28,7 @@ const BeergangUniverse = () => {
 
   return (
     <>
-      <div className="absolute top-[233.148vh] left-[6.111vw] pad:left-[12.222vw] desktop:left-[13.125vw]">
+      <div className="absolute top-[313.148vh] left-[6.111vw] pad:left-[12.222vw] desktop:left-[13.125vw]">
         <h3 className="ml-[clamp()] pad:ml-[clamp(8px,0.741vw,14px)] desktop:ml-[clamp(14px,0.729vw,100vw)] text-[clamp(24px,6.667vw,38px)] pad:text-[clamp(38px,3.519vw,62px)] desktop:text-[clamp(62px,3.229vw,100vw)] leading-[68%] font-merchant">
           BEERGANG UNIVERSE
         </h3>
@@ -78,7 +78,7 @@ const BeergangUniverse = () => {
           ) : null}
         </h4>
       </div>
-      <div className="absolute top-[300.148vh] left-[6.111vw] pad:left-[12.222vw] desktop:left-[13.125vw]">
+      <div className="absolute top-[420.148vh] left-[6.111vw] pad:left-[12.222vw] desktop:left-[13.125vw]">
         <h4 className="font-light font-bai-jamjuree ml-[clamp(3px,0.833vw,8px)] pad:ml-[clamp(8px,0.741vw,14px)] desktop:ml-[clamp(14px,0.729vw,100vw)] w-[clamp(188px,52.222vw,382px)] pad:w-[clamp(382px,35.370vw,660px)] desktop:w-[clamp(660px,34.375vw,100vw)] text-[clamp(10px,2.778vw,12px)] pad:text-[clamp(12px,1.111vw,18px)] desktop:text-[clamp(18px,0.938vw,100vw)] leading-[130%] pad:leading-[150%] desktop:leading-[125%]">
           Alas, the four cells lost each other’s company when the river was
           divided into four different channels. Even though they each floated to

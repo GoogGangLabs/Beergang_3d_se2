@@ -73,3 +73,7 @@ body {
 body::-webkit-scrollbar {
   display: none; /* 크롬, 사파리, 오페라, 엣지 */
 }
+
+* {
+    -webkit-text-size-adjust: none;
+}

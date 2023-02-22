@@ -15,9 +15,7 @@ const LightGroup = () => {
     //   setIntensity((prev) => 0);
     // }
     if (scroll.offset < 1 / pageNum) {
-      setIntensity((prev) =>
-        Math.max(Math.min(scroll.offset * pageNum, 1), 0.1)
-      );
+      setIntensity(Math.max(Math.min(scroll.offset * pageNum, 1), 0.1));
     }
   });
 

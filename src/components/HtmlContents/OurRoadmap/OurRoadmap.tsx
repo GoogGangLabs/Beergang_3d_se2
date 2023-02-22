@@ -3,10 +3,10 @@ import React from "react";
 const OurRoadmap = () => {
   return (
     <>
-      <div className="absolute top-[500vh] left-[10vw]">
+      <div className="absolute top-[800vh] left-[10vw]">
         <h3 className="text-[42px]">Page 6</h3>
       </div>
-      <div className="absolute top-[520vh] pad:left-[14.722vw] desktop:left-[17.135vw]">
+      <div className="absolute top-[850vh] pad:left-[14.722vw] desktop:left-[17.135vw]">
         <h3 className="pad:text-[clamp(56px,5.185vw,71px)] desktop:text-[71px] leading-[77%]">
           OUR ROADMAP
         </h3>
@@ -41,7 +41,7 @@ const OurRoadmap = () => {
           </ul>
         </div>
       </div>
-      <div className="absolute top-[580vh] pad:left-[14.722vw] desktop:left-[17.135vw]">
+      <div className="absolute top-[930vh] pad:left-[14.722vw] desktop:left-[17.135vw]">
         <div className="font-bai-jamjuree">
           <div className="flex justify-center items-center skew-x-[-5deg] font-bold text-black bg-[#F93C00] pad:text-[clamp(16px,1.481vw,26px)] desktop:text-[26px] pad:w-[clamp(90px,8.333vw,144px)] desktop:w-[144px] aspect-[90/24]">
             Q3. 2023

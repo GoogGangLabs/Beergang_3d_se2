@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useMemo, useRef, useState } from "react";
 import { useFrame, useThree } from "@react-three/fiber";
 import { useTexture } from "@react-three/drei";
-import lyquid from "assets/png/lyquid.png";
+import lyquid from "assets/png/Lyquid.png";
 import cloudX from "assets/png/cloudX.png";
 import staut from "assets/png/staut.png";
 import redpool from "assets/png/redpool.png";
@@ -51,9 +51,9 @@ const ImageCursor = ({ imageVisible }: { imageVisible: number }) => {
     //Mesh단위의 viewport 계산
     let x = (state.mouse.x * viewport.width) / 60;
     let y = (state.mouse.y * viewport.height) / 60;
-    // console.log(x, y)
-    // console.log(mouse.x/2, mouse.y)
-
+    
+    //if문으로 성능 개선
+    
     gsap.to(cursorRef.current.position, {
       duration: 1,
       x: state.camera.position.x + x,

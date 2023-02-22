@@ -4,17 +4,17 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        // poppins: "'', sans-serif",
-        "merchant": "merchant",
-        "bai-jamjuree": 'Bai Jamjuree'
+        merchant: "merchant",
+        "bai-jamjuree": "Bai Jamjuree",
+        exo: "Exo"
       },
       colors: {
-        "orange": "#FF5C00",
+        orange: "#FF5C00",
       },
       screens: {
-        "pad": "1080px",
-        "desktop": "1920px"
-      }
+        pad: "1080px",
+        desktop: "1920px",
+      },
     },
   },
   plugins: [],
