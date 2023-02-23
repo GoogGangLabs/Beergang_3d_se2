@@ -1,22 +1,20 @@
 {
   "files": {
-    "main.css": "/Beergang_3d_se2/static/css/main.8c78a783.css",
-    "main.js": "/Beergang_3d_se2/static/js/main.ae6c82d0.js",
+    "main.css": "/Beergang_3d_se2/static/css/main.e0f890ab.css",
+    "main.js": "/Beergang_3d_se2/static/js/main.ad2d4e22.js",
     "static/js/787.1a880851.chunk.js": "/Beergang_3d_se2/static/js/787.1a880851.chunk.js",
     "static/media/beergang-1.fbx": "/Beergang_3d_se2/static/media/beergang-1.5ebc665cf6bbe43582da.fbx",
     "static/media/video.mp4": "/Beergang_3d_se2/static/media/video.36d26ab50d51413bc7ff.mp4",
-    "static/media/intro-image.svg": "/Beergang_3d_se2/static/media/intro-image.03583f0176bbb0fc6d2eb6774dc5eb54.svg",
     "static/media/bg-music.mp3": "/Beergang_3d_se2/static/media/bg-music.8d14102f3e5d724f1908.mp3",
-    "static/media/access-denied.svg": "/Beergang_3d_se2/static/media/access-denied.74de50e021aa48e7ec13fc3399140161.svg",
-    "static/media/universe-1.png": "/Beergang_3d_se2/static/media/universe-1.9d2494235367b0b4bccf.png",
-    "static/media/universe-2.png": "/Beergang_3d_se2/static/media/universe-2.79c29388ddb4049bebea.png",
-    "static/media/redpool.png": "/Beergang_3d_se2/static/media/redpool.469e07eff6659aeb55fc.png",
-    "static/media/merchant-doublesize.woff2": "/Beergang_3d_se2/static/media/merchant-doublesize.0750d3c9b65b6f249510.woff2",
-    "static/media/cloudX.png": "/Beergang_3d_se2/static/media/cloudX.a50650945299f330d1e9.png",
-    "static/media/Lyquid.png": "/Beergang_3d_se2/static/media/Lyquid.e2e095215882c6528afb.png",
-    "static/media/merchant-wide.woff2": "/Beergang_3d_se2/static/media/merchant-wide.7a1194fc64ca3fcf69cd.woff2",
-    "static/media/staut.png": "/Beergang_3d_se2/static/media/staut.3d1c1fb567037d6e9f12.png",
+    "static/media/universe-1.webp": "/Beergang_3d_se2/static/media/universe-1.09f6b2c0c57325421678.webp",
+    "static/media/universe-2.webp": "/Beergang_3d_se2/static/media/universe-2.94bf0689e18681454a8d.webp",
     "static/media/merchant.woff2": "/Beergang_3d_se2/static/media/merchant.aef839e256a8046b5441.woff2",
+    "static/media/intro-image.webp": "/Beergang_3d_se2/static/media/intro-image.b10c3a4cbbb6b93e5845.webp",
+    "static/media/access-denied.webp": "/Beergang_3d_se2/static/media/access-denied.f97dba09ab2bc444094a.webp",
+    "static/media/redpool.webp": "/Beergang_3d_se2/static/media/redpool.9ce68c0d765c1aabc862.webp",
+    "static/media/cloudX.webp": "/Beergang_3d_se2/static/media/cloudX.837010efc013857eb7eb.webp",
+    "static/media/lyquid.webp": "/Beergang_3d_se2/static/media/lyquid.75d50c775d87975eed5a.webp",
+    "static/media/staut.webp": "/Beergang_3d_se2/static/media/staut.0a0765a1fc3f9bd5b814.webp",
     "static/media/GGlabs-logo.svg": "/Beergang_3d_se2/static/media/GGlabs-logo.51c2bad61aecf464e8b32b64ed4300db.svg",
     "static/media/instagram.svg": "/Beergang_3d_se2/static/media/instagram.cc4c3960cbdcb5bcdabf14c1ccdbd85e.svg",
     "static/media/beergang-text.svg": "/Beergang_3d_se2/static/media/beergang-text.05d7f30dc56df97997d772e704674728.svg",
@@ -33,12 +31,12 @@
     "static/media/play-button.svg": "/Beergang_3d_se2/static/media/play-button.7bb3f74d14b6a5cad261a5d4961ba97b.svg",
     "static/media/video-fullscreen.svg": "/Beergang_3d_se2/static/media/video-fullscreen.5a199186c5a34775af6cde29525d42a7.svg",
     "static/media/toggle-open.svg": "/Beergang_3d_se2/static/media/toggle-open.498769996651ff1098d52d2c28394f2d.svg",
-    "main.8c78a783.css.map": "/Beergang_3d_se2/static/css/main.8c78a783.css.map",
-    "main.ae6c82d0.js.map": "/Beergang_3d_se2/static/js/main.ae6c82d0.js.map",
+    "main.e0f890ab.css.map": "/Beergang_3d_se2/static/css/main.e0f890ab.css.map",
+    "main.ad2d4e22.js.map": "/Beergang_3d_se2/static/js/main.ad2d4e22.js.map",
     "787.1a880851.chunk.js.map": "/Beergang_3d_se2/static/js/787.1a880851.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.8c78a783.css",
-    "static/js/main.ae6c82d0.js"
+    "static/css/main.e0f890ab.css",
+    "static/js/main.ad2d4e22.js"
   ]
 }
