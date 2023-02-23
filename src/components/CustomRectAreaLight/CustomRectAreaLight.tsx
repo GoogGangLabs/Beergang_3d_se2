@@ -13,7 +13,7 @@ const CustomRectAreaLight = ({
 }) => {
   const light = useMemo(
     () => new RectAreaLight(color, intensity, width, height),
-    []
+    [color, intensity, width, height]
   );
   //조명1: 조명
   //조명2: 조명이 비추는 좌표

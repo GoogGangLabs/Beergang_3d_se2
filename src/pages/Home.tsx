@@ -1,6 +1,6 @@
 import React, { Suspense, useState } from "react";
 import { Canvas } from "@react-three/fiber";
-import { Scroll, ScrollControls, Stats } from "@react-three/drei";
+import { OrbitControls, Scroll, ScrollControls, Stats } from "@react-three/drei";
 import {
   Background,
   LightGroup,
@@ -11,7 +11,7 @@ import {
 } from "components";
 import { Beergang } from "components/Model";
 import { EffectComposer, Glitch, Vignette } from "@react-three/postprocessing";
-import { Loader, Vector2 } from "three";
+import { Vector2 } from "three";
 import { GlitchMode } from "postprocessing";
 import BeergangTest1 from "components/Model/BeergangTest1.jsx/BeergangTest1";
 
@@ -27,7 +27,7 @@ const Home = () => {
       <div className="w-screen h-screen">
         <Canvas
           className="fixed top-0 left-0 w-full h-full"
-          gl={{ antialias: true, alpha: true }}
+          gl={{ alpha: true }}
           // camera={{ fov: 100}}
           shadows
         >
@@ -54,7 +54,7 @@ const Home = () => {
               active={false}
               // mode={GlitchMode.CONSTANT_WILD}
             />
-            <Vignette offset={0.65} darkness={1} opacity={0.4} eskil={false} />
+            {/* <Vignette offset={0.85} darkness={1} opacity={0.4} eskil={false} /> */}
           </EffectComposer>
         </Canvas>
       </div>

@@ -3,8 +3,6 @@ import * as React from "react";
 import beerBubblesLottie from "assets/json/BeerBubbles.json";
 import Lottie from "lottie-react";
 import styles from "./CustomLoader.module.css";
-import { useRecoilState } from "recoil";
-import { introAcceptedState } from "store/atoms";
 
 interface LoaderOptions {
   containerStyles: any;
@@ -31,7 +29,6 @@ export default function CustomLoader({
   const progressSpanRef = React.useRef<HTMLSpanElement>(null);
   const [shown, setShown] = React.useState(true);
   const [trans, setTrans] = React.useState(true);
-  const [clicked, setClicked] = useRecoilState(introAcceptedState);
 
   React.useEffect(() => {
     let t: any;

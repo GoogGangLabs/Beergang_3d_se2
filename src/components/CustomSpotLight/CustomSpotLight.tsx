@@ -1,8 +1,7 @@
 import { useHelper } from "@react-three/drei";
-import React, { useMemo, useRef } from "react";
+import React, { useEffect, useMemo, useRef } from "react";
 import { SpotLight, SpotLightHelper } from "three";
 import { CustomSpotLightType } from "./CustomSpotLight.types";
-import { useEffect } from "react";
 
 const CustomSpotLight = ({
   lightFrom = [0, 0, 0],
@@ -20,16 +19,16 @@ const CustomSpotLight = ({
     [lightColor, intensity, distance, angle, penumbra, decay]
   );
 
-  // useEffect(() => {
-  //   light.castShadow = true;
-  // }, [light]);
+  useEffect(() => {
+    light.castShadow = true;
+  }, [light]);
 
-  // const ref = useRef<any>();
-  // useHelper(ref, SpotLightHelper);
+  const ref = useRef<any>();
+  useHelper(ref, SpotLightHelper);
   return (
     <>
       <primitive
-        // ref={ref}
+        ref={ref}
         object={light}
         position={lightFrom}
       />

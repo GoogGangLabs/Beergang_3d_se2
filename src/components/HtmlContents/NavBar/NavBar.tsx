@@ -1,9 +1,9 @@
-import React, { useEffect } from "react";
+import React from "react";
 import logo from "assets/svg/logo.svg";
 import dosi from "assets/svg/dosi.svg";
 import twitter from "assets/svg/twitter.svg";
 import discord from "assets/svg/discord.svg";
-import instagram from "assets/svg/instagram.svg";
+// import instagram from "assets/svg/instagram.svg";
 import SNSIcon from "../SNSIcon/SNSIcon";
 import { useRecoilValue } from "recoil";
 import { iconColorState, showLogoState } from "store/atoms";

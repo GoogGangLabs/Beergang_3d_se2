@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import { ReflectiveSvg } from 'components';
 import beergangText from "assets/svg/beergang-text.svg";
 import { useFrame } from '@react-three/fiber';
 import { Svg, useScroll } from '@react-three/drei';

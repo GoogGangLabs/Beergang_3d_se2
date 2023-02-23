@@ -1,8 +1,6 @@
-import { Loader } from "@react-three/drei";
-import { BackgroundMusic, CustomLoader, NavBar } from "components";
-import React, { Suspense, useEffect } from "react";
+import { BackgroundMusic, NavBar } from "components";
+import React, { useEffect } from "react";
 import { Outlet, useLocation } from "react-router-dom";
-import DeniedPage from "./DeniedPage";
 import Intro from "./Intro";
 
 const GlobalLayout = () => {
@@ -18,6 +16,7 @@ const GlobalLayout = () => {
   return (
     <>
       <Intro />
+      {/* <BackgroundColor/> */}
       <NavBar />
       <Outlet />
       <BackgroundMusic />

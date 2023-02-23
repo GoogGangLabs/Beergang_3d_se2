@@ -1,10 +1,9 @@
-import React, { cloneElement, useEffect, useLayoutEffect, useRef, useState } from "react";
+import React, { useLayoutEffect, useRef } from "react";
 import styles from "./DeniedPage.module.css";
-import accessDeniedImage from "assets/svg/access-denied.svg";
+import accessDeniedImage from "assets/png/access-denied.webp";
 import { useRecoilState } from "recoil";
 import { introDeniedState } from "store/atoms";
 import gsap from "gsap";
-import { Bounce } from "gsap/all";
 
 const DeniedPage = () => {
   const ref = useRef<any>();

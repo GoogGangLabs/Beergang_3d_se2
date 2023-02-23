@@ -1,6 +1,5 @@
 import React from "react";
 import TribesExplain from "./TribesExplain";
-import ColoredBar from "./ColoredBar";
 import EachTribes from './EachTribes';
 import EachTribesMobile from "./EachTribesMobile";
 

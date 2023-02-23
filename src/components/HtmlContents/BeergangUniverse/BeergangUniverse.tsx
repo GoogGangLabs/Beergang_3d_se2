@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
-import universe1 from "assets/png/universe-1.png";
-import universe2 from "assets/png/universe-2.png";
+import universe1 from "assets/png/universe-1.webp";
+import universe2 from "assets/png/universe-2.webp";
 import toggleOpen from "assets/svg/toggle-open.svg";
 import { useResize } from "hooks";
 
 const BeergangUniverse = () => {
   const [toggle1, setToggle1] = useState<boolean>(false);
   const [toggle2, setToggle2] = useState<boolean>(false);
-  const { width, height } = useResize();
+  const { width } = useResize();
 
   const toggleOneHandler = () => {
     setToggle1((prev) => !prev);

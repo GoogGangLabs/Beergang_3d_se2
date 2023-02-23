@@ -1,21 +1,20 @@
-import React, { useContext, useEffect, useMemo, useRef, useState } from "react";
+import React, { useEffect, useMemo, useRef } from "react";
 import { useFrame, useThree } from "@react-three/fiber";
 import { useTexture } from "@react-three/drei";
-import lyquid from "assets/png/Lyquid.png";
-import cloudX from "assets/png/cloudX.png";
-import staut from "assets/png/staut.png";
-import redpool from "assets/png/redpool.png";
-import { Color, DoubleSide, Vector2, Vector3 } from "three";
+import lyquid from "assets/png/lyquid.webp";
+import cloudX from "assets/png/cloudX.webp";
+import staut from "assets/png/staut.webp";
+import redpool from "assets/png/redpool.webp";
+import { DoubleSide, Vector2, Vector3 } from "three";
 import gsap from "gsap";
 import { vertexShader } from "./vertexShader";
 import { fragmentShader } from "./fragmentShader";
-import { degToRad, radToDeg } from "three/src/math/MathUtils";
 
 let curPosition = new Vector3(0, 0, 0);
 
 const ImageCursor = ({ imageVisible }: { imageVisible: number }) => {
   let cursorRef = useRef<any>();
-  const { viewport, mouse } = useThree();
+  const { viewport } = useThree();
   // const hoverImage = useRecoilValue(hoverImageState);
   // const imageVisible = useRecoilValue(imageVisibleState);
   const imageList = [

@@ -4,14 +4,7 @@
 @font-face {
     font-family: 'merchant';
     src: url('../assets/font/merchant.woff2');
-}
-@font-face {
-    font-family: 'merchant-double';
-    src: url('../assets/font/merchant-doublesize.woff2');
-}
-@font-face {
-    font-family: 'merchant-wide';
-    src: url('../assets/font/merchant-wide.woff2');
+		font-display: swap;
 }
 
 html, body, div, span, applet, object, iframe,
@@ -78,3 +71,4 @@ body::-webkit-scrollbar {
 * {
     -webkit-text-size-adjust: none;
 }
+

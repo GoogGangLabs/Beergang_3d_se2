@@ -1,6 +1,6 @@
 import React, { useMemo, useRef } from 'react'
-import lyquid from "assets/png/lyquid.png";
-import brush from "assets/png/brush.png";
+import lyquid from "assets/png/lyquid.webp";
+import brush from "assets/png/brush.webp";
 import { useTexture } from '@react-three/drei';
 import { Raycaster, Vector2, Vector3 } from 'three';
 import { useFrame, useThree } from '@react-three/fiber';

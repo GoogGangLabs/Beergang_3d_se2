@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import { CustomDirectionalLight, CustomSpotLight } from "components";
+import { CustomSpotLight } from "components";
 import { useFrame } from "@react-three/fiber";
 import { useScroll } from "@react-three/drei";
 import { isFirstSceneState, pageNumState } from "store/atoms";
-import { useRecoilState, useRecoilValue } from "recoil";
+import { useRecoilValue } from "recoil";
 const LightGroup = () => {
   const scroll = useScroll();
   const [intensity, setIntensity] = useState<number>(0);
@@ -22,7 +22,7 @@ const LightGroup = () => {
   return (
     <>
       {/* 비어갱을 비추는 스포트라이트 */}
-      {isFirstScene ? (
+      {/* {isFirstScene ? (
         <>
           <CustomSpotLight
             lightFrom={[0.5, 0, 4.4]}
@@ -35,25 +35,25 @@ const LightGroup = () => {
         </>
       ) : (
         <></>
-      )}
-      <CustomSpotLight
+      )} */}
+      {/* <CustomSpotLight
         lightFrom={[0, 2, 5.7]}
         lightTo={[0.3, 0, 4.7]}
         angle={1}
         penumbra={0.5}
         intensity={intensity}
-      />
+      /> */}
       <CustomSpotLight
-        lightFrom={[0, 4, 4]}
-        lightTo={[3, 1, -1]}
+        lightFrom={[-4, 5, 4]}
+        lightTo={[-4.8, -2, -6]}
         lightColor={"#3a15f3"}
         angle={1}
-        intensity={2}
+        intensity={1.5}
         penumbra={1}
       />
       <CustomSpotLight
-        lightFrom={[3, 3, 4]}
-        lightTo={[0, 0, -1]}
+        lightFrom={[4, 5, 4]}
+        lightTo={[5, -3, -6]}
         lightColor={"#feaf7d"}
         angle={1}
         intensity={2}
