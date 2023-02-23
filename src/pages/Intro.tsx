@@ -24,9 +24,9 @@ const Intro = () => {
   useLayoutEffect(() => {
     if (clicked) {
       gsap.to(ref.current.style, {
-        transform: "translateY(-100vh)",
+        transform: "translateY(-150vh)",
         duration: 0.1,
-        ease: "expo",
+        ease: "power4.out",
       });
     } else {
       ref.current.style.transform = "translateY(0)";
@@ -59,13 +59,13 @@ const Intro = () => {
             onClick={clickHandler}
             className="flex justify-center items-center w-[clamp(85.6px,23.778vw,112.56px)] pad:w-[clamp(112.56px,10.422vw,135px)] desktop:w-[clamp(135px,7.031vw,100vw)] aspect-[135/60] skew-x-[-5deg] rounded-[3px] transition duration-[200ms] ease-in-out bg-[#FF6C18CC] hover:scale-[1.2] hover:font-bold cursor-pointer"
           >
-            Yes
+            <h3 className="skew-x-[5deg]">Yes</h3>
           </div>
           <div
             onClick={() => setDenied(true)}
             className="flex justify-center items-center w-[clamp(85.6px,23.778vw,112.56px)] pad:w-[clamp(112.56px,10.422vw,135px)] desktop:w-[clamp(135px,7.031vw,100vw)] aspect-[135/60] skew-x-[-5deg] rounded-[3px] transition duration-[200ms] ease-in-out bg-black text-[#FF5C00] hover:scale-[1.2] hover:font-bold cursor-pointer"
           >
-            No
+            <h3 className="skew-x-[5deg]">No</h3>
           </div>
         </div>
         <DeniedPage />

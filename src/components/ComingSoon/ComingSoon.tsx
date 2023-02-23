@@ -1,11 +1,9 @@
 import React from 'react'
 
-type Props = {}
-
-const ComingSoon = (props: Props) => {
+const ComingSoon = () => {
   return (
-    <div className="absolute top-[1000vh] left-[17.135vw]">
-      <h3 className="pad:text-[clamp(58px,5.370vw,72px)] desktop:text-[clamp(72px,3.750vw,100vw)] leading-[68%]">
+    <div className="absolute top-[1000vh] left-[12.778vw] pad:left-[23.611vw] desktop:left-[22.760vw] font-merchant">
+      <h3 className="text-[clamp(26px,7.222vw,42px)] pad:text-[clamp(42px,3.889vw,62px)] desktop:text-[clamp(62px,3.229vw,100vw)] leading-[68%]">
         Many more
         <br />
         to come...

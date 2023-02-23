@@ -7,10 +7,12 @@ import instagram from "assets/svg/instagram.svg";
 import SNSIcon from "../SNSIcon/SNSIcon";
 import { useRecoilValue } from "recoil";
 import { iconColorState, showLogoState } from "store/atoms";
+import { useResize } from 'hooks';
 
 const NavBar = () => {
   const showLogo = useRecoilValue(showLogoState);
   const iconStyle = useRecoilValue(iconColorState);
+  const { width } = useResize();
 
   return (
     <nav
@@ -25,23 +27,35 @@ const NavBar = () => {
       />
       <div className="flex justify-center items-center gap-x-[clamp(6px,1.667vw,29.56px)] pad:gap-x-[clamp(29.56px,2.737vw,43px)] desktop:gap-x-[clamp(43px,2.240vw,100vw)]">
         <div className="flex justify-center items-center w-[clamp(33px,9.167vw,47px)] pad:w-auto aspect-[33/30] skew-x-[-5deg] bg-[#FF5C00CC] pad:bg-transparent">
-          <div style={iconStyle}>
+          <div
+            style={
+              width >= 1080 ? iconStyle : { filter: "brightness(0) invert(0)" }
+            }
+          >
             <SNSIcon
-              className="w-[clamp(12.59px,3.497vw,19.37px)] pad:w-[clamp(19.37px,1.794vw,26.15px)] desktop:w-[clamp(26.15px,1.362vw,100vw)] opacity-100"
+              className="w-[clamp(12.59px,3.497vw,19.37px)] pad:w-[clamp(19.37px,1.794vw,26.15px)] desktop:w-[clamp(26.15px,1.362vw,100vw)] opacity-100 skew-x-[5deg]"
               imgSrc={dosi}
             />
           </div>
         </div>
         <div className="flex justify-center items-center w-[clamp(33px,9.167vw,47px)] pad:w-auto aspect-[33/30] skew-x-[-5deg] bg-[#FF5C00CC] pad:bg-transparent">
-          <div style={iconStyle}>
+          <div
+            style={
+              width >= 1080 ? iconStyle : { filter: "brightness(0) invert(0)" }
+            }
+          >
             <SNSIcon
-              className="w-[clamp(16.3px,4.528vw,24.44px)] pad:w-[clamp(24.44px,2.263vw,33px)] desktop:w-[clamp(33px,1.719vw,100vw)]"
+              className="w-[clamp(16.3px,4.528vw,24.44px)] pad:w-[clamp(24.44px,2.263vw,33px)] desktop:w-[clamp(33px,1.719vw,100vw)] skew-x-[5deg]"
               imgSrc={twitter}
             />
           </div>
         </div>
         <div className="flex justify-center items-center w-[clamp(33px,9.167vw,47px)] pad:w-auto aspect-[33/30] skew-x-[-5deg] bg-[#FF5C00CC] pad:bg-transparent">
-          <div style={iconStyle}>
+          <div
+            style={
+              width >= 1080 ? iconStyle : { filter: "brightness(0) invert(0)" }
+            }
+          >
             <SNSIcon
               className="w-[clamp(16.3px,4.528vw,24.44px)] pad:w-[clamp(24.44px,2.263vw,33px)] desktop:w-[clamp(33px,1.719vw,100vw)] skew-x-[5deg]"
               imgSrc={discord}

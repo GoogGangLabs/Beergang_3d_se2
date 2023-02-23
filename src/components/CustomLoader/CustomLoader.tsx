@@ -36,10 +36,10 @@ export default function CustomLoader({
   React.useEffect(() => {
     let t: any;
     let l: any;
-    if (active !== shown && clicked)
+    if (active !== shown)
       t = setTimeout(() => {
         setShown(active);
-      }, 2000);
+      }, 1000);
       l = setTimeout(() => {
         setTrans(active);
       }, 1700);
@@ -47,7 +47,7 @@ export default function CustomLoader({
        clearTimeout(t);
        clearTimeout(l);
     };
-  }, [shown, active, clicked]);
+  }, [shown, active]);
 
   const updateProgress = React.useCallback(() => {
     if (!progressSpanRef.current) return;
@@ -72,15 +72,15 @@ export default function CustomLoader({
         // ...containerStyles,
       }}
     >
-      <p className="z-[99] text-[clamp(18px,5vw,26px)] pad:text-[clamp(26px,2.407vw,30px)] desktop:text-[clamp(30px,1.563vw,100vw)] leading-[68%]">
+      <p className="z-[3000] text-[clamp(18px,5vw,26px)] pad:text-[clamp(26px,2.407vw,30px)] desktop:text-[clamp(30px,1.563vw,100vw)] leading-[68%]">
         ABV
       </p>
       <span
-        className="z-[99] text-[clamp(38px,10.556vw,60px)] pad:text-[clamp(60px,5.556vw,70px)] desktop:text-[clamp(70px,3.646vw,100vw)] leading-[88%]"
+        className="z-[3000] text-[clamp(38px,10.556vw,60px)] pad:text-[clamp(60px,5.556vw,70px)] desktop:text-[clamp(70px,3.646vw,100vw)] leading-[88%]"
         ref={progressSpanRef}
       />
       <Lottie
-        className="absolute mb-[clamp(30px,8.333vw,50px)] pad:mb-[clamp(50px,4.630vw,70px)] desktop:mb-[clamp(70px,3.646vw,100vw)] w-[188px] pad:w-[clamp(188px,17.407vw,224px)] desktop:w-[clamp(224px,11.667vw,100vw)] z-[98]"
+        className="absolute mb-[clamp(30px,8.333vw,50px)] pad:mb-[clamp(50px,4.630vw,70px)] desktop:mb-[clamp(70px,3.646vw,100vw)] w-[188px] pad:w-[clamp(188px,17.407vw,224px)] desktop:w-[clamp(224px,11.667vw,100vw)] z-[2999]"
         animationData={beerBubblesLottie}
         loop
         autoPlay={true}

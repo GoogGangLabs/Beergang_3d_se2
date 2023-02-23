@@ -3,7 +3,8 @@ import styles from "./DeniedPage.module.css";
 import accessDeniedImage from "assets/svg/access-denied.svg";
 import { useRecoilState } from "recoil";
 import { introDeniedState } from "store/atoms";
-import gsap, { Bounce } from "gsap";
+import gsap from "gsap";
+import { Bounce } from "gsap/all";
 
 const DeniedPage = () => {
   const ref = useRef<any>();
@@ -13,12 +14,12 @@ const DeniedPage = () => {
     if (denied) {
       
       gsap.to(ref.current.style, {
-        transform: "translateX(0)",
+        transform: "translateX(0vw)",
         duration: 0.1,
-        ease: Bounce.easeOut,
+        ease: "power1.inOut",
       });
     } else {
-      ref.current.style.transform = "translateX(100vw)";
+      ref.current.style.transform = "translateX(150vw)";
     }
   }, [denied]);
 
@@ -49,7 +50,7 @@ const DeniedPage = () => {
         onClick={() => setDenied(false)}
         className="flex justify-center items-center w-[clamp(103.55px,28.764vw,146.82px)] pad:w-[clamp(146.82px,13.594vw,176.18px)] desktop:w-[clamp(176.18px,9.176vw,100vw)] mt-[clamp(31px,8.611vw,56px)] pad:mt-[clamp(56px,5.185vw,64px)] desktop:mt-[clamp(64px,3.333vw,100vw)] text-[clamp(26px,7.222vw,30px)] pad:text-[clamp(30px,2.778vw,36px)] desktop:text-[clamp(36px,1.875vw,100vw)] aspect-[176.18/60] skew-x-[-5deg] rounded-[3px] transition duration-[200ms] ease-in-out bg-black text-[#FF5C00] hover:scale-[1.2] hover:font-bold cursor-pointer"
       >
-        Back
+        <h3 className="skew-x-[5deg]">Back</h3>
       </div>
     </div>
   );

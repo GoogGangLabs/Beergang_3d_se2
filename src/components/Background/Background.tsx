@@ -46,7 +46,6 @@ const Background = () => {
     }
 
     //SNS 아이콘 색 전환 로직
-    if (window.innerWidth >= 1080) {
       if (scroll.range(0, 1 / pageNum) < 1) {
         setIconStyle({
           filter: `brightness(${scroll.range(0, 1 / pageNum) * 100}%)`,
@@ -57,11 +56,6 @@ const Background = () => {
       } else if (scroll.range(2 / pageNum, 1 / pageNum) < 1) {
         setIconStyle({ filter: "brightness(0) invert(1)" });
       }
-    } else {
-      setIconStyle({
-        filter: "brightness(0) invert(0)",
-      });
-    }
   });
   return (
     <>
