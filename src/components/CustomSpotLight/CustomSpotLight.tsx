@@ -19,16 +19,16 @@ const CustomSpotLight = ({
     [lightColor, intensity, distance, angle, penumbra, decay]
   );
 
-  useEffect(() => {
-    light.castShadow = true;
-  }, [light]);
+  // useEffect(() => {
+  //   light.castShadow = true;
+  // }, [light]);
 
-  const ref = useRef<any>();
-  useHelper(ref, SpotLightHelper);
+  // const ref = useRef<any>();
+  // useHelper(ref, SpotLightHelper);
   return (
     <>
       <primitive
-        ref={ref}
+        // ref={ref}
         object={light}
         position={lightFrom}
       />

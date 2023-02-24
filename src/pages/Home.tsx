@@ -1,6 +1,11 @@
 import React, { Suspense, useState } from "react";
 import { Canvas } from "@react-three/fiber";
-import { OrbitControls, Scroll, ScrollControls, Stats } from "@react-three/drei";
+import {
+  OrbitControls,
+  Scroll,
+  ScrollControls,
+  Stats,
+} from "@react-three/drei";
 import {
   Background,
   LightGroup,
@@ -27,9 +32,10 @@ const Home = () => {
       <div className="w-screen h-screen">
         <Canvas
           className="fixed top-0 left-0 w-full h-full"
-          gl={{ alpha: true }}
+          gl={{ alpha: true, antialias: true }}
           // camera={{ fov: 100}}
           shadows
+          dpr={1.4}
         >
           <Stats showPanel={0} />
           {/* <TestShader /> */}

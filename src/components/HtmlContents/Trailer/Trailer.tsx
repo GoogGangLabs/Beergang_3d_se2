@@ -73,14 +73,14 @@ const Trailer = () => {
           <img
             onClick={togglePlay}
             onMouseEnter={hoverVideo}
-            className={`absolute w-[clamp(59.6px,16.556vw,140px)] pad:w-[clamp(140px,12.963vw,180px)] desktop:w-[clamp(180px,9.375vw,100vw)] top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] z-[2] transition duration-[250ms] cursor-pointer ${hover}`}
+            className={`absolute w-[clamp(59.6px,16.556vw,140px)] pad:w-[clamp(140px,12.963vw,180px)] desktop:w-[clamp(140px,9.375vw,100vw)] top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] z-[2] transition duration-[250ms] cursor-pointer ${hover}`}
             src={pauseButton}
             alt="정지 버튼"
           />
         ) : (
           <img
             onClick={togglePlay}
-            className="absolute w-[clamp(59.6px,16.556vw,140px)] pad:w-[clamp(140px,12.963vw,180px)] desktop:w-[clamp(180px,9.375vw,100vw)] top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] z-[2] transition duration-[250ms] cursor-pointer"
+            className="absolute w-[clamp(59.6px,16.556vw,140px)] pad:w-[clamp(140px,12.963vw,180px)] desktop:w-[clamp(140px,9.375vw,100vw)] top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] z-[2] transition duration-[250ms] cursor-pointer"
             src={playButton}
             alt="플레이 버튼"
           />
