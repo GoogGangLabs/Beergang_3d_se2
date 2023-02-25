@@ -16,7 +16,6 @@ const GlobalLayout = () => {
   return (
     <>
       <Intro />
-      {/* <BackgroundColor/> */}
       <NavBar />
       <Outlet />
       <BackgroundMusic />

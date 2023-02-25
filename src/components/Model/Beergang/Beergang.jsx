@@ -1,10 +1,11 @@
 import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
 import beergang from "assets/3d/beergang.glb";
-import { useGLTF, useAnimations, useScroll } from "@react-three/drei";
+import { useGLTF, useAnimations } from "@react-three/drei";
 import { useFrame, useThree } from "@react-three/fiber";
 import { Vector3 } from "three";
 import { pageNumState } from "store/atoms";
 import { useRecoilValue } from 'recoil';
+import { useScroll } from "components/CustomScrollControls/CustomScrollControls";
 
 //이전 카메라 위치에서의 이동거리 차
 const initialCameraZ = 5;

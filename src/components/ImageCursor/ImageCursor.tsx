@@ -9,21 +9,17 @@ import { DoubleSide, Vector2, Vector3 } from "three";
 import gsap from "gsap";
 import { vertexShader } from "./vertexShader";
 import { fragmentShader } from "./fragmentShader";
+import { useRecoilValue } from "recoil";
+import { imageVisibleState } from "store/atoms";
 
 let curPosition = new Vector3(0, 0, 0);
 
-const ImageCursor = ({ imageVisible }: { imageVisible: number }) => {
+const ImageCursor = () => {
   let cursorRef = useRef<any>();
   const { viewport } = useThree();
   // const hoverImage = useRecoilValue(hoverImageState);
-  // const imageVisible = useRecoilValue(imageVisibleState);
-  const imageList = [
-    lyquid,
-    lyquid,
-    cloudX,
-    staut,
-    redpool,
-  ];
+  const imageVisible = useRecoilValue(imageVisibleState);
+  const imageList = [lyquid, lyquid, cloudX, staut, redpool];
   const texture1 = useTexture(imageList[1]);
   const texture2 = useTexture(imageList[2]);
   const texture3 = useTexture(imageList[3]);
@@ -42,22 +38,20 @@ const ImageCursor = ({ imageVisible }: { imageVisible: number }) => {
     let offset = cursorRef.current.position
       .clone()
       .sub(curPosition)
-      .multiplyScalar(-2.0);
+      .multiplyScalar(-3.0);
     uniforms.uOffset.value = offset;
   };
 
   useFrame((state, delta) => {
     //Mesh단위의 viewport 계산
-    let x = (state.mouse.x * viewport.width) / 60;
-    let y = (state.mouse.y * viewport.height) / 60;
-    
-    //if문으로 성능 개선
-    
+    let x = (state.mouse.x * viewport.width) / 33;
+    let y = (state.mouse.y * viewport.height) / 33;
+
     gsap.to(cursorRef.current.position, {
       duration: 1,
       x: state.camera.position.x + x,
       y: state.camera.position.y + y,
-      z: state.camera.position.z - 0.2,
+      z: state.camera.position.z - 0.3,
       onUpdate: updatePosition,
     });
 
@@ -94,14 +88,14 @@ const ImageCursor = ({ imageVisible }: { imageVisible: number }) => {
     if (imageVisible) {
       gsap.to(uniforms.uAlpha, {
         value: 1.0,
-        duration: 1,
-        ease: "Power4.easeOut",
+        duration: 0.7,
+        ease: "power4.out",
       });
     } else {
       gsap.to(uniforms.uAlpha, {
         value: 0,
-        duration: 1,
-        ease: "Power4.easeOut",
+        duration: 0.7,
+        ease: "power4.out",
       });
     }
   }, [imageVisible, uniforms]);
@@ -117,6 +111,7 @@ const ImageCursor = ({ imageVisible }: { imageVisible: number }) => {
         transparent
         side={DoubleSide}
       />
+      {/* <meshBasicMaterial/> */}
     </mesh>
   );
 };

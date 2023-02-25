@@ -2,8 +2,6 @@ import React, { Suspense, useState } from "react";
 import { Canvas } from "@react-three/fiber";
 import {
   OrbitControls,
-  Scroll,
-  ScrollControls,
   Stats,
 } from "@react-three/drei";
 import {
@@ -19,13 +17,11 @@ import { EffectComposer, Glitch, Vignette } from "@react-three/postprocessing";
 import { Vector2 } from "three";
 import { GlitchMode } from "postprocessing";
 import BeergangTest1 from "components/Model/BeergangTest1.jsx/BeergangTest1";
+import { Scroll, ScrollControls } from "components/CustomScrollControls/CustomScrollControls";
+import { useRecoilState } from "recoil";
+import { imageVisibleState } from "store/atoms";
 
 const Home = () => {
-  const [imageVisible, setImageVisible] = useState<number>(0);
-
-  const getImageIndex = (index: number) => {
-    setImageVisible(index);
-  };
 
   return (
     <>
@@ -39,18 +35,18 @@ const Home = () => {
         >
           <Stats showPanel={0} />
           {/* <TestShader /> */}
-          {/* <axesHelper scale={10} /> */}
+          <axesHelper scale={10} />
           {/* <OrbitControls /> */}
           <Suspense>
-            <ScrollControls pages={13} damping={0.15}>
+            <ScrollControls pages={21} damping={0.25}>
               <FadeOutSvg />
               <LightGroup />
               <Background />
-              <ImageCursor imageVisible={imageVisible} />
+              <ImageCursor/>
               <BeergangTest1 />
               {/* <Beergang position={[0, -1.65, 4.2]} /> */}
               <Scroll html>
-                <HtmlContents getImageIndex={getImageIndex} />
+                <HtmlContents/>
               </Scroll>
             </ScrollControls>
           </Suspense>

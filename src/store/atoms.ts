@@ -2,12 +2,12 @@ import { atom } from "recoil";
 
 export const pageNumState = atom<number>({
   key: "pageNumState",
-  default: 12,
+  default: 20,
 });
 
-export const imageVisibleState = atom<boolean>({
+export const imageVisibleState = atom<number>({
   key: "imageVisibleState",
-  default: false
+  default: 0
 });
 
 export const isFirstSceneState = atom<boolean>({
@@ -38,4 +38,9 @@ export const introDeniedState = atom<boolean>({
 export const toggleMusicState = atom<boolean>({
   key: "toggleMusicState",
   default: true,
+});
+
+export const sceneStartState = atom<boolean>({
+  key: "sceneStartState",
+  default: false,
 });

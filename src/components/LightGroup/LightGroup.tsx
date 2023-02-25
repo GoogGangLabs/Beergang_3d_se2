@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { CustomSpotLight } from "components";
 import { useFrame } from "@react-three/fiber";
-import { useScroll } from "@react-three/drei";
 import { isFirstSceneState, pageNumState } from "store/atoms";
 import { useRecoilValue } from "recoil";
+import { useScroll } from "components/CustomScrollControls/CustomScrollControls";
 const LightGroup = () => {
   const scroll = useScroll();
   const [intensity, setIntensity] = useState<number>(0);
@@ -14,8 +14,8 @@ const LightGroup = () => {
     // if (scroll.offset <= 0.1) {
     //   setIntensity((prev) => 0);
     // }
-    if (scroll.offset < 1 / pageNum) {
-      setIntensity(Math.max(Math.min(scroll.offset * pageNum, 1), 0.1));
+    if (scroll.offset < 2 / pageNum) {
+      setIntensity(Math.max(Math.min(scroll.offset * pageNum, 1), 0));
     }
   });
 
@@ -36,13 +36,14 @@ const LightGroup = () => {
       ) : (
         <></>
       )} */}
-      {/* <CustomSpotLight
-        lightFrom={[0, 2, 5.7]}
+      <CustomSpotLight
+        lightFrom={[-4, 3, 5.7]}
         lightTo={[0.3, 0, 4.7]}
-        angle={1}
+        angle={0.7}
         penumbra={0.5}
+        // intensity={intensity}
         intensity={intensity}
-      /> */}
+      />
       <CustomSpotLight
         lightFrom={[-4, 5, 4]}
         lightTo={[-4.8, -2, -6]}

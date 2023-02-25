@@ -1,14 +1,16 @@
 import React, { useState } from 'react'
 import Lottie from "lottie-react";
 import ScrollDownLottie from "assets/json/ScrollDown.json";
-import { useScroll } from '@react-three/drei';
 import { useFrame } from '@react-three/fiber';
-
-const pageNum = 12;
+import { useScroll } from 'components/CustomScrollControls/CustomScrollControls';
+import { pageNumState } from 'store/atoms';
+import { useRecoilValue } from 'recoil';
 
 const ScrollLottie = () => {
   const scroll = useScroll();
   const [opacity, setOpacity] = useState<string>("opacity-100");
+  const pageNum = useRecoilValue(pageNumState);
+  
   useFrame(() => {
     if (scroll.range(0, 1/pageNum) >= 0.05) {
       setOpacity("opacity-0")

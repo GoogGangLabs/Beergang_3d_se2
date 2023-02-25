@@ -2,12 +2,27 @@ import React, { useEffect, useState } from "react";
 import universe1 from "assets/png/universe-1.webp";
 import universe2 from "assets/png/universe-2.webp";
 import toggleOpen from "assets/svg/toggle-open.svg";
-import { useResize } from "hooks";
+import { useResize, useScrollText } from "hooks";
+import { pageNumState } from "store/atoms";
+import { useRecoilValue } from "recoil";
 
 const BeergangUniverse = () => {
   const [toggle1, setToggle1] = useState<boolean>(false);
   const [toggle2, setToggle2] = useState<boolean>(false);
   const { width } = useResize();
+  const pageNum = useRecoilValue(pageNumState);
+  const ref1 = useScrollText(
+    5 / pageNum,
+    1 / pageNum,
+    7 / pageNum,
+    1 / pageNum
+  );
+  const ref2 = useScrollText(
+    8 / pageNum,
+    1 / pageNum,
+    10 / pageNum,
+    1 / pageNum
+  );
 
   const toggleOneHandler = () => {
     setToggle1((prev) => !prev);
@@ -28,7 +43,10 @@ const BeergangUniverse = () => {
 
   return (
     <>
-      <div className="absolute top-[313.148vh] left-[6.111vw] pad:left-[12.222vw] desktop:left-[13.125vw]">
+      <div
+        ref={ref1}
+        className="absolute top-[33.750vh] pad:top-[24.740vh] desktop:top-[21.944vh] left-[6.111vw] pad:left-[12.222vw] desktop:left-[13.125vw]"
+      >
         <h3 className="ml-[clamp()] pad:ml-[clamp(8px,0.741vw,14px)] desktop:ml-[clamp(14px,0.729vw,100vw)] text-[clamp(24px,6.667vw,38px)] pad:text-[clamp(38px,3.519vw,62px)] desktop:text-[clamp(62px,3.229vw,100vw)] leading-[68%] font-merchant">
           BEERGANG UNIVERSE
         </h3>
@@ -37,7 +55,7 @@ const BeergangUniverse = () => {
           src={universe1}
           alt=""
         />
-        <h4 className="font-light font-bai-jamjuree pad:ml-[clamp(8px,0.741vw,14px)] desktop:ml-[clamp(14px,0.729vw,100vw)] w-[clamp(190px,52.778vw,382px)] pad:w-[clamp(382px,35.370vw,660px)] desktop:w-[clamp(660px,34.375vw,100vw)] text-[clamp(10px,2.778vw,12px)] pad:text-[clamp(12px,1.111vw,18px)] desktop:text-[clamp(18px,0.938vw,100vw)] leading-[130%] pad:leading-[150%] desktop:leading-[125%] mt-[clamp(16px,4.444vw,25px)] pad:mt-[clamp(25px,2.315vw,42px)] desktop:mt-[clamp(42px,2.188vw,100vw)]">
+        <h4 className="font-light font-bai-jamjuree pad:ml-[clamp(8px,0.741vw,14px)] desktop:ml-[clamp(14px,0.729vw,100vw)] w-[clamp(185px,51.389vw,382px)] pad:w-[clamp(382px,35.370vw,660px)] desktop:w-[clamp(660px,34.375vw,100vw)] text-[clamp(10px,2.778vw,12px)] pad:text-[clamp(12px,1.111vw,18px)] desktop:text-[clamp(18px,0.938vw,100vw)] leading-[130%] pad:leading-[150%] desktop:leading-[125%] mt-[clamp(16px,4.444vw,25px)] pad:mt-[clamp(25px,2.315vw,42px)] desktop:mt-[clamp(42px,2.188vw,100vw)]">
           Once upon a time, there was a time when a coin surged up in the air.
           It went so high to the point where it stayed closer to the sun for a
           few hundred years. Over time, it soaked up 10,000 kWh/m² worth of
@@ -78,8 +96,11 @@ const BeergangUniverse = () => {
           ) : null}
         </h4>
       </div>
-      <div className="absolute top-[420.148vh] left-[6.111vw] pad:left-[12.222vw] desktop:left-[13.125vw]">
-        <h4 className="font-light font-bai-jamjuree ml-[clamp(3px,0.833vw,8px)] pad:ml-[clamp(8px,0.741vw,14px)] desktop:ml-[clamp(14px,0.729vw,100vw)] w-[clamp(188px,52.222vw,382px)] pad:w-[clamp(382px,35.370vw,660px)] desktop:w-[clamp(660px,34.375vw,100vw)] text-[clamp(10px,2.778vw,12px)] pad:text-[clamp(12px,1.111vw,18px)] desktop:text-[clamp(18px,0.938vw,100vw)] leading-[130%] pad:leading-[150%] desktop:leading-[125%]">
+      <div
+        ref={ref2}
+        className="absolute top-[37.188vh] pad:top-[30.339vh] desktop:top-[28.148vh] left-[6.111vw] pad:left-[12.222vw] desktop:left-[13.125vw]"
+      >
+        <h4 className="font-light font-bai-jamjuree ml-[clamp(3px,0.833vw,8px)] pad:ml-[clamp(8px,0.741vw,14px)] desktop:ml-[clamp(14px,0.729vw,100vw)] w-[clamp(189.69px,52.692vw,382px)] pad:w-[clamp(382px,35.370vw,660px)] desktop:w-[clamp(660px,34.375vw,100vw)] text-[clamp(10px,2.778vw,12px)] pad:text-[clamp(12px,1.111vw,18px)] desktop:text-[clamp(18px,0.938vw,100vw)] leading-[130%] pad:leading-[150%] desktop:leading-[125%]">
           Alas, the four cells lost each other’s company when the river was
           divided into four different channels. Even though they each floated to
           a separate channel, they continued their cell division in grief. Each

@@ -1,23 +1,25 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useRecoilState, useSetRecoilState } from "recoil";
+import { imageVisibleState } from "store/atoms";
 import ColoredBar from './ColoredBar';
 
-const EachTribes = ({
-  getImageIndex,
-}: {
-  getImageIndex: (index: number) => void;
-}) => {
+const EachTribes = () => {
+  const [imageVisible ,setImageVisible] = useRecoilState(imageVisibleState);
   const onMouseLeave = (e: any) => {
     e.stopPropagation();
-    // imageInvisibleHandler();
-    getImageIndex(0);
+    setImageVisible(0);
   };
+
+  useEffect(() => {
+    console.log(imageVisible)
+  }, [imageVisible])
 
   return (
     <>
-      <div className="hidden pad:flex items-center pad:gap-x-[clamp(11px,1.019vw,15px)] desktop:gap-x-[clamp(15px,0.781vw,100vw)]">
+      <div className="hidden pad:flex items-center pad:gap-x-[clamp(11px,1.019vw,15px)] desktop:gap-x-[clamp(15px,0.781vw,100vw)] pad:mt-[clamp(48px,4.444vw,69px)] desktop:mt-[clamp(69px,3.594vw,100vw)]">
         <div
           className="flex flex-col items-center w-[clamp(56px,15.556vw,68.47px)] pad:w-[clamp(68.47px,6.340vw,100px)] desktop:w-[clamp(100px,5.208vw,100vw)] cursor-pointer"
-          onMouseOver={() => getImageIndex(1)}
+          onMouseOver={() => setImageVisible(1)}
           onMouseLeave={onMouseLeave}
         >
           <h3 className="text-[clamp(13px,3.611vw,17px)] pad:text-[clamp(17px,1.574vw,24px)] desktop:text-[clamp(24px,1.25vw,100vw)] text-[#CB6100] font-bold">
@@ -34,7 +36,7 @@ const EachTribes = ({
         <ColoredBar bg="pad:from-[#CB6100] pad:to-[#1A6DBA]" />
         <div
           className="flex flex-col items-center w-[clamp(56px,15.556vw,68.47px)] pad:w-[clamp(68.47px,6.340vw,100px)] desktop:w-[clamp(100px,5.208vw,100vw)] cursor-pointer"
-          onMouseOver={() => getImageIndex(2)}
+          onMouseOver={() => setImageVisible(2)}
           onMouseLeave={onMouseLeave}
         >
           <h3 className="text-[clamp(13px,3.611vw,17px)] pad:text-[clamp(17px,1.574vw,24px)] desktop:text-[clamp(24px,1.25vw,100vw)] text-[#1A6DBA] font-bold">
@@ -54,7 +56,7 @@ const EachTribes = ({
         <ColoredBar bg="pad:from-[#CB6100] pad:to-[#88766E]" />
         <div
           className="flex flex-col items-center w-[clamp(56px,15.556vw,68.47px)] pad:w-[clamp(68.47px,6.340vw,100px)] desktop:w-[clamp(100px,5.208vw,100vw)] cursor-pointer"
-          onMouseOver={() => getImageIndex(3)}
+          onMouseOver={() => setImageVisible(3)}
           onMouseLeave={onMouseLeave}
         >
           <h3 className="text-[clamp(13px,3.611vw,17px)] pad:text-[clamp(17px,1.574vw,24px)] desktop:text-[clamp(24px,1.25vw,100vw)] text-[#88766E] font-bold">
@@ -71,7 +73,7 @@ const EachTribes = ({
         <ColoredBar bg="pad:from-[#956049] pad:to-[#C60E0E]" />
         <div
           className="flex flex-col items-center w-[clamp(56px,15.556vw,68.47px)] pad:w-[clamp(68.47px,6.340vw,100px)] desktop:w-[clamp(100px,5.208vw,100vw)] cursor-pointer"
-          onMouseOver={() => getImageIndex(4)}
+          onMouseOver={() => setImageVisible(4)}
           onMouseLeave={onMouseLeave}
         >
           <h3 className="text-[clamp(13px,3.611vw,17px)] pad:text-[clamp(17px,1.574vw,24px)] desktop:text-[clamp(24px,1.25vw,100vw)] text-[#C60E0E] font-bold">

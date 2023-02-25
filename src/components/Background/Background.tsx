@@ -1,17 +1,16 @@
-import {
-  MeshReflectorMaterial,
-  Sparkles,
-  useScroll,
-} from "@react-three/drei";
-import { useFrame } from "@react-three/fiber";
+import { MeshReflectorMaterial, Sparkles } from "@react-three/drei";
+import { useFrame, useThree } from "@react-three/fiber";
 import gsap from "gsap";
 import React, { useEffect, useState } from "react";
 import { useRecoilState, useRecoilValue } from "recoil";
+import { useScroll } from "components/CustomScrollControls/CustomScrollControls";
+import { Vector3 } from "three";
 import {
   iconColorState,
   introAcceptedState,
   isFirstSceneState,
   pageNumState,
+  sceneStartState,
   showLogoState,
 } from "store/atoms";
 
@@ -20,39 +19,51 @@ const Background = () => {
   const [isFirstScene, setIsFirstScene] = useRecoilState(isFirstSceneState);
   const [showLogo, setShowLogo] = useRecoilState(showLogoState);
   const [iconStyle, setIconStyle] = useRecoilState(iconColorState);
-  const [sceneStart, setSceneStart] = useState<boolean>(false);
+  const [sceneStart, setSceneStart] = useRecoilState(sceneStartState);
   const clicked = useRecoilValue(introAcceptedState);
   const pageNum = useRecoilValue(pageNumState);
+  const { camera } = useThree();
   //최초 RGB 값, 페이지 = 5 일 때, 검은색으로 수렴
   const R: number = 220;
   const G: number = 79;
+
   useEffect(() => {
     document.body.style.background = "black";
-    let t:any;
+    camera.position.set(-1, 4, 15);
+    console.log(camera.position);
+    let t: any;
     if (clicked) {
       gsap.to(document.body.style, {
         background: "rgb(220,79,0)",
-        duration: 1.2,
-        ease: "power4.in"
-      })
+        duration: 3,
+        ease: "power4.inOut",
+      });
+      gsap.to(camera.position, {
+        x: 0,
+        y: 0,
+        z: 5,
+        duration: 2,
+        ease: "power4.inOut",
+      });
+
       t = setTimeout(() => {
-      setSceneStart(true)
-    }, 2000)
+        setSceneStart(true);
+      }, 3000);
     }
-    return () => clearTimeout(t)
-  }, [clicked]);
+    return () => clearTimeout(t);
+  }, [clicked, camera, setSceneStart]);
 
   useFrame((state, delta) => {
     //배경색 전환
-    if (scroll.range(0, 1 / pageNum) < 1.05 && sceneStart) {
+    if (scroll.range(0, 2 / pageNum) < 1.05 && sceneStart) {
       document.body.style.background = `rgb(${Math.floor(
-        (1 - scroll.range(0, 1 / pageNum)) * R
-      )},${Math.floor((1 - scroll.range(0, 1 / pageNum)) * G)},0)`;
+        (1 - scroll.range(0, 2 / pageNum)) * R
+      )},${Math.floor((1 - scroll.range(0, 2 / pageNum)) * G)},0)`;
     }
 
-    if (scroll.offset >= 0.9 / pageNum && !isFirstScene) {
+    if (scroll.range(0, 2 / pageNum) >= 0.9 && !isFirstScene) {
       setIsFirstScene(true);
-    } else if (scroll.offset < 0.9 / pageNum && isFirstScene) {
+    } else if (scroll.range(0, 2 / pageNum) < 0.9 && isFirstScene) {
       setIsFirstScene(false);
     }
 
@@ -105,13 +116,13 @@ const Background = () => {
         <></>
       )}
 
-      <fog attach="fog" color="black" near={12} far={16} />
+      <fog attach="fog" color="black" near={12} far={14} />
       <Sparkles
-        color={"#FF5D00"}
+        color={"rgba(220, 79, 0, 1)"}
         count={40}
-        size={1.2}
+        size={1}
         speed={0.3}
-        scale={5}
+        scale={6}
         noise={1}
         opacity={1}
         position={[1, 0, 2]}
