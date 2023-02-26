@@ -1,11 +1,21 @@
 import React from "react";
 import logo from "assets/svg/GGlabs-logo.svg";
 import SNSList from "./SNSList";
+import { useScrollVideo } from "hooks";
+import { useRecoilValue } from "recoil";
+import { pageNumState } from "store/atoms";
 
 
 const Footer = () => {
+  const pageNum = useRecoilValue(pageNumState);
+  const ref = useScrollVideo(
+    31 / pageNum,
+    2 / pageNum,
+    1,
+    1
+  );
   return (
-    <div className="absolute bottom-[clamp(27px,7.5vw,30px)] pad:bottom-[3.906vh] desktop:bottom-[3.241vh] left-0 w-full">
+    <div ref={ref} className="absolute bottom-[clamp(27px,7.5vw,30px)] pad:bottom-[3.906vh] desktop:bottom-[3.241vh] left-0 w-full">
       <div className="mx-auto w-[91.667vw] pad:w-[95.370vw] desktop:w-[92.708vw] border-1 border-white">
         <hr />
       </div>

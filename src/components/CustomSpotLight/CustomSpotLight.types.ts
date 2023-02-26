@@ -1,4 +1,5 @@
 export interface CustomSpotLightType {
+  // lightRef: any;
   lightFrom: number[];
   lightTo: number[];
   lightColor?: string;

@@ -15,7 +15,7 @@ const FadeOutSvg = () => {
 
   useFrame(() => {
     if (scroll.range(0,2/pageNum) < 1) {
-      ref.current.position.z = -scroll.range(0,2/pageNum) * 10
+      ref.current.position.z = -scroll.range(0,2/pageNum) * 15
     }
   })
 

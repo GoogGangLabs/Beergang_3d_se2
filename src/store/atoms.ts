@@ -2,7 +2,7 @@ import { atom } from "recoil";
 
 export const pageNumState = atom<number>({
   key: "pageNumState",
-  default: 20,
+  default: 33,
 });
 
 export const imageVisibleState = atom<number>({

@@ -1,9 +1,6 @@
-import React, { Suspense, useState } from "react";
+import React, { Suspense, useEffect, useRef, useState } from "react";
 import { Canvas } from "@react-three/fiber";
-import {
-  OrbitControls,
-  Stats,
-} from "@react-three/drei";
+import { OrbitControls, Stats } from "@react-three/drei";
 import {
   Background,
   LightGroup,
@@ -12,14 +9,13 @@ import {
   ImageCursor,
   CustomLoader,
 } from "components";
-import { Beergang } from "components/Model";
-import { EffectComposer, Glitch, Vignette } from "@react-three/postprocessing";
-import { Vector2 } from "three";
-import { GlitchMode } from "postprocessing";
+import { EffectComposer, GodRays } from "@react-three/postprocessing";
 import BeergangTest1 from "components/Model/BeergangTest1.jsx/BeergangTest1";
-import { Scroll, ScrollControls } from "components/CustomScrollControls/CustomScrollControls";
-import { useRecoilState } from "recoil";
-import { imageVisibleState } from "store/atoms";
+import {
+  Scroll,
+  ScrollControls,
+} from "components/CustomScrollControls/CustomScrollControls";
+import { BlendFunction, KernelSize, Resizer } from "postprocessing";
 
 const Home = () => {
 
@@ -34,30 +30,42 @@ const Home = () => {
           dpr={1.4}
         >
           <Stats showPanel={0} />
-          {/* <TestShader /> */}
-          <axesHelper scale={10} />
+          {/* <axesHelper scale={10} /> */}
           {/* <OrbitControls /> */}
           <Suspense>
-            <ScrollControls pages={21} damping={0.25}>
+            <ScrollControls pages={34} damping={0.25}>
               <FadeOutSvg />
               <LightGroup />
               <Background />
-              <ImageCursor/>
+              <ImageCursor />
               <BeergangTest1 />
-              {/* <Beergang position={[0, -1.65, 4.2]} /> */}
               <Scroll html>
-                <HtmlContents/>
+                <HtmlContents />
               </Scroll>
             </ScrollControls>
+            {/* <mesh ref={sunRef}>
+              <sphereGeometry args={[1, 30, 30]} />
+              <meshBasicMaterial color="#ffffff" transparent />
+            </mesh>
+            {sunRef.current && (
+              <EffectComposer>
+                <GodRays
+                  sun={sunRef.current}
+                  blendFunction={BlendFunction.SATURATION}
+                  samples={100}
+                  density={0.97}
+                  decay={0.95}
+                  weight={0.3}
+                  exposure={0.6}
+                  clampMax={1}
+                  // width={Resizer.}
+                  // height={Resizer.AUTO_SIZE}
+                  kernelSize={KernelSize.SMALL}
+                  blur={1}
+                />
+              </EffectComposer>
+            )} */}
           </Suspense>
-          <EffectComposer>
-            <Glitch
-              delay={new Vector2(0, 0)}
-              active={false}
-              // mode={GlitchMode.CONSTANT_WILD}
-            />
-            {/* <Vignette offset={0.85} darkness={1} opacity={0.4} eskil={false} /> */}
-          </EffectComposer>
         </Canvas>
       </div>
       <CustomLoader />

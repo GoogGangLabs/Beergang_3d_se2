@@ -15,17 +15,14 @@ const useScrollVideo = (
     const beforeFadeIn = scroll.range(0, fadeInStart);
     const fadeIn = scroll.range(fadeInStart, fadeInRange);
     const fadeOut = scroll.range(fadeOutStart, fadeOutRange);
-    if (fadeIn <= 1 && !fadeOut && beforeFadeIn >= 1) {
-
-      // ref.current.style.top = `${}vh`
-      // ref.current.style.transform = `translate3d(0
-      // px,${height * -fadeIn}px,0)`;
-
-      console.log(ref.current.style.transform);
-      ref.current.style.opacity = 0
+    if (beforeFadeIn < 0.6 && ref.current.style.display !== "none") {
+      ref.current.style.display = "none";
+      ref.current.style.transform = `translate3d(0,${height}px,0)`;
+    } else if (fadeIn <= 1 && !fadeOut && beforeFadeIn >= 1) {
+      ref.current.style.transform = `translate3d(0,${height *(1-fadeIn)}px,0)`;
       ref.current.style.display = "block";
     } else if (fadeOut < 1 && beforeFadeIn >= 1) {
-      // ref.current.style.transform = 1 - fadeOut;
+      ref.current.style.transform = `translate3d(0,${height * -fadeOut}px,0)`;
       ref.current.style.display = "block";
     }
   });

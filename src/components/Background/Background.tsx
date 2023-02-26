@@ -1,10 +1,10 @@
 import { MeshReflectorMaterial, Sparkles } from "@react-three/drei";
 import { useFrame, useThree } from "@react-three/fiber";
 import gsap from "gsap";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { useScroll } from "components/CustomScrollControls/CustomScrollControls";
-import { Vector3 } from "three";
+import { BackSide, Color, Vector3 } from "three";
 import {
   iconColorState,
   introAcceptedState,
@@ -23,14 +23,14 @@ const Background = () => {
   const clicked = useRecoilValue(introAcceptedState);
   const pageNum = useRecoilValue(pageNumState);
   const { camera } = useThree();
+  const sphereRef = useRef<any>();
+  const fogRef = useRef<any>();
   //최초 RGB 값, 페이지 = 5 일 때, 검은색으로 수렴
   const R: number = 220;
   const G: number = 79;
 
   useEffect(() => {
-    document.body.style.background = "black";
     camera.position.set(-1, 4, 15);
-    console.log(camera.position);
     let t: any;
     if (clicked) {
       gsap.to(document.body.style, {
@@ -55,15 +55,19 @@ const Background = () => {
 
   useFrame((state, delta) => {
     //배경색 전환
-    if (scroll.range(0, 2 / pageNum) < 1.05 && sceneStart) {
-      document.body.style.background = `rgb(${Math.floor(
-        (1 - scroll.range(0, 2 / pageNum)) * R
-      )},${Math.floor((1 - scroll.range(0, 2 / pageNum)) * G)},0)`;
+    if (scroll.range(0, 2 / pageNum) < 1.05) {
+      sphereRef.current.material.color = new Color(`rgb(${Math.floor((1 - scroll.range(0, 1.5 / pageNum)) * R)},${Math.floor((1 - scroll.range(0, 2 / pageNum)) * G)},0)`);
+      fogRef.current.color = new Color(
+        `rgb(${Math.floor(
+          (1 - scroll.range(0, 2 / pageNum)) * 250
+        )},${Math.floor((1 - scroll.range(0, 2 / pageNum)) * 140)},0)`
+      );
+      fogRef.current.near = scroll.range(0, 2/pageNum) * 11 + 0.5
     }
 
-    if (scroll.range(0, 2 / pageNum) >= 0.9 && !isFirstScene) {
+    if (scroll.range(0, 1.8 / pageNum) >= 1 && !isFirstScene) {
       setIsFirstScene(true);
-    } else if (scroll.range(0, 2 / pageNum) < 0.9 && isFirstScene) {
+    } else if (scroll.range(0, 1.8 / pageNum) < 1 && isFirstScene) {
       setIsFirstScene(false);
     }
 
@@ -84,14 +88,16 @@ const Background = () => {
     <>
       {isFirstScene ? (
         <>
-          {/* <mesh position={[0, 0, 3]}>
-            <boxGeometry args={[10, 10, 10]} />
-            <meshPhongMaterial color={"#111010"} side={BackSide} />
-          </mesh> */}
-          <mesh position={[0, 0, -3]}>
-            <planeGeometry args={[25, 20]} />
-            <meshPhongMaterial color={"#241f1f"} />
-          </mesh>
+          <Sparkles
+            color={"rgba(220, 79, 0, 1)"}
+            // count={40}
+            size={2}
+            speed={0.3}
+            scale={6}
+            noise={1}
+            opacity={1}
+            position={[0, 0, 2]}
+          />
           {/* <mesh
             rotation={[-degToRad(90), degToRad(0), 0]}
             position={[0, -1.7, 5.45]}
@@ -115,18 +121,14 @@ const Background = () => {
       ) : (
         <></>
       )}
-
-      <fog attach="fog" color="black" near={12} far={14} />
-      <Sparkles
-        color={"rgba(220, 79, 0, 1)"}
-        count={40}
-        size={1}
-        speed={0.3}
-        scale={6}
-        noise={1}
-        opacity={1}
-        position={[1, 0, 2]}
-      />
+      <mesh ref={sphereRef} position={[0, 0, 1]}>
+        <sphereGeometry args={[13, 30, 30]} />
+        <meshPhongMaterial
+          side={BackSide}
+          opacity={0}
+        />
+      </mesh>
+      <fog ref={fogRef} attach="fog" far={18} />
       {/* 바닥 재질 */}
     </>
   );

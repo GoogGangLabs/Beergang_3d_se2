@@ -10,12 +10,12 @@ import ComingSoon from "components/ComingSoon/ComingSoon";
 const HtmlContents = () => {
   return (
     <>
-      <div className="w-screen h-screen text-[#FF5C00] font-bai-jamjuree min-w-[360px]">
+      <div className="w-screen h-screen text-[#FF5C00] font-bai-jamjuree min-w-[360px] flex justify-center items-center">
+        <Trailer />
         <ScrollLottie />
         <BeergangIntro/>
         <BeergangUniverse />
         <TheFourTribes/>
-        <Trailer />
         <OurRoadmap />
         <ComingSoon/>
         <Footer />
