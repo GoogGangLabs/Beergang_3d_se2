@@ -1,7 +1,7 @@
 import { MeshReflectorMaterial, Sparkles } from "@react-three/drei";
 import { useFrame, useThree } from "@react-three/fiber";
 import gsap from "gsap";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { useScroll } from "components/CustomScrollControls/CustomScrollControls";
 import { BackSide, Color, Vector3 } from "three";
@@ -17,8 +17,6 @@ import {
 const Background = () => {
   const scroll = useScroll();
   const [isFirstScene, setIsFirstScene] = useRecoilState(isFirstSceneState);
-  const [showLogo, setShowLogo] = useRecoilState(showLogoState);
-  const [iconStyle, setIconStyle] = useRecoilState(iconColorState);
   const [sceneStart, setSceneStart] = useRecoilState(sceneStartState);
   const clicked = useRecoilValue(introAcceptedState);
   const pageNum = useRecoilValue(pageNumState);
@@ -30,57 +28,78 @@ const Background = () => {
   const G: number = 79;
 
   useEffect(() => {
-    camera.position.set(-1, 4, 15);
+   
+
     let t: any;
     if (clicked) {
-      gsap.to(document.body.style, {
-        background: "rgb(220,79,0)",
-        duration: 3,
-        ease: "power4.inOut",
-      });
-      gsap.to(camera.position, {
-        x: 0,
-        y: 0,
-        z: 5,
-        duration: 2,
-        ease: "power4.inOut",
-      });
-
       t = setTimeout(() => {
         setSceneStart(true);
       }, 3000);
     }
     return () => clearTimeout(t);
-  }, [clicked, camera, setSceneStart]);
+  }, [clicked, setSceneStart]);
+  
+  useEffect(() => {
+    document.body.style.background = "rgb(220,79,0)";
+    camera.lookAt(-3, 2, -1);
+    camera.position.set(0, 0, 1);
+    sphereRef.current.material.color = new Color("rgb(0,0,0)");
+    fogRef.current.color = new Color("rgb(0,0,0)");
+    const color = new Color("rgb(220,79,0)");
+    const fogColor = new Color("rgb(220,79,0)");
+    if (clicked) {
+      gsap.to(sphereRef.current.material.color, {
+        r: color.r,
+        g: color.g,
+        b: color.b,
+        duration: 0.8,
+        delay: 2.2,
+        ease: "power1.inOut",
+      });
+      gsap.to(fogRef.current.color, {
+        r: fogColor.r,
+        g: fogColor.g,
+        b: fogColor.b,
+        duration: 0.8,
+        delay: 2,
+        ease: "power4.inOut",
+      });
+      gsap.to(camera.position, {
+        x: 0,
+        y: 0,
+        z: 0,
+        duration: 2.7,
+        delay: 0.3,
+        ease: "power1.inOut",
+        onUpdate: function () {
+          camera.lookAt(0, 0, -1);
+        },
+      });
+    }
+  }, [clicked, camera]);
 
   useFrame((state, delta) => {
     //배경색 전환
-    if (scroll.range(0, 2 / pageNum) < 1.05) {
-      sphereRef.current.material.color = new Color(`rgb(${Math.floor((1 - scroll.range(0, 1.5 / pageNum)) * R)},${Math.floor((1 - scroll.range(0, 2 / pageNum)) * G)},0)`);
+    if (scroll.range(0, 2 / pageNum) < 1.05 && sceneStart) {
+      sphereRef.current.material.color = new Color(
+        `rgb(${Math.floor(
+          (1 - scroll.range(0, 1.5 / pageNum)) * R
+        )},${Math.floor((1 - scroll.range(0, 2 / pageNum)) * G)},0)`
+      );
+
       fogRef.current.color = new Color(
         `rgb(${Math.floor(
-          (1 - scroll.range(0, 2 / pageNum)) * 250
-        )},${Math.floor((1 - scroll.range(0, 2 / pageNum)) * 140)},0)`
+          (1 - scroll.range(0, 1.4 / pageNum)) * R
+        )},${Math.floor((1 - scroll.range(0, 1.4 / pageNum)) * G)},0)`
       );
-      fogRef.current.near = scroll.range(0, 2/pageNum) * 11 + 0.5
+
+      fogRef.current.far = scroll.range(0, 2 / pageNum) * 2.5 + 1.5;
     }
 
-    if (scroll.range(0, 1.8 / pageNum) >= 1 && !isFirstScene) {
+    if (scroll.range(0, 1.2 / pageNum) >= 1 && !isFirstScene) {
       setIsFirstScene(true);
-    } else if (scroll.range(0, 1.8 / pageNum) < 1 && isFirstScene) {
+    } else if (scroll.range(0, 1.2 / pageNum) < 1 && isFirstScene) {
       setIsFirstScene(false);
-    }
-
-    //SNS 아이콘 색 전환 로직
-    if (scroll.range(0, 1 / pageNum) < 1) {
-      setIconStyle({
-        filter: `brightness(${scroll.range(0, 1 / pageNum) * 100}%)`,
-      });
-      setShowLogo("opacity-0");
-    } else if (scroll.range(1 / pageNum, 1 / pageNum) < 1) {
-      setShowLogo("opacity-100");
-    } else if (scroll.range(2 / pageNum, 1 / pageNum) < 1) {
-      setIconStyle({ filter: "brightness(0) invert(1)" });
     }
   });
 
@@ -88,16 +107,6 @@ const Background = () => {
     <>
       {isFirstScene ? (
         <>
-          <Sparkles
-            color={"rgba(220, 79, 0, 1)"}
-            // count={40}
-            size={2}
-            speed={0.3}
-            scale={6}
-            noise={1}
-            opacity={1}
-            position={[0, 0, 2]}
-          />
           {/* <mesh
             rotation={[-degToRad(90), degToRad(0), 0]}
             position={[0, -1.7, 5.45]}
@@ -121,14 +130,16 @@ const Background = () => {
       ) : (
         <></>
       )}
-      <mesh ref={sphereRef} position={[0, 0, 1]}>
-        <sphereGeometry args={[13, 30, 30]} />
-        <meshPhongMaterial
-          side={BackSide}
-          opacity={0}
-        />
+      <mesh ref={sphereRef} position={[0, 0, 0]}>
+        <sphereGeometry args={[3.5, 30, 30]} />
+        {/* {sceneStart ? 
+        :
+        <meshBasicMaterial side={BackSide} opacity={0}/>
+      } */}
+        <meshPhongMaterial side={BackSide} opacity={0} />
       </mesh>
-      <fog ref={fogRef} attach="fog" far={18} />
+      {/* <fog ref={fogRef} attach="fog" near={3.1} far={3.4} /> */}
+      <fog ref={fogRef} attach="fog" near={1} far={3} />
       {/* 바닥 재질 */}
     </>
   );

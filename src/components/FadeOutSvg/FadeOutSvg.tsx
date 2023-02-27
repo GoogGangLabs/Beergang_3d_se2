@@ -15,13 +15,13 @@ const FadeOutSvg = () => {
 
   useFrame(() => {
     if (scroll.range(0,2/pageNum) < 1) {
-      ref.current.position.z = -scroll.range(0,2/pageNum) * 15
+      ref.current.position.z = -scroll.range(0,2/pageNum) * 3 - 0.8
     }
   })
 
   return (
     <>
-      <Svg ref={ref} src={beergangText} position={[-5, 1.1, 0]} scale={0.007} />
+      <Svg ref={ref} src={beergangText} position={[-0.78, 0.2, -1]} scale={0.0011} />
     </>
   );
 }

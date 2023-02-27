@@ -1,4 +1,4 @@
-import { BackgroundMusic, NavBar } from "components";
+import { BackgroundMusic } from "components";
 import React, { useEffect } from "react";
 import { Outlet, useLocation } from "react-router-dom";
 import Intro from "./Intro";
@@ -16,7 +16,6 @@ const GlobalLayout = () => {
   return (
     <>
       <Intro />
-      <NavBar />
       <Outlet />
       <BackgroundMusic />
     </>

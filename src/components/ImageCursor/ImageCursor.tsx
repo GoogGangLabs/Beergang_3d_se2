@@ -44,8 +44,8 @@ const ImageCursor = () => {
 
   useFrame((state, delta) => {
     //Mesh단위의 viewport 계산
-    let x = (state.mouse.x * viewport.width) / 33;
-    let y = (state.mouse.y * viewport.height) / 33;
+    let x = (state.mouse.x * window.innerWidth) /4550;
+    let y = (state.mouse.y * window.innerHeight) /4550
 
     gsap.to(cursorRef.current.position, {
       duration: 1,

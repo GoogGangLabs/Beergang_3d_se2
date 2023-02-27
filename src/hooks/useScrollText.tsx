@@ -1,6 +1,8 @@
 import { useFrame } from "@react-three/fiber";
 import { useScroll } from "components/CustomScrollControls/CustomScrollControls";
 import React, { useRef } from "react";
+import { useRecoilValue } from "recoil";
+import { sceneStartState } from "store/atoms";
 
 const useScrollText = (
   fadeInStart: number,
@@ -16,6 +18,7 @@ const useScrollText = (
     // console.log(beforeFadeIn)
     const fadeIn = scroll.range(fadeInStart, fadeInRange);
     const fadeOut = scroll.range(fadeOutStart, fadeOutRange);
+  
     if (beforeFadeIn < 0.9 && ref.current.style.display !== "none") {
       ref.current.style.display = "none";
       ref.current.style.opacity = 0;

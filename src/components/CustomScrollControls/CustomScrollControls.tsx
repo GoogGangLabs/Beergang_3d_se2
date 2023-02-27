@@ -10,7 +10,7 @@ import {
 import mergeRefs from "react-merge-refs";
 import { DomEvent } from "@react-three/fiber/dist/declarations/src/core/events";
 import { easing } from "maath";
-import { RecoilRoot, useRecoilBridgeAcrossReactRoots_UNSTABLE } from "recoil";
+import { useRecoilBridgeAcrossReactRoots_UNSTABLE } from "recoil";
 
 export type ScrollControlsProps = {
   /** Precision, default 0.00001 */
@@ -214,28 +214,30 @@ export function ScrollControls({
 
   let last = 0;
   useFrame((_, delta) => {
-    last = state.offset;
-    easing.damp(
-      state,
-      "offset",
-      scroll.current,
-      damping,
-      delta,
-      maxSpeed,
-      undefined,
-      eps
-    );
-    easing.damp(
-      state,
-      "delta",
-      Math.abs(last - state.offset),
-      damping,
-      delta,
-      maxSpeed,
-      undefined,
-      eps
-    );
-    if (state.delta > eps) invalidate();
+    if (enabled) {
+      last = state.offset;
+      easing.damp(
+        state,
+        "offset",
+        scroll.current,
+        damping,
+        delta,
+        maxSpeed,
+        undefined,
+        eps
+      );
+      easing.damp(
+        state,
+        "delta",
+        Math.abs(last - state.offset),
+        damping,
+        delta,
+        maxSpeed,
+        undefined,
+        eps
+      );
+      if (state.delta > eps) invalidate();
+    }
   });
   return <context.Provider value={state}>{children}</context.Provider>;
 }
