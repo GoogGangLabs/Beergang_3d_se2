@@ -15,7 +15,7 @@ const Trailer = () => {
   const ref = useScrollVideo(
     17 / pageNum,
     2 / pageNum,
-    20 / pageNum,
+    19.5 / pageNum,
     2 / pageNum
   );
   const [isMuted, setIsMuted] = useState<boolean>(false);

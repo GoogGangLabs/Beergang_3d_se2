@@ -10,15 +10,15 @@ const OurRoadmap = () => {
   const pageNum = useRecoilValue(pageNumState);
   const ref1 = useScrollText(
     22 / pageNum,
-    1 / pageNum,
+    0.4 / pageNum,
     24 / pageNum,
-    1 / pageNum
+    0.4 / pageNum
   );
   const ref2 = useScrollText(
     25 / pageNum,
-    1 / pageNum,
+    0.4 / pageNum,
     27 / pageNum,
-    1 / pageNum
+    0.4 / pageNum
   );
   return (
     <>

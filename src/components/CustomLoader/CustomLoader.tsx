@@ -36,7 +36,7 @@ export default function CustomLoader({
     if (active !== shown)
       t = setTimeout(() => {
         setShown(active);
-      }, 1000);
+      }, 1700);
       l = setTimeout(() => {
         setTrans(active);
       }, 1700);

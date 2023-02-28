@@ -9,9 +9,9 @@ const BeergangIntro = () => {
   const pageNum = useRecoilValue(pageNumState);
   const ref = useScrollText(
     1 / pageNum,
-    1 / pageNum,
+    0.4 / pageNum,
     3 / pageNum,
-    1 / pageNum
+    0.4 / pageNum
   );
 
   return (

@@ -93,7 +93,7 @@ const Background = () => {
         )},${Math.floor((1 - scroll.range(0, 1.4 / pageNum)) * G)},0)`
       );
 
-      fogRef.current.far = scroll.range(0, 2 / pageNum) * 2.5 + 1.5;
+      fogRef.current.far = scroll.range(0, 2 / pageNum) * 2.5 + 1.1;
     }
 
     if (scroll.range(0, 1.2 / pageNum) >= 1 && !isFirstScene) {
@@ -132,10 +132,6 @@ const Background = () => {
       )}
       <mesh ref={sphereRef} position={[0, 0, 0]}>
         <sphereGeometry args={[3.5, 30, 30]} />
-        {/* {sceneStart ? 
-        :
-        <meshBasicMaterial side={BackSide} opacity={0}/>
-      } */}
         <meshPhongMaterial side={BackSide} opacity={0} />
       </mesh>
       {/* <fog ref={fogRef} attach="fog" near={3.1} far={3.4} /> */}

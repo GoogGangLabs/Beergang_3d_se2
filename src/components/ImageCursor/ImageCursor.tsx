@@ -44,28 +44,30 @@ const ImageCursor = () => {
 
   useFrame((state, delta) => {
     //Mesh단위의 viewport 계산
-    let x = (state.mouse.x * window.innerWidth) /4550;
-    let y = (state.mouse.y * window.innerHeight) /4550
+    if (cursorRef.current) {
+      let x = (state.mouse.x * window.innerWidth) / 4550;
+      let y = (state.mouse.y * window.innerHeight) / 4550;
 
-    gsap.to(cursorRef.current.position, {
-      duration: 1,
-      x: state.camera.position.x + x,
-      y: state.camera.position.y + y,
-      z: state.camera.position.z - 0.3,
-      onUpdate: updatePosition,
-    });
+      gsap.to(cursorRef.current.position, {
+        duration: 1,
+        x: state.camera.position.x + x,
+        y: state.camera.position.y + y,
+        z: state.camera.position.z - 0.3,
+        onUpdate: updatePosition,
+      });
 
-    // cursorRef.current.lookAt(
-    //   state.camera.position.x,
-    //   state.camera.position.y,
-    //   state.camera.position.z
-    // );
+      // cursorRef.current.lookAt(
+      //   state.camera.position.x,
+      //   state.camera.position.y,
+      //   state.camera.position.z
+      // );
 
-    curPosition = new Vector3(
-      state.camera.position.x + x,
-      state.camera.position.y + y,
-      0
-    );
+      curPosition = new Vector3(
+        state.camera.position.x + x,
+        state.camera.position.y + y,
+        0
+      );
+    }
   });
 
   useEffect(() => {

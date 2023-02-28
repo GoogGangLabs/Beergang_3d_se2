@@ -9,9 +9,9 @@ const EachTribesMobile = () => {
   const pageNum = useRecoilValue(pageNumState);
   const ref = useScrollText(
     14 / pageNum,
-    1 / pageNum,
+    0.4 / pageNum,
     15 / pageNum,
-    1 / pageNum
+    0.4 / pageNum
   );
 
   const onMouseLeave = (e: any) => {

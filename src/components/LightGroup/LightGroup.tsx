@@ -33,7 +33,7 @@ const LightGroup = () => {
 
   useFrame(() => {
     if (scroll.range(0, 2 / pageNum) < 1) {
-      setIntensity(Math.max(Math.min(scroll.offset * pageNum, 1), 0));
+      setIntensity(Math.max(Math.min(scroll.offset * pageNum, 1), 0.025));
     }
   });
 
@@ -62,19 +62,19 @@ const LightGroup = () => {
       />
       <Sparkles
         color={"rgba(220, 79, 0, 1)"}
-        count={30}
+        count={50}
         size={1}
         speed={0.2}
-        scale={2}
+        scale={3}
         opacity={intensity}
         noise={1}
-        position={[0.5, 0, -0.7]}
+        position={[0.2, 0, -0.7]}
       />
       <CustomSpotLight
         lightFrom={[0.3, 0, -0.5]}
         lightTo={[0.5, 0, -1]}
         angle={0.7}
-        intensity={2}
+        intensity={3}
         penumbra={1}
         lightColor="#421cff"
       />

@@ -9,9 +9,9 @@ const TribesExplain = () => {
   const { width } = useResize();
   const ref = useScrollText(
     12 / pageNum,
-    1/ pageNum,
+    0.4/ pageNum,
     (width >= 1080 ? 15 : 13) / pageNum,
-    1 / pageNum
+    0.4 / pageNum
   );
   return (
     <div ref={ref} className="absolute top-[32.969vh] pad:top-[29.297vh] desktop:top-[27.407vh] right-[3.889vw] pad:right-[16.481vw] desktop:right-[18.906vw]">

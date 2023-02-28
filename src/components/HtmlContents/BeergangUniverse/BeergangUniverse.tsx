@@ -13,15 +13,15 @@ const BeergangUniverse = () => {
   const pageNum = useRecoilValue(pageNumState);
   const ref1 = useScrollText(
     5 / pageNum,
-    1 / pageNum,
+    0.4 / pageNum,
     7 / pageNum,
-    1 / pageNum
+    0.4 / pageNum
   );
   const ref2 = useScrollText(
     8 / pageNum,
-    1 / pageNum,
+    0.4 / pageNum,
     10 / pageNum,
-    1 / pageNum
+    0.4 / pageNum
   );
 
   const toggleOneHandler = () => {
