@@ -1,10 +1,11 @@
 {
   "files": {
-    "main.css": "/Beergang_3d_se2/static/css/main.4eefeb1c.css",
-    "main.js": "/Beergang_3d_se2/static/js/main.ed516514.js",
+    "main.css": "/Beergang_3d_se2/static/css/main.2988f798.css",
+    "main.js": "/Beergang_3d_se2/static/js/main.aa13907a.js",
     "static/js/787.1a880851.chunk.js": "/Beergang_3d_se2/static/js/787.1a880851.chunk.js",
-    "static/media/beergang-1.fbx": "/Beergang_3d_se2/static/media/beergang-1.5ebc665cf6bbe43582da.fbx",
+    "static/media/beergang_test1.glb": "/Beergang_3d_se2/static/media/beergang_test1.687b55f22087baf43b57.glb",
     "static/media/video.mp4": "/Beergang_3d_se2/static/media/video.36d26ab50d51413bc7ff.mp4",
+    "static/media/night1.hdr": "/Beergang_3d_se2/static/media/night1.1d4c4b1ec8226733742e.hdr",
     "static/media/bg-music.mp3": "/Beergang_3d_se2/static/media/bg-music.8d14102f3e5d724f1908.mp3",
     "static/media/universe-1.webp": "/Beergang_3d_se2/static/media/universe-1.09f6b2c0c57325421678.webp",
     "static/media/universe-2.webp": "/Beergang_3d_se2/static/media/universe-2.94bf0689e18681454a8d.webp",
@@ -31,12 +32,12 @@
     "static/media/play-button.svg": "/Beergang_3d_se2/static/media/play-button.7bb3f74d14b6a5cad261a5d4961ba97b.svg",
     "static/media/video-fullscreen.svg": "/Beergang_3d_se2/static/media/video-fullscreen.5a199186c5a34775af6cde29525d42a7.svg",
     "static/media/toggle-open.svg": "/Beergang_3d_se2/static/media/toggle-open.498769996651ff1098d52d2c28394f2d.svg",
-    "main.4eefeb1c.css.map": "/Beergang_3d_se2/static/css/main.4eefeb1c.css.map",
-    "main.ed516514.js.map": "/Beergang_3d_se2/static/js/main.ed516514.js.map",
+    "main.2988f798.css.map": "/Beergang_3d_se2/static/css/main.2988f798.css.map",
+    "main.aa13907a.js.map": "/Beergang_3d_se2/static/js/main.aa13907a.js.map",
     "787.1a880851.chunk.js.map": "/Beergang_3d_se2/static/js/787.1a880851.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.4eefeb1c.css",
-    "static/js/main.ed516514.js"
+    "static/css/main.2988f798.css",
+    "static/js/main.aa13907a.js"
   ]
 }
