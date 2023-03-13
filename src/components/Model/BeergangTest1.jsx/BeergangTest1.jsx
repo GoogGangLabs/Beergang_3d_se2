@@ -7,8 +7,9 @@ import { AnimationMixer, MathUtils, Vector3 } from "three";
 import { useRecoilValue } from "recoil";
 import { introAcceptedState, pageNumState, sceneStartState } from "store/atoms";
 import { useScroll } from "components/CustomScrollControls/CustomScrollControls";
-import { DepthOfField, EffectComposer } from "@react-three/postprocessing";
+import { DepthOfField, EffectComposer, Noise } from "@react-three/postprocessing";
 import { useControls } from "leva";
+import { BlendFunction } from "postprocessing";
 
 const BeergangTest1 = () => {
   const fbxLoad = useFBX(beergang);
@@ -20,6 +21,8 @@ const BeergangTest1 = () => {
   const action = useRef();
 
   useEffect(() => {
+    fbxLoad.receiveShadow = true;
+    fbxLoad.castShadow = true;
     fbxLoad.mixer = new AnimationMixer(fbxLoad);
     action.current = fbxLoad.mixer.clipAction(fbxLoad.animations[0]);
     action.current.play().fadeIn(0.2);
@@ -39,7 +42,7 @@ const BeergangTest1 = () => {
     const fifthWholeScene = scroll.range(18.8/pageNum, 4.5/pageNum);
     const sixthWholeScene = scroll.range(23.3/pageNum, 4.5 / pageNum);
     const seventhWholeScene = scroll.range(27.8/pageNum, 2 / pageNum);
-    const lastScene = scroll.range(31.8/pageNum, 3 / pageNum);
+    const lastScene = scroll.range(31.8/pageNum, 2 / pageNum);
 
     if (sceneStart) {
       if (firstScene < 1) {
@@ -97,26 +100,26 @@ const BeergangTest1 = () => {
       } else if (lastScene < 1) {
         state.camera.position.set(
           0,
-          -0.2 + lastScene * -1.7,
+          -0.2 + lastScene * -1.1,
           0.36
         );
       }
     }
 
     //애니메이션
-    if (fbxLoad && clicked) {
-      if (firstScene < 1) {
-        if (action.current) {
-          action.current.enabled = true;
-          action.current.paused = false;
-          // action.current.play().fadeIn(0.7);
-        }
-      } else if (secondScene < 1 && !action.current.paused) {
-        action.current.reset().fadeOut(0.7);
-        action.current.paused = true;
-      }
-      fbxLoad.mixer.update(delta);
-    }
+    // if (fbxLoad && clicked) {
+    //   if (firstScene < 1) {
+    //     if (action.current) {
+    //       action.current.enabled = true;
+    //       action.current.paused = false;
+    //       // action.current.play().fadeIn(0.7);
+    //     }
+    //   } else if (secondScene < 1 && !action.current.paused) {
+    //     action.current.reset().fadeOut(0.7);
+    //     action.current.paused = true;
+    //   }
+    //   fbxLoad.mixer.update(delta);
+    // }
   });
 
   return (
@@ -126,13 +129,11 @@ const BeergangTest1 = () => {
         scale={0.05}
         dispose={null}
         position={[-0.04, -0.8, -0.55]}
+        // envMapIntensity={0.2}
       />
       <EffectComposer>
-        <DepthOfField
-          focusDistance={0}
-          bokehScale={4}
-          focalLength={0.05}
-        />
+        {/* <DepthOfField focusDistance={0.015} bokehScale={4} focalLength={0.03} height={20}/> */}
+        {/* <Noise premultiply blendFunction={BlendFunction.ADD} /> */}
       </EffectComposer>
     </>
   );

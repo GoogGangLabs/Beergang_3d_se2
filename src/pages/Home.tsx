@@ -8,7 +8,7 @@ import {
   ImageCursor,
   CustomLoader,
 } from "components";
-import { DepthOfField, EffectComposer } from "@react-three/postprocessing";
+import { DepthOfField, EffectComposer, Noise } from "@react-three/postprocessing";
 import BeergangTest1 from "components/Model/BeergangTest1.jsx/BeergangTest1";
 import {
   Scroll,
@@ -17,7 +17,9 @@ import {
 import { sceneStartState } from "store/atoms";
 import { useRecoilValue } from "recoil";
 import { Perf } from "r3f-perf";
-import { Preload } from "@react-three/drei";
+import { OrbitControls, Preload, Stats } from "@react-three/drei";
+import Beergang from '../components/Model/Beergang/Beergang';
+import { BlendFunction } from "postprocessing";
 
 const Home = () => {
   const sceneStart = useRecoilValue(sceneStartState);
@@ -30,13 +32,14 @@ const Home = () => {
           <Canvas
             ref={ref}
             className="fixed top-0 left-0 w-full h-full"
-            gl={{ alpha: true, antialias: false }}
+            gl={{ alpha: true, antialias: true }}
             // camera={{ fov: 70 }}
             performance={{ min: 0.6 }}
-            // shadows
+            shadows
             dpr={1.2}
+            // camera={{position:[0,0,0]}}
           >
-            {/* <Stats showPanel={0} /> */}
+            <Stats showPanel={0} />
             {/* <Perf /> */}
             {/* <AdaptiveDpr pixelated /> */}
             {/* <axesHelper scale={10} /> */}
@@ -47,15 +50,21 @@ const Home = () => {
               damping={0.18}
               enabled={sceneStart}
             >
-              <ImageCursor />
+              {/* <ImageCursor /> */}
               <FadeOutSvg />
               <LightGroup />
               <Background />
-              <BeergangTest1 />
+              <Beergang scale={0.5} position={[-0.04, -8, -5]} />
+              {/* <BeergangTest1 /> */}
               <Scroll html>
                 <HtmlContents />
               </Scroll>
             </ScrollControls>
+            <EffectComposer>
+              <DepthOfField focusDistance={0.00} bokehScale={4} focalLength={0.03}/>
+              
+              {/* <Noise premultiply blendFunction={BlendFunction.ADD} /> */}
+            </EffectComposer>
           </Canvas>
         </Suspense>
       </div>

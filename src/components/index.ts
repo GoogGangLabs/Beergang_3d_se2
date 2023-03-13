@@ -3,7 +3,7 @@ export { default as LightGroup } from "./LightGroup/LightGroup";
 export { default as CustomRectAreaLight } from "./CustomRectAreaLight/CustomRectAreaLight";
 export { default as CustomSpotLight } from "./CustomSpotLight/CustomSpotLight";
 export { default as ReflectiveSvg } from "./ReflectiveSvg/ReflectiveSvg";
-export { default as Background } from "./Background/Background";
+export { default as Background } from "./Background/Background.jsx";
 export { default as FadeOutSvg } from "./FadeOutSvg/FadeOutSvg";
 export { default as CustomDirectionalLight } from "./CustomDirectionalLight/CustomDirectionalLight";
 export { default as ImageCursor } from "./ImageCursor/ImageCursor";

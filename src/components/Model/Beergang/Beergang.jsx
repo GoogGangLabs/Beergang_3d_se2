@@ -1,10 +1,10 @@
 import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
-import beergang from "assets/3d/beergang.glb";
+import beergang from "assets/3d/beergang_test1.glb";
 import { useGLTF, useAnimations } from "@react-three/drei";
 import { useFrame, useThree } from "@react-three/fiber";
 import { Vector3 } from "three";
 import { pageNumState } from "store/atoms";
-import { useRecoilValue } from 'recoil';
+import { useRecoilValue } from "recoil";
 import { useScroll } from "components/CustomScrollControls/CustomScrollControls";
 
 //이전 카메라 위치에서의 이동거리 차
@@ -45,55 +45,15 @@ export default function Beergang(props) {
   useFrame((state, delta) => {
     //ex)5페이지 기준 = 0.2 스크롤비율 * 5 = 1.0
     //range함수를 쓸 수 있지만 아래 수식을 이용하면 범위 입력 필요 X
-    const offsetPerPage = (scroll.offset % (1 / pageNum)) * pageNum;
-    
-    // state.camera.lookAt(
-    //   0, 0, 3.8
-    // );
-    if (scroll.offset <= 1 / pageNum) {
-      state.camera.position.set(
-        offsetPerPage * cameraTargetX_1,
-        offsetPerPage * cameraTargetY_1,
-        initialCameraZ + offsetPerPage * cameraTargetZ_1
-      );
-      // state.camera.lookAt(
-      //   offsetPerPage * cameraTargetX_1 * 25,
-      //   offsetPerPage * cameraTargetY_1 * 25,
-      //   initialCameraZ + offsetPerPage * cameraTargetZ_1 - 100
-      // );
-      state.camera.lookAt(
-        offsetPerPage * 1.2,
-        offsetPerPage * -0.5,
-        0
-      );
-    } else if (scroll.offset <= 2 / pageNum) {
-      state.camera.position.set(
-        cameraTargetX_1 + offsetPerPage * cameraTargetX_2,
-        cameraTargetY_1 + offsetPerPage * cameraTargetY_2,
-        initialCameraZ + cameraTargetZ_1 + offsetPerPage * cameraTargetZ_2
-      );
-      state.camera.lookAt(1.2, -0.5, 0);
-    } else if (scroll.offset <= 3 / pageNum) {
-      state.camera.position.set(
-        cameraTargetX_1 + cameraTargetX_2 + offsetPerPage * cameraTargetX_3,
-        cameraTargetY_1 + cameraTargetY_2 + offsetPerPage * cameraTargetY_3,
-        initialCameraZ +
-          cameraTargetZ_1 +
-          cameraTargetZ_2 +
-          offsetPerPage * cameraTargetZ_3
-      );
+    // const offsetPerPage = (scroll.offset % (1 / pageNum)) * pageNum;
 
-      state.camera.lookAt(
-        1.2, -0.5, 0
-      );
+    // } else if (scroll.offset <= 4 / pageNum) {
 
-    } else if (scroll.offset <= 4 / pageNum) {
-      
-    }
+    // }
 
-    //페이지 전환이 완전히 되기 전에 동작2로 넘어가야함. (1/5 페이지)
+    // //페이지 전환이 완전히 되기 전에 동작2로 넘어가야함. (1/5 페이지)
     // if (scroll.offset < 1 / pageNum) {
-    //   // actions["dance"].play().paused = false;
+    //   actions["dance"].play().paused = false;
     // } else if (
     //   scroll.offset >=
     //   1 / pageNum
@@ -102,18 +62,99 @@ export default function Beergang(props) {
     //   // Math.ceil(actions["dance"].getClip().duration) ===
     //   //   Math.ceil(actions["dance"].time)
     // ) {
-    //   // actions["dance"].play().paused = true;
-    //   // actions["dance"].fadeOut(0.2);
-    //   // actions["dance"].stop();
-    //   // actions["dance"].reset();
+    //   actions["dance"].play().paused = true;
+    //   actions["dance"].fadeOut(0.2);
+    //   actions["dance"].stop();
+    //   actions["dance"].reset();
     // }
-    if (scroll.offset < 1 / pageNum) {
-      //
-    } else if (scroll.offset >= 1 / pageNum && action === "dance") {
-      setAction("");
-      actions["dance"].fadeOut(0.5);
-    }
+    // if (scroll.offset < 2 / pageNum) {
 
+    // } else if (scroll.offset >= 1 / pageNum && action === "dance") {
+    //   setAction("");
+    //   actions["dance"].fadeOut(0.5);
+    // }
+
+    const firstScene = scroll.range(0, 3 / pageNum);
+    const secondSceneStart = scroll.range(3 / pageNum, 1 / pageNum);
+    const secondScene = scroll.range(4 / pageNum, 4.5 / pageNum);
+    const secondSceneEnd = scroll.range(8.5 / pageNum, 1 / pageNum);
+    const thirdSceneStart = scroll.range(9.8 / pageNum, 1.5 / pageNum);
+    const thirdScene = scroll.range(11.3 / pageNum, 1.5 / pageNum);
+    const thirdSceneEnd = scroll.range(12.8 / pageNum, 1.5 / pageNum);
+    const fourthSceneStart = scroll.range(14.3 / pageNum, 1.5 / pageNum);
+    const fourthScene = scroll.range(15.8 / pageNum, 1.5 / pageNum);
+    const fourthSceneEnd = scroll.range(17.3 / pageNum, 1.5 / pageNum);
+    const fifthWholeScene = scroll.range(18.8 / pageNum, 4.5 / pageNum);
+    const sixthWholeScene = scroll.range(23.3 / pageNum, 4.5 / pageNum);
+    const seventhWholeScene = scroll.range(27.8 / pageNum, 2 / pageNum);
+    const lastScene = scroll.range(30.8 / pageNum, 2 / pageNum);
+    if (firstScene < 1) {
+      state.camera.position.set(
+        Math.atan((Math.PI * firstScene) / 2) * 2,
+        0,
+        Math.atan((Math.PI * firstScene) / 2) * -1.5
+      );
+      // state.camera.lookAt(0, 0, -10)
+    } else if (secondSceneEnd < 1) {
+      state.camera.position.set(
+        2 + secondScene * -4,
+        0,
+        -1.5 +
+          Math.sin((secondSceneStart * Math.PI) / 8) * 3 +
+          Math.sin(secondScene * Math.PI) * 4 -
+          Math.sin((secondSceneEnd * Math.PI) / 8) * 3
+      );
+      // state.camera.lookAt(0, 0, -10)
+      group.current.rotation.set(0, secondScene * (-Math.PI / 8), 0);
+    } else if (thirdSceneEnd < 1) {
+      state.camera.position.set(
+        -2 + 2.2 * thirdSceneStart + 2.2 * thirdScene + 2.2 * thirdSceneEnd,
+        -thirdSceneStart - thirdScene - thirdSceneEnd,
+        -1.5 + (1.5 * thirdSceneStart + 1.5 * thirdScene + 1.5 * thirdSceneEnd)
+      );
+      group.current.rotation.set(
+        0,
+        -Math.PI / 8 + thirdScene * (Math.PI / 8),
+        0
+      );
+    } else if (fourthSceneEnd < 1) {
+      state.camera.position.set(
+        4.6 +
+          fourthSceneStart * -2 +
+          fourthScene * -2 +
+          Math.atan((fourthSceneEnd * Math.PI) / 2) * -1,
+        -3,
+        3 +
+          fourthSceneStart * 3 +
+          Math.atan((fourthScene * Math.PI) / 2) * 4 +
+          fourthSceneEnd * 3
+      );
+      group.current.rotation.set(
+        0,
+        fourthScene * (-Math.PI / 8),
+        0
+      );
+    } else if (fifthWholeScene < 1) {
+      state.camera.position.set(
+        -0.4 + fifthWholeScene * -1,
+        -3 + Math.atan((fifthWholeScene * Math.PI) / 2) * 5,
+        10 + Math.atan((fifthWholeScene * Math.PI) / 2) * -8.5
+      );
+    } else if (sixthWholeScene < 1) {
+      state.camera.position.set(
+        -1.4,
+        2 + Math.atan((sixthWholeScene * Math.PI) / 2) * -4,
+        1.5
+      );
+    } else if (seventhWholeScene < 1) {
+      state.camera.position.set(
+        -1.4 + seventhWholeScene * 1.4,
+        -2,
+        1.5 + seventhWholeScene * 1
+      );
+    } else if (lastScene < 1) {
+      state.camera.position.set(0, -2 + lastScene * -15, 2.5);
+    }
   });
 
   // useEffect(() => {
@@ -132,71 +173,122 @@ export default function Beergang(props) {
 
   return (
     <group ref={group} {...props} dispose={null}>
-      <group name="Scene">
-        <group name="Armature">
-          <primitive object={nodes.mixamorigHips} />
-          <primitive object={nodes.Ctrl_Master} />
-          <primitive object={nodes.Ctrl_ArmPole_IK_Left} />
-          <primitive object={nodes.Ctrl_Hand_IK_Left} />
-          <primitive object={nodes.Ctrl_ArmPole_IK_Right} />
-          <primitive object={nodes.Ctrl_Hand_IK_Right} />
-          <primitive object={nodes.Ctrl_Foot_IK_Left} />
-          <primitive object={nodes.Ctrl_LegPole_IK_Left} />
-          <primitive object={nodes.Ctrl_Foot_IK_Right} />
-          <primitive object={nodes.Ctrl_LegPole_IK_Right} />
-          <skinnedMesh
-            name="ARpants"
-            geometry={nodes.ARpants.geometry}
-            material={materials.pants_MAT}
-            skeleton={nodes.ARpants.skeleton}
-          />
-          <skinnedMesh
-            name="ARpantsPocket"
-            geometry={nodes.ARpantsPocket.geometry}
-            material={materials.pants_MAT}
-            skeleton={nodes.ARpantsPocket.skeleton}
-          />
-          <skinnedMesh
-            name="base_head001"
-            geometry={nodes.base_head001.geometry}
-            material={materials.base_head_MAT}
-            skeleton={nodes.base_head001.skeleton}
-          />
-          <skinnedMesh
-            name="ARbody"
-            geometry={nodes.ARbody.geometry}
-            material={materials.Lyquid_body_MAT}
-            skeleton={nodes.ARbody.skeleton}
-          />
-          <skinnedMesh
-            name="BomberJacket"
-            geometry={nodes.BomberJacket.geometry}
-            material={materials.bomberJacket_MAT}
-            skeleton={nodes.BomberJacket.skeleton}
-          />
-          <skinnedMesh
-            name="ARsneakers_lf"
-            geometry={nodes.ARsneakers_lf.geometry}
-            material={materials.sneakers_white_MAT}
-            skeleton={nodes.ARsneakers_lf.skeleton}
-          />
-          <skinnedMesh
-            name="ARsneakers_rt"
-            geometry={nodes.ARsneakers_rt.geometry}
-            material={materials.sneakers_white_MAT}
-            skeleton={nodes.ARsneakers_rt.skeleton}
-          />
-        </group>
-        <mesh
-          name="hair_Wu_Lyquid"
-          castShadow
-          receiveShadow
-          geometry={nodes.hair_Wu_Lyquid.geometry}
-          material={materials.Foam_Hair_C}
-          rotation={[Math.PI / 2, 0, 0]}
-          scale={0.01}
-        />
-      </group>
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes.button_3.geometry}
+        material={nodes.button_3.material}
+      />
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes.earPiercing_geo.geometry}
+        material={materials.Jewelry_Ears_Ring}
+      />
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes.eyecoat_Lf.geometry}
+        material={materials.eye_corona}
+      />
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes.eyecoat_Rt.geometry}
+        material={materials.eye_corona}
+      />
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes.hair_Wu_Lyquid.geometry}
+        material={materials.Hair_L_Wu}
+      />
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes.eyebrow_lf.geometry}
+        material={materials.eyebrow_Basic}
+      />
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes.eyebrow_rt.geometry}
+        material={materials.eyebrow_Basic}
+      />
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes.teethLow.geometry}
+        material={materials.Inside_Basic}
+      />
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes.teethUp.geometry}
+        material={materials.Inside_Basic}
+      />
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes.tongue.geometry}
+        material={materials.Inside_Basic}
+      />
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes.eyeballRt.geometry}
+        material={materials["04_eyeball_Brown_mat"]}
+        position={[-0.22, 18.56, 0.4]}
+        rotation={[-1.48, -0.12, 2.67]}
+        scale={0.56}
+      />
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes.eyeballLf.geometry}
+        material={materials["04_eyeball_Purple_mat"]}
+        position={[0.22, 18.56, 0.4]}
+        rotation={[1.66, -0.12, -0.47]}
+        scale={0.56}
+      />
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes.Varsity_Jacket_retopo.geometry}
+        material={materials["Material #102"]}
+      />
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes.body_Lyquid.geometry}
+        material={materials.body_Type_L_Basic}
+      />
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes.head.geometry}
+        material={materials.head_Type_L_Basic}
+      />
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes.ARpants.geometry}
+        material={materials.pants}
+      />
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes.ARsneakers_lf.geometry}
+        material={materials.sneakers_red}
+        scale={0.1}
+      />
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes.ARsneakers_rt.geometry}
+        material={materials.sneakers_red}
+        scale={0.1}
+      />
     </group>
   );
 }

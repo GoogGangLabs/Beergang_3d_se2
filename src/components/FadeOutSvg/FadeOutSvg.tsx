@@ -13,15 +13,15 @@ const FadeOutSvg = () => {
   const pageNum = useRecoilValue(pageNumState);
   const { viewport } = useThree();
 
-  useFrame(() => {
-    if (scroll.range(0,2/pageNum) < 1) {
-      ref.current.position.z = -scroll.range(0,2/pageNum) * 3 - 0.8
-    }
-  })
+  // useFrame(() => {
+  //   if (scroll.range(0,2/pageNum) < 1) {
+  //     ref.current.position.z = -scroll.range(0,2/pageNum) * 1.5 - 5.5
+  //   }
+  // })
 
   return (
     <>
-      <Svg ref={ref} src={beergangText} position={[-0.78, 0.2, -1]} scale={0.0011} />
+      <Svg ref={ref} src={beergangText} position={[-5, 1, -5.5]} scale={0.007} />
     </>
   );
 }

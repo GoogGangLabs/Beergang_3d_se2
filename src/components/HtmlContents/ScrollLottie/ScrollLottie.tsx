@@ -14,7 +14,7 @@ const ScrollLottie = () => {
   useFrame(() => {
     if (scroll.range(0, 1 / pageNum) >= 0.1 && opacityRef.current.style.opacity === "1") {
       opacityRef.current.style.opacity = 0
-    } else if (scroll.range(0, 1 / pageNum) < 0.1 && opacityRef.current.style.opacity === "0") {
+    } else if (scroll.range(0, 1 / pageNum) < 0.1 && (opacityRef.current.style.opacity === "0" || !opacityRef.current.style.opacity)) {
       opacityRef.current.style.opacity = 1;
     }
   });

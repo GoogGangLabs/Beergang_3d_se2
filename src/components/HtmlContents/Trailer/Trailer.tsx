@@ -23,12 +23,17 @@ const Trailer = () => {
   const [hover, setHover] = useState<string>("opacity-0");
 
   useEffect(() => {
+    let t:any;
     if (isPlaying) {
       videoRef.current.play();
+      t = setTimeout(() => {
+        setHover("opacity-0")
+      },1000)
     } else {
       videoRef.current.pause();
     }
-  }, [isPlaying]);
+    return () => clearTimeout(t)
+  }, [isPlaying, hover]);
 
   const onFullScreenHandler = () => {
     videoRef.current?.requestFullscreen();
@@ -47,7 +52,7 @@ const Trailer = () => {
   };
 
   const unHoverVideo = () => {
-    setHover(() => (!isPlaying ? "opacity-100" : "opacity-0"));
+    setHover(() => (!isPlaying ? "opacity-0" : "opacity-0"));
   };
 
   return (
@@ -99,7 +104,7 @@ const Trailer = () => {
           />
         )}
         <video
-          onMouseEnter={hoverVideo}
+          onMouseMove={hoverVideo}
           onMouseLeave={unHoverVideo}
           onClick={togglePlay}
           className="rounded-[20px] w-full"
@@ -107,7 +112,7 @@ const Trailer = () => {
           ref={videoRef}
           muted={isMuted}
           autoPlay={false}
-          loop={true}
+          loop={false}
           controls={false}
         >
           <source src={exvideo} type="video/mp4" />

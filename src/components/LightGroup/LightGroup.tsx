@@ -31,11 +31,11 @@ const LightGroup = () => {
     // }
   }, []);
 
-  useFrame(() => {
-    if (scroll.range(0, 2 / pageNum) < 1) {
-      setIntensity(Math.max(Math.min(scroll.offset * pageNum, 1), 0.025));
-    }
-  });
+  // useFrame(() => {
+  //   if (scroll.range(0, 2 / pageNum) < 1) {
+  //     setIntensity(Math.max(Math.min(scroll.offset * pageNum, 1), 0.025));
+  //   }
+  // });
 
   return (
     <>
@@ -54,40 +54,48 @@ const LightGroup = () => {
       ) : (
         <></>
       )} */}
-      <spotLight
+      {/* <spotLight
         position={[-4, 3, 5.7]}
         angle={0.7}
         penumbra={0.5}
         intensity={intensity}
-      />
+      /> */}
       <Sparkles
         color={"rgba(220, 79, 0, 1)"}
-        count={50}
+        count={100}
         size={1}
         speed={0.2}
-        scale={3}
-        opacity={intensity}
+        scale={9}
+        opacity={1}
         noise={1}
-        position={[0.2, 0, -0.7]}
+        position={[0, 0, -1]}
       />
-      <CustomSpotLight
-        lightFrom={[0.3, 0, -0.5]}
-        lightTo={[0.5, 0, -1]}
-        angle={0.7}
-        intensity={3}
+      {/* <CustomSpotLight
+        lightFrom={[-0.04, 0.3, -0.55]}
+        lightTo={[-0.04, -0.8, -0.55]}
+        angle={1}
+        intensity={1.5}
         penumbra={1}
-        lightColor="#421cff"
+        lightColor="#ff6620"
+      /> */}
+      {/* <CustomSpotLight
+        lightFrom={[0.3, 0, -0.5]}
+        lightTo={[0.4, 0.05, -1]}
+        angle={1}
+        intensity={1.2}
+        penumbra={1}
+        lightColor="#2b00ff"
       />
       <CustomSpotLight
         lightFrom={[-0.3, 0, -0.5]}
-        lightTo={[-0.6, 0, -1]}
-        angle={0.7}
-        intensity={3}
+        lightTo={[-0.4, -0.3, -1]}
+        angle={1}
+        intensity={1.2}
         penumbra={1}
         lightColor="#ff7e1b"
-      />
-
-      {/* <ambientLight intensity={0.1} /> */}
+      /> */}
+      <pointLight intensity={0.7} position={[-20, 70, -3]} />
+      {/* <ambientLight intensity={0.31} /> */}
     </>
   );
 };
